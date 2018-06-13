@@ -1,0 +1,36 @@
+<?php
+
+class RelacionVista{
+    
+    function generaTablaRelacionNombre($data){
+        $dat = "
+        <table class='table' id='example'>
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>Tutor</th>
+                            <th>Alumno</th>                            
+                            <th></th>
+                        </tr>
+                    </thead>
+                <tbody>";
+        $rows ="";
+        foreach ($data as $r){
+            $row = "<tr>
+                        <td scope='row'>".$r->id_relacion."</td>
+                        <td>".$r->tutor."</td>
+                        <td>".$r->alumno."</td>
+                        <td><button class='btn-success btn' onclick=''>Mostrar</button></td>                      
+                    </tr>";
+            $rows = $rows.$row;
+        }
+        $fin = "</tbody>
+                </table>";
+        
+        
+        return $dat.$rows.$fin;
+    }
+}
+
+
+        

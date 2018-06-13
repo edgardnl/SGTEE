@@ -1,0 +1,112 @@
+<?php
+
+require_once $_SERVER['DOCUMENT_ROOT'] . ruta::ruta . "/modelo/dao/Conexion.php";
+require_once $_SERVER['DOCUMENT_ROOT'] . ruta::ruta . "/modelo/dao/procesaParametros.php";
+require_once $_SERVER['DOCUMENT_ROOT'] . ruta::ruta . "/modelo/objetos/TutoresObjeto.php";
+require_once $_SERVER['DOCUMENT_ROOT'] . ruta::ruta . "/modelo/dao/sql/TutoresSql.php";
+
+class TutoresDao {
+
+    private $con;
+
+    function __construct() {
+        $this->con = conexion::conectar();
+    }
+
+    function __destruct() {
+        $this->con->close();
+    }
+
+    function traeTutores() {
+        $pP = TutoresSql::traeTutores();
+        $query = $this->con->query($pP);
+        $lista = [];
+        $x = 0;
+        while ($row = $query->fetch_array()) {
+            $lista[] = new TutoresObjeto();
+            $lista[$x]->id = $row['id_tutores'];
+            $lista[$x]->clave = $row['clave'];
+            $lista[$x]->nombre = $row['nombre'];
+            $lista[$x]->ap_p = $row['ap_p'];
+            $lista[$x]->ap_m = $row['ap_m'];            
+            $x++;
+        }
+        return $lista;
+    }
+    
+    function agregaTutor($obj){
+        $datosArray = array($obj->clave,$obj->nombre,$obj->ap_p,$obj->ap_m,$obj->asignatura,$obj->horaio);
+        $pP = procesaParametros::PrepareStatement(TutoresSql::agregaTutores(),$datosArray);                        
+        
+        $this->con->query($pP);
+        header("Location:Tutores.php");
+            //$res = "1";        
+        //return $res;
+    }
+    
+    function treaTutorPorClave($clave){
+        $datosArray = array($clave->clave);
+        $pP = procesaParametros::PrepareStatement(TutoresSql::traeTutorPorClave(),$datosArray);
+       
+        $query = $this->con->query($pP);
+        $row = $query->fetch_array();
+        
+        $obj = new TutoresObjeto();
+        $obj->clave = $row['clave'];
+        $obj->nombre = $row['nombre'];
+        $obj->ap_p = $row['ap_p'];
+        $obj->ap_m = $row['ap_m'];
+        $obj->asignatura = $row['asignatura'];
+        $obj->horaio = $row['horario'];
+        
+        return $obj;
+    }
+    
+    function treTutorPorId($id){
+        $datosArray = array($id->id);
+        $pP = procesaParametros::PrepareStatement(TutoresSql::traeTutorPorId(),$datosArray);
+       
+        $query = $this->con->query($pP);
+        $row = $query->fetch_array();
+        
+        $obj = new TutoresObjeto();
+        $obj->id = $row['id_tutores'];
+        $obj->clave = $row['clave'];
+        $obj->nombre = $row['nombre'];
+        $obj->ap_p = $row['ap_p'];
+        $obj->ap_m = $row['ap_m'];
+        $obj->asignatura = $row['asignatura'];
+        $obj->horaio = $row['horario'];
+        
+        return $obj;
+    }
+    
+    function editaDatosTutor($obj){
+        //$datosArray = array($obj->id,$obj->clave,$obj->nombre,$obj->ap_p,$obj->ap_m,$obj->asignatura,$obj->horaio);
+        $pP = TutoresSql::editaDatosTutor($obj);                
+        
+        try {
+            $this->con->query($pP);
+            $res = "1";
+        } catch (Exception $exc) {
+            $res = $exc->getTraceAsString();
+        }
+
+        return $pP;
+    }
+    
+    function eliminaDatosTutor($obj){
+        $datosArray = array($obj->id);
+        $pP = procesaParametros::PrepareStatement(TutoresSql::eliminaDatosTutor(),$datosArray);
+        $res ="";
+        try {
+            $this->con->query($pP);
+        } catch (Exception $exc) {
+            $res = $exc->getTraceAsString();
+        }
+        
+        return $res;
+        
+    }
+
+}
