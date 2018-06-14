@@ -65,4 +65,9 @@ class MostrarTablaControl {
 
     }
 
+    function tablaActividadesPorAlumno($id){
+        
+
+    }
+
 }
