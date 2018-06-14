@@ -14,13 +14,13 @@ switch ($_REQUEST['action']) {#
         $obj->nombre = $_POST['nombre'];
         $obj->ap_p = $_POST['ap_p'];
         $obj->ap_m = $_POST['ap_m'];
-        $obj->asignatura = 4;
+        $obj->asignatura = $_POST['asignat'];
         $obj->horaio = $_POST['horario'];
         $obj->correo = $_POST['correo'];
         
         $obj1 = new UsuariosObjeto();
         $obj1->matricula = $_POST['clave'];
-        $obj1->correo = $_POST['correo'];
+        //$obj1->correo = $_POST['correo'];
         $obj1->contrasena = $_POST['pass'];
         $obj1->id_role = 2;
         

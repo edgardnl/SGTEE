@@ -18,7 +18,7 @@ class UsuariosDao {
     }
     
     function ingresaUsuarioTutor($obj){
-        $datosArray = array($obj->matricula,$obj->correo,$obj->contrasena,$obj->id_role);
+        $datosArray = array($obj->matricula,$obj->contrasena,$obj->id_role);
         $pP = procesaParametros::PrepareStatement(UsuariosSql::ingresaUsuraioTutor(),$datosArray);                        
         
         try {

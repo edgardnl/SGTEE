@@ -173,7 +173,7 @@ new UISearch(document.getElementById('sb-search'));
                                         <!--dos-->
                                         <label for="focusedinput" class="col-sm-2 control-label">Asignaturas</label>
                                         <div class="col-sm-8">
-                                            <input type="text" class="form-control1" id="focusedinput" placeholder="" value="<?php print $objT->id_asignatura; ?>" name="asig">
+                                            <input type="text" class="form-control1" id="focusedinput" value="<?php print $objT->asignatura; ?>" name="asig">
                                         </div>
 
                                         <div class="col-sm-2 jlkdfj1">

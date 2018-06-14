@@ -8,7 +8,7 @@ class TutoresSql {
     }
 
     function agregaTutores() {
-        $query = "insert into tutor(clave,nombre,ap_p,ap_m,id_asignatura,horario,correo) values(?,?,?,?,?,?,?);";
+        $query = "insert into tutor(clave,nombre,ap_p,ap_m,asignatura,horario,correo) values(?,?,?,?,?,?,?);";
         return $query;
     }
     
@@ -23,7 +23,7 @@ class TutoresSql {
     }
     
     function editaDatosTutor($obj){
-        $query = "update tutor set clave = '".$obj->clave."', nombre = '".$obj->nombre."', ap_p = '".$obj->ap_p."', ap_m = '".$obj->ap_m."', id_asignatura = ".$obj->id_asignatura.",horario = '".$obj->horaio."',correo = '".$obj->correo."' where id_tutores = ".$obj->id.";";
+        $query = "update tutor set clave = '".$obj->clave."', nombre = '".$obj->nombre."', ap_p = '".$obj->ap_p."', ap_m = '".$obj->ap_m."', asignatura = '".$obj->asignatura."',horario = '".$obj->horaio."',correo = '".$obj->correo."' where id_tutores = ".$obj->id.";";
         return $query;
     }
     

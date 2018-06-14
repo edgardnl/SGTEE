@@ -4,7 +4,7 @@
 class UsuariosSql {
     
     function ingresaUsuraioTutor(){
-        $query = "insert into usuario(matricula,correo,contrasena,id_role) values(?,?,?,?);";
+        $query = "insert into usuario(matricula,contrasena,id_role) values(?,?,?);";
         return $query;
     }
     

@@ -58,7 +58,7 @@ class TutoresDao {
         $obj->nombre = $row['nombre'];
         $obj->ap_p = $row['ap_p'];
         $obj->ap_m = $row['ap_m'];
-        $obj->asignatura = $row['asignatura'];
+        $obj->id_asignatura = $row['asignatura'];
         $obj->horaio = $row['horario'];
         
         return $obj;
@@ -77,7 +77,7 @@ class TutoresDao {
         $obj->nombre = $row['nombre'];
         $obj->ap_p = $row['ap_p'];
         $obj->ap_m = $row['ap_m'];
-        $obj->id_asignatura = $row['id_asignatura'];
+        $obj->asignatura = $row['asignatura'];
         $obj->horaio = $row['horario'];
         $obj->correo = $row['correo'];
         

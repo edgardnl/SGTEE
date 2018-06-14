@@ -14,7 +14,7 @@ switch ($_REQUEST['action']) {#$_REQUEST['action']
         $obj->nombre = $_POST['nom'];
         $obj->ap_p = $_POST['apa'];
         $obj->ap_m = $_POST['ama'];
-        $obj->id_asignatura = $_POST['asig'];
+        $obj->asignatura = $_POST['asig'];
         $obj->horaio = $_POST['hori'];
         $obj->correo = $_POST['correo'];
         /*$obj->id = 4;#
