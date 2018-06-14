@@ -1,3 +1,12 @@
+<?php
+require_once "../ruta.php";
+require_once $_SERVER['DOCUMENT_ROOT'] . ruta::ruta . "/controlador/MostrarTablaControl.php";
+$tabla = new MostrarTablaControl();
+
+if (isset($_POST['btn'])) {
+    $tabla->direccionLogin($_POST['user'], $_POST['passw']);
+}
+?>
 <!DOCTYPE html>
 <html>
     <head>
@@ -16,6 +25,7 @@
         <!-- jQuery -->
         <!-- lined-icons -->
         <link rel="stylesheet" href="css/icon-font.min.css" type='text/css' />
+        <link rel="stylesheet" type="text/css" href="css/login.css">
         <!-- //lined-icons -->
         <!-- chart -->
         <script src="js/Chart.js"></script>
@@ -33,16 +43,16 @@
         <!-- Meters graphs -->
         <script src="js/jquery-1.10.2.min.js"></script>
          <!--<script src="jquery/jquery.min.js"></script>-->
-        <!-- Placed js at the end of the document so the pages load faster -->
-        <script src="js/acceso.js"></script>
+        <!-- Placed js at the end of the document so the pages load faster -->        
 
     </head> 
 
     <body class="sign-in-up">
         <section>
-            <div id="page-wrapper" class="sign-in-wrapper">
+            <div id="page-wrapper" class="sign-in-wrapper">                                    
+                
                 <div class="graphs">
-                    <div class="sign-in-form">
+                    <div class="sign-in-form" style="margin-top: 10px">
                         <div class="sign-in-form-top">
                             <p><span>Sistema de Gestion de Tutorias Especiales</span> <a href="index.html"></a></p>
                         </div>
@@ -54,12 +64,12 @@
                                     <p><a href="#">Click Here</a> </p>
                                     <div class="clearfix"> </div>
                             </div>-->
-                            <form action="" name="login" id="login">
+                            <form name="login" id="login" method="post">
                                 <div class="log-input">
                                     <div class="log-input-left">
                                         <input type="text" class="user" value="Usuario" onfocus="this.value = '';" onblur="if (this.value == '') {
                                                     this.value = 'Usuario';
-                                                }" name="usua" />
+                                                }" name="user" />
                                     </div>
                                     <!--<span class="checkbox2">
                                              <label class="checkbox"><input type="checkbox" name="checkbox" checked=""><i> </i></label>
@@ -76,7 +86,7 @@
                                     </span>-->
                                     <div class="clearfix"> </div>
                                 </div>
-                                <input type="submit" value="Ingresar" onclick="ingresar()">
+                                <input type="submit" value="Ingresar" name="btn">
                             </form>	 
                         </div>
                         <!--<div class="new_people">

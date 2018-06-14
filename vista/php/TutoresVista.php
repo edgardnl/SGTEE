@@ -3,7 +3,7 @@
 class TutoresVista{
     
     function generaTablaTutores($data){
-        $dat = "<script type='text/javascript' charset='utf-8'> 
+        $dat ="<script type='text/javascript' charset='utf-8'> 
             $(document).ready(function() {
                 $('#example').dataTable();
             } );

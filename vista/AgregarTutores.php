@@ -134,7 +134,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 									<!--inicio de los imput del formulario -->
 									<label for="focusedinput" class="col-sm-2 control-label">Nombre</label>
 									<div class="col-sm-8">
-                                                                            <input type="text" class="form-control1" id="focusedinput" placeholder="" name="nombre">
+                                                                            <input type="text" class="form-control1" id="" placeholder="" name="nombre">
 									</div>
 
 									<div class="col-sm-2 jlkdfj1">
@@ -145,7 +145,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 									<!--dos-->
 									<label for="focusedinput" class="col-sm-2 control-label">Apellido Paternos</label>
 									<div class="col-sm-8">
-										<input type="text" class="form-control1" id="focusedinput" placeholder="" name="ap_p">
+										<input type="text" class="form-control1" id="" placeholder="" name="ap_p">
 									</div>
 
 									<div class="col-sm-2 jlkdfj1">
@@ -156,7 +156,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 									<!--dos-->
 									<label for="focusedinput" class="col-sm-2 control-label">Apellido Materno</label>
 									<div class="col-sm-8">
-										<input type="text" class="form-control1" id="focusedinput" placeholder="" name="ap_m">
+										<input type="text" class="form-control1" id="" placeholder="" name="ap_m">
 									</div>
 
 									<div class="col-sm-2 jlkdfj1">
@@ -167,7 +167,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 									<!--dos-->
 									<label for="focusedinput" class="col-sm-2 control-label">Asignaturas</label>
 									<div class="col-sm-8">
-										<input type="text" class="form-control1" id="focusedinput" placeholder="" name="asignat">
+										<input type="text" class="form-control1" id="" placeholder="" name="asignat">
 									</div>
 
 									<div class="col-sm-2 jlkdfj1">
@@ -178,7 +178,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 									<!--dos-->
 									<label for="focusedinput" class="col-sm-2 control-label">Horario</label>
 									<div class="col-sm-8">
-										<input type="text" class="form-control1" id="focusedinput" placeholder="Horario disponible" name="horario">
+										<input type="text" class="form-control1" id="" placeholder="Horario disponible" name="horario">
 									</div>
 
 									<div class="col-sm-2 jlkdfj1">
@@ -189,7 +189,29 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 									<!--dos-->
 									<label for="focusedinput" class="col-sm-2 control-label">Correo</label>
 									<div class="col-sm-8">
-										<input type="text" class="form-control1" id="focusedinput" placeholder="ejemplo@tescha.com" name="correo">
+										<input type="text" class="form-control1" id="" placeholder="ejemplo@tescha.com" name="correo">
+									</div>
+
+									<div class="col-sm-2 jlkdfj1">
+										<p class="help-block"></p>
+									</div>
+								</div>
+                                                                <div class="form-group">
+									<!--dos-->
+									<label for="focusedinput" class="col-sm-2 control-label">Contraseña</label>
+									<div class="col-sm-8">
+                                                                            <input type="password" class="form-control1" id="" placeholder="" name="pass">
+									</div>
+
+									<div class="col-sm-2 jlkdfj1">
+										<p class="help-block"></p>
+									</div>
+								</div>
+                                                                <div class="form-group">
+									<!--dos-->
+									<label for="focusedinput" class="col-sm-2 control-label">Confirma contraseña</label>
+									<div class="col-sm-8">
+                                                                            <input type="password" class="form-control1" id="" placeholder="" name="pass1">
 									</div>
 
 									<div class="col-sm-2 jlkdfj1">

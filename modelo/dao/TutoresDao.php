@@ -35,13 +35,15 @@ class TutoresDao {
     }
     
     function agregaTutor($obj){
-        $datosArray = array($obj->clave,$obj->nombre,$obj->ap_p,$obj->ap_m,$obj->asignatura,$obj->horaio);
+        $datosArray = array($obj->clave,$obj->nombre,$obj->ap_p,$obj->ap_m,$obj->asignatura,$obj->horaio,$obj->correo);
         $pP = procesaParametros::PrepareStatement(TutoresSql::agregaTutores(),$datosArray);                        
         
-        $this->con->query($pP);
-        header("Location:Tutores.php");
-            //$res = "1";        
-        //return $res;
+        try {
+            $this->con->query($pP);            
+        } catch (Exception $exc) {
+            print $exc->getMessage();
+        }
+        
     }
     
     function treaTutorPorClave($clave){
@@ -75,8 +77,9 @@ class TutoresDao {
         $obj->nombre = $row['nombre'];
         $obj->ap_p = $row['ap_p'];
         $obj->ap_m = $row['ap_m'];
-        $obj->asignatura = $row['asignatura'];
+        $obj->id_asignatura = $row['id_asignatura'];
         $obj->horaio = $row['horario'];
+        $obj->correo = $row['correo'];
         
         return $obj;
     }
@@ -86,26 +89,21 @@ class TutoresDao {
         $pP = TutoresSql::editaDatosTutor($obj);                
         
         try {
-            $this->con->query($pP);
-            $res = "1";
+            $this->con->query($pP);            
         } catch (Exception $exc) {
-            $res = $exc->getTraceAsString();
+            print $exc->getMessage();
         }
-
-        return $pP;
     }
     
     function eliminaDatosTutor($obj){
         $datosArray = array($obj->id);
-        $pP = procesaParametros::PrepareStatement(TutoresSql::eliminaDatosTutor(),$datosArray);
-        $res ="";
+        $pP = procesaParametros::PrepareStatement(TutoresSql::eliminaDatosTutor(),$datosArray);        
         try {
             $this->con->query($pP);
         } catch (Exception $exc) {
-            $res = $exc->getTraceAsString();
+            print $exc->getTraceAsString();
         }
-        
-        return $res;
+                
         
     }
 

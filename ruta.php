@@ -1,7 +1,7 @@
 <?php
 
 class ruta {
-	const ruta = "/SGTEnet";
+	const ruta = "/SGTEnueva";
 	
 }
 ?>

@@ -2,10 +2,9 @@
 
 class UsuariosObjeto {
 	
-	var $id;
-	var $usuario;
+	var $id_usuario;
+	var $matricula;
 	var $correo;
 	var $contrasena;
 	var $id_role;
 }
-?>

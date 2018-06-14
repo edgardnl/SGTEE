@@ -158,7 +158,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                            			
 				<div class="graphs">
 					
-                                    <h1 class="blank1">Tutores</h1>
+                                    <h1 class="blank1">Consulta Actividades</h1>
                                         
                                     <!--<div class="form-group">
                                             <label for="focusedinput" class="col-sm-2 control-label">Buscar</label>
@@ -172,20 +172,20 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                                         
                                         
                                         <h6 class="blank" style="color: #F8F8F8">...</h6>
-                                        <h5 class="blank">Lista de Tutores:</h5>
+                                        <h5 class="blank">Lista de Alumnos:</h5>
                                         
 					 <div class="xs tabls">
                                             <div class="bs-example4" data-example-id="simple-responsive-table">
 						<div class="table-responsive">
 
                                                     <?php
-                                                    $tabla->tablaTutores();
+                                                    $tabla->tablaAlumnosActividades();
                                                     ?>
                                                     
                                                 </div>					   																						
                                             </div>
                                         </div>
-                                        <a class="flotante" href="AgregarTutores.php"><i class="fa fa-user"></i></a>
+                                        <!--<a class="flotante" href="AgregarTutores.php"><i class="fa fa-user"></i></a>-->
                                 </div>
                         </div>
 		

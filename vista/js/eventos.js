@@ -11,7 +11,9 @@ function regresarTutoresInicio() {
 function agregarTutores() {
     var datos = "action=agregarTutor&" + $("#FormTutores").serialize();
     alert(datos);
-    $.post("../controlador/AgregarControl.php", datos, function (resp) {        
+    $.post("../controlador/AgregarControl.php", datos, function (resp) {
+        console.log(resp);
+        location.href = "Tutores.php";
     });
 }
 

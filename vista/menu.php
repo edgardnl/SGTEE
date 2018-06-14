@@ -16,7 +16,7 @@
                                                 <li><a href="Inicio.php"><i class="lnr lnr-power-switch"></i><span>Inicio</span></a></li>
                                                 <li><a href="Alumnos.php"><i class="lnr lnr-user"></i><span>Alumnos</span></a></li>
                                                 <li><a href="Tutores.php"><i class="lnr lnr-users"></i> <span>Tutores</span></a></li>
-						<li><a href=""><i class="lnr lnr-menu"></i> <span>Actividades</span></a></li> 
+												<li><a href="ConsultaActividades.php"><i class="lnr lnr-menu"></i> <span>Actividades</span></a></li> 
                                                 <li><a href=""><i class="lnr lnr-indent-increase"></i> <span>Estadistico</span></a></li> 
 						<!--             
 						<li class="menu-list"><a href="#"><i class="lnr lnr-envelope"></i> <span>MailBox</span></a>

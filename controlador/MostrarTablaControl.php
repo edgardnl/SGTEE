@@ -8,8 +8,7 @@ require_once $_SERVER['DOCUMENT_ROOT'] . ruta::ruta . "/modelo/objetos/TutoresOb
 require_once $_SERVER['DOCUMENT_ROOT'] . ruta::ruta . "/modelo/bo/UsuariosBo.php";
 require_once $_SERVER['DOCUMENT_ROOT'] . ruta::ruta . "/modelo/objetos/UsuariosObjeto.php";
 
-require_once $_SERVER['DOCUMENT_ROOT'] . ruta::ruta . "/modelo/bo/RelacionBo.php";
-
+require_once $_SERVER['DOCUMENT_ROOT'] . ruta::ruta . "/modelo/bo/AlumnosBo.php";
 
 class MostrarTablaControl {
 
@@ -51,14 +50,19 @@ class MostrarTablaControl {
         }elseif ($res->id_role == 4) {
             header("Location:AlumInicio.php");            
         }else{
-            print "<h1>Usuario Incorrecto</h1>";
+            print "<div class='col-md-12' style='margin-top: 10px; margin-botton:10px;'>
+                        <div class='alert alert-danger' role='alert' style='text-align: center'>
+                            <strong>Error!</strong> Usuario o contraseña incorrecto.
+			</div>
+                    </div>";
         }
     }
 
-    function mostrarRelacionNombre(){
-        $relBo = new ModuloRelacion();
-        $relacion = $relBo->consultaRelacionNombre();
-        print $relacion;        
+    function tablaAlumnosActividades(){
+        $alumnoBo = new ModuloAlumnos();
+        $tabla = $alumnoBo->traeAlumnosActividades();
+        print $tabla;
+
     }
 
 }

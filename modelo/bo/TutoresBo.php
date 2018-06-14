@@ -3,14 +3,18 @@
 require_once $_SERVER['DOCUMENT_ROOT'].ruta::ruta."/modelo/dao/TutoresDao.php";
 require_once $_SERVER['DOCUMENT_ROOT'].ruta::ruta."/vista/php/TutoresVista.php";
 
+require_once $_SERVER['DOCUMENT_ROOT'].ruta::ruta."/modelo/dao/UsuariosDao.php";
+
 class ModuloTutores{
     
     private $vista;
     private $dao;
-	
+    private $daoUsu;
+            
     function __construct(){
 	$this->dao = new TutoresDao();
-    $this->vista = new TutoresVista();
+        $this->vista = new TutoresVista();
+        $this->daoUsu = new UsuariosDao();
     }
 
     function consultaTutores(){
@@ -19,9 +23,15 @@ class ModuloTutores{
 	return $vis;
     }
     
-    function agregaTutor($obj){
-        $usu = $this->dao->agregaTutor($obj);
-        //return $usu;
+    function agregaTutor($obj,$obj1){
+        try {
+            $this->dao->agregaTutor($obj);
+            $this->daoUsu->ingresaUsuarioTutor($obj1);
+        } catch (Exception $ex) {
+            $usu = $ex->getMessage();
+        }
+        
+        return $usu;
     }
     
     function traeTutorPorClave($id){
@@ -35,12 +45,24 @@ class ModuloTutores{
     }
     
     function editaDatosTutor($obj){
-        $usu = $this->dao->editaDatosTutor($obj);
+        $usu = "";
+        try {
+            $this->dao->editaDatosTutor($obj);
+        } catch (Exception $ex) {
+            $usu = $ex->getMessage();
+        }
         return $usu;
     }
     
     function eliminaDatosTutor($obj){
-        $usu = $this->dao->eliminaDatosTutor($obj);
+        try {
+           $tuto = $this->dao->treTutorPorId($obj);
+           $this->daoUsu->eliminaUsurioTutor($tuto);
+           $this->dao->eliminaDatosTutor($obj);
+        } catch (Exception $ex) {
+            $usu = $ex->getMessage();
+        }
+        
         return $usu;
     }
 }
