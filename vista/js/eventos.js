@@ -52,3 +52,12 @@ function buscarTutor(){
     alert(datos);
 }
 
+function enviarMostrarActiv(id){
+    alert(id);
+    location.href = "MostrarActividadesAlumnos.php?id=" + id;
+}
+
+function regresarActividadesAlumnos(){
+    location.href = "ConsultaActividades.php";
+}
+

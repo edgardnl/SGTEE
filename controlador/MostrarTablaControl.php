@@ -10,6 +10,9 @@ require_once $_SERVER['DOCUMENT_ROOT'] . ruta::ruta . "/modelo/objetos/UsuariosO
 
 require_once $_SERVER['DOCUMENT_ROOT'] . ruta::ruta . "/modelo/bo/AlumnosBo.php";
 
+require_once $_SERVER['DOCUMENT_ROOT'] . ruta::ruta . "/modelo/bo/ActividadesBo.php";
+require_once $_SERVER['DOCUMENT_ROOT'] . ruta::ruta . "/modelo/objetos/ActividadesObjeto.php";
+
 class MostrarTablaControl {
 
     function tablaTutores() {
@@ -66,7 +69,11 @@ class MostrarTablaControl {
     }
 
     function tablaActividadesPorAlumno($id){
-        
+        $actiObj = new ActividadesObjeto();
+        $actiObj->id_alumno = $id;
+        $acti = new ModuloActividades();
+        $tabla = $acti->traeActividadesPorAlumno($actiObj);
+        print $tabla;
 
     }
 

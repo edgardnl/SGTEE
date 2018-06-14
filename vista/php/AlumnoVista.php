@@ -33,7 +33,7 @@ class AlumnoVista {
                         <td>".$r->nombre."</td>
                         <td>".$r->ap_p."</td>
                         <td>".$r->ap_m."</td>
-                        <td><button class='btn-success btn' onclick='enviarEditarTutor(".$r->id.")'>Mostrar</button></td>
+                        <td><button class='btn-success btn' onclick='enviarMostrarActiv(".$r->id.")'>Mostrar</button></td>
                     </tr>";
             $rows = $rows.$row;
         }

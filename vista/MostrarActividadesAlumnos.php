@@ -158,7 +158,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                            			
 				<div class="graphs">
 					
-                                    <h1 class="blank1">Consulta Actividades</h1>
+                                    <h1 class="blank1">Actividades del Alumno</h1>
                                         
                                     <!--<div class="form-group">
                                             <label for="focusedinput" class="col-sm-2 control-label">Buscar</label>
@@ -172,19 +172,22 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                                         
                                         
                                         <h6 class="blank" style="color: #F8F8F8">...</h6>
-                                        <h5 class="blank">Lista de Alumnos:</h5>
+                                        <h5 class="blank">Lista de Actividades:</h5>
                                         
 					 <div class="xs tabls">
                                             <div class="bs-example4" data-example-id="simple-responsive-table">
 						<div class="table-responsive">
 
                                                     <?php
-                                                    $tabla->tablaAlumnosActividades();
+                                                    $id = $_GET['id'];
+                                                    $tabla->tablaActividadesPorAlumno($id);
                                                     ?>
                                                     
                                                 </div>					   																						
-                                            </div>
+                                            </div>                                            
                                         </div>
+                                        <h6 class="blank" style="color: #F8F8F8">...</h6>
+                                        <button class="btn-default btn" onclick="regresarActividadesAlumnos()">Regresar</button>
                                         <!--<a class="flotante" href="AgregarTutores.php"><i class="fa fa-user"></i></a>-->
                                 </div>
                         </div>
