@@ -1,3 +1,8 @@
+<?php
+require_once "../ruta.php";
+require_once $_SERVER['DOCUMENT_ROOT'] . ruta::ruta . "/controlador/MostrarTablaControlAlumno.php";
+$tabla = new MostrarTablaControlAlumnos();
+?>
 <!--
 Author: W3layouts
 Author URL: http://w3layouts.com
@@ -7,7 +12,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 <!DOCTYPE HTML>
 <html>
 <head>
-<title>Easy Admin Panel an Admin Panel Category Flat Bootstrap Responsive Website Template | Tables :: w3layouts</title>
+<title>SGTE - Tutores</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="keywords" content="Easy Admin Panel Responsive web template, Bootstrap Web Templates, Flat Web Templates, Android Compatible web template, 
@@ -23,6 +28,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <!-- lined-icons -->
 <link rel="stylesheet" href="css/icon-font.min.css" type='text/css' />
 <!-- //lined-icons -->
+<script src="jquery/jquery.js"></script>
 <!-- chart -->
 <script src="js/Chart.js"></script>
 <!-- //chart -->
@@ -37,8 +43,43 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <link href='//fonts.googleapis.com/css?family=Cabin:400,400italic,500,500italic,600,600italic,700,700italic' rel='stylesheet' type='text/css'>
 <!---//webfonts---> 
  <!-- Meters graphs -->
+ <script src="jquery/jquery.min.js"></script>
 <script src="js/jquery-1.10.2.min.js"></script>
 <!-- Placed js at the end of the document so the pages load faster -->
+
+<!-- DataTable-->
+
+<script src="jquery/jquery.dataTables.js"></script>
+
+<script src="js/eventosAlumnos.js"></script>
+
+<style>
+    .flotante{
+        background: #27cce4;
+        border-color: #27cce4;
+        padding: 16px 20px;
+        text-align: center;
+        border-radius: 50%;
+        display:scroll;
+        position:fixed;
+        bottom:55px;
+        right:15px;
+    }
+    
+    i{
+        color: #fff;
+        
+    }
+    
+    .flotante:hover{
+        background: #F44336;
+    }
+
+    .dataTables_filter {
+    	float: right;
+    	text-align: right;
+	}
+</style>
 
 </head> 
    
@@ -110,70 +151,45 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			<!--notification menu end -->
 			</div>
 	<!-- //header-ends -->
-			<div id="page-wrapper">
-
-				<!-- //BARRA DE BUSQUEDA-->
-				<div class="form-group">
-					<label for="focusedinput" class="col-sm-2 control-label"><h3 class="blank1">Alumnos</h3></label>
-					<div class="col-sm-8">
-					<input type="text" class="form-control1" id="focusedinput" placeholder="Nombre a buscar">
-					
-
-				</div>
-
-
+			<div id="page-wrapper">                                                                                    
+                           			
 				<div class="graphs">
-					<h3 class="blank1">
-						<button class="btn-success btn">Buscar</button>
-
-
-						
-				    </h3>
 					
+                                    <h1 class="blank1">Alumnos</h1>
+                                        
+                                    <!--<div class="form-group">
+                                            <label for="focusedinput" class="col-sm-2 control-label">Buscar</label>
+                                        <div class="col-sm-8">
+                                            <input type="text" class="form-control1" id="focusedinput" placeholder="Clave">
+                                        </div>
+                                        <div class="col-sm-2">
+                                            <button class="btn-success btn">Buscar</button>
+                                        </div>
+                                    </div>-->
+                                        
+                                        
+                                        <h6 class="blank" style="color: #F8F8F8">...</h6>
+                                        <h5 class="blank">Lista de Alumnos:</h5>
+                                        
 					 <div class="xs tabls">
-						<div class="bs-example4" data-example-id="simple-responsive-table">
+                                            <div class="bs-example4" data-example-id="simple-responsive-table">
 						<div class="table-responsive">
 
-
-						  <table class="table">
-						  <thead>
-
-							<tr>
-
-						
-							<th>#</th>
-							  <th>Matricula </th>
-							  <th>Nombre </th>
-							  <th>Apellido Paterno</th>
-							  <th>Apellido Materno</th>
-							  <th>Grupo</th>
-							  
-							</tr>
-						  </thead>
-						  <tbody>
-							<tr class="active">
-							  <th scope="row">1</th>
-							  <td>201424057</td>
-							  <td>ALEJANDRO</td>
-							  <td>DURAN</td>
-							  <td>ROJAS</td>
-							  <td>4851</td>
-							 <td><button class="btn-success btn">Editar</button></td>
-							</tr>
-						  </tbody>
-						</table>
-					   </div>					   																						
-					</div>
-				</div>
-			</div>
-		</div>
-		<!--toggle button start-->
-			<a class="toggle-btn  menu-collapsed"><i class="fa fa-bars"></i></a>
-			<!--toggle button end-->
+                                                    <?php
+                                                    $tabla->tablaAlumnos();
+                                                    ?>
+                                                    
+                                                </div>					   																						
+                                            </div>
+                                        </div>
+                                        <a class="flotante" href="AgregarAlumnos.php"><i class="fa fa-user"></i></a>
+                                </div>
+                        </div>
+		
 		<!--footer section start-->
-			<footer>
-			   <p>&copy 2015 Easy Admin Panel. All Rights Reserved | Design by <a href="https://w3layouts.com/" target="_blank">w3layouts.</a></p>
-			</footer>
+		<footer>
+                    <p>&copy 2015 Easy Admin Panel. All Rights Reserved | Design by <a href="https://w3layouts.com/" target="_blank">w3layouts.</a></p>
+		</footer>
         <!--footer section end-->
 	</section>
 	

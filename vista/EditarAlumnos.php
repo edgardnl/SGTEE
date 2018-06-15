@@ -1,3 +1,10 @@
+<?php
+require_once "../ruta.php";
+require_once $_SERVER['DOCUMENT_ROOT'] . ruta::ruta . "/controlador/MostrarTablaControlAlumno.php";
+$tabla = new MostrarTablaControlAlumnos();
+$id = $_GET['id'];
+$obj = $tabla->mostrarDatosalumId($id);
+?>
 <!--
 Author: W3layouts
 Author URL: http://w3layouts.com
@@ -7,7 +14,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 <!DOCTYPE HTML>
 <html>
 <head>
-<title>SGTE - Agregar Alumnos</title>
+<title>SGTE - Editar Alumnos</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="keywords" content="Easy Admin Panel Responsive web template, Bootstrap Web Templates, Flat Web Templates, Android Compatible web template, 
@@ -113,17 +120,18 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 	<!-- //header-ends -->
 			<div id="page-wrapper">
 				<div class="graphs">
-					<h3 class="blank1">Agregar Alumnos </h3>
+					<h3 class="blank1">Editar Alumnos</h3>
 						<div class="tab-content">
 						<div class="tab-pane active" id="horizontal-form">
 
 
-                                                    <form class="form-horizontal" name="FormAlumnos" id="FormAlumnos">
-								<div class="form-group">
+                <form class="form-horizontal" name="formEditAlumnos" id="formEditAlumnos">
+					<div class="form-group">
 									<!--inicio de los imput del formulario -->
-									<label for="focusedinput" class="col-sm-2 control-label">Matricula</label>
-									<div class="col-sm-8">
-                                    <input type="text" class="form-control1" id="focusedinput" name="matricula">
+                 <input type="hidden" class="form-control1" id="focusedinput" placeholder="" value="<?php print $obj->id; ?>" name="id_alumno">
+							<label for="focusedinput" class="col-sm-2 control-label">Matricula</label>
+						<div class="col-sm-8">
+       <input type="text" class="form-control1" id="focusedinput" value="<?php print $obj->matricula; ?>" name="matricula">
 									</div>
 
 									<div class="col-sm-2 jlkdfj1">
@@ -134,7 +142,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 									<!--inicio de los imput del formulario -->
 									<label for="focusedinput" class="col-sm-2 control-label">Nombre</label>
 									<div class="col-sm-8">
-                                    <input type="text" class="form-control1" id="focusedinput" name="nombre">
+                              <input type="text" class="form-control1" id="focusedinput" placeholder="" value="<?php print $obj->nombre; ?>" name="nombre">
 									</div>
 
 									<div class="col-sm-2 jlkdfj1">
@@ -145,7 +153,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 									<!--dos-->
 									<label for="focusedinput" class="col-sm-2 control-label">Apellido Paternos</label>
 									<div class="col-sm-8">
-										<input type="text" class="form-control1" id="focusedinput" name="ap_p">
+                              <input type="text" class="form-control1" id="focusedinput" placeholder="" value="<?php print $obj->ap_p; ?>" name="ap_p">
 									</div>
 
 									<div class="col-sm-2 jlkdfj1">
@@ -156,7 +164,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 									<!--dos-->
 									<label for="focusedinput" class="col-sm-2 control-label">Apellido Materno</label>
 									<div class="col-sm-8">
-										<input type="text" class="form-control1" id="focusedinput" name="ap_m">
+        <input type="text" class="form-control1" id="focusedinput" placeholder="" value="<?php print $obj->ap_m; ?>" name="ap_m">
 									</div>
 
 									<div class="col-sm-2 jlkdfj1">
@@ -167,7 +175,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 									<!--dos-->
 									<label for="focusedinput" class="col-sm-2 control-label">Grupo</label>
 									<div class="col-sm-8">
-										<input type="text" class="form-control1" id="focusedinput" name="grupo">
+              <input type="text" class="form-control1" id="focusedinput" placeholder="" value="<?php print $obj->grupo; ?>" name="grupo">
 									</div>
 
 									<div class="col-sm-2 jlkdfj1">
@@ -178,27 +186,18 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 									<!--dos-->
 									<label for="focusedinput" class="col-sm-2 control-label">Carrera</label>
 									<div class="col-sm-8">
-
-										<select name="carrera" id="selector1" class="form-control1">
-										<option value="1">Ingenieria en Sistemas Computacioneles</option>
-										<option value="2">Ingenieria  Industrial</option>
-										<option value="3">Ingenieria es Informatica</option>
-										<option value="4">Ingenieria en Electronica </option>
-										<option value="5">Ingenieria en Electromecanica</option>
-									    </select>
-
+   <input type="text" class="form-control1" id="focusedinput" placeholder="Horario disponible" value="<?php print $obj->carrera; ?>" name="carrera">
 									</div>
 
 									<div class="col-sm-2 jlkdfj1">
 										<p class="help-block"></p>
 									</div>
-
 								</div>
-                                <div class="form-group">
+								<div class="form-group">
 									<!--dos-->
 									<label for="focusedinput" class="col-sm-2 control-label">Telefono</label>
 									<div class="col-sm-8">
-										<input type="text" class="form-control1" id="focusedinput"  name="telefono">
+   <input type="text" class="form-control1" id="focusedinput" placeholder="Horario disponible" value="<?php print $obj->telefono; ?>" name="telefono">
 									</div>
 
 									<div class="col-sm-2 jlkdfj1">
@@ -209,7 +208,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 									<!--dos-->
 									<label for="focusedinput" class="col-sm-2 control-label">Celular</label>
 									<div class="col-sm-8">
-										<input type="text" class="form-control1" id="focusedinput" name="telefono_cel">
+   <input type="text" class="form-control1" id="focusedinput" placeholder="Horario disponible" value="<?php print $obj->telefono_cel; ?>" name="telefono_cel">
 									</div>
 
 									<div class="col-sm-2 jlkdfj1">
@@ -220,17 +219,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 									<!--dos-->
 									<label for="focusedinput" class="col-sm-2 control-label">Semestre</label>
 									<div class="col-sm-8">
-										<select name="semestre" id="selector1" class="form-control1">
-										<option>Primero</option>
-										<option>Segundo</option>
-										<option>Tercero</option>
-										<option>Cuarto</option>
-										<option>Quinto</option>
-										<option>Sexto</option>
-										<option>Septimo</option>
-										<option>Octavo</option>
-										<option>Noveno</option>
-									    </select>
+   <input type="text" class="form-control1" id="focusedinput" placeholder="Horario disponible" value="<?php print $obj->semestre; ?>" name="semestre">
 									</div>
 
 									<div class="col-sm-2 jlkdfj1">
@@ -241,7 +230,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 									<!--dos-->
 									<label for="focusedinput" class="col-sm-2 control-label">Correo</label>
 									<div class="col-sm-8">
-										<input type="text" class="form-control1" id="focusedinput" placeholder="ejemplo@tescha.com" name="correo">
+   <input type="text" class="form-control1" id="focusedinput" placeholder="Horario disponible" value="<?php print $obj->correo; ?>" name="correo">
 									</div>
 
 									<div class="col-sm-2 jlkdfj1">
@@ -252,12 +241,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 									<!--dos-->
 									<label for="focusedinput" class="col-sm-2 control-label">Sexo</label>
 									<div class="col-sm-8">
-										<div class="col-sm-8">
-										<select name="sexo" id="selector1" class="form-control1">
-										<option>Masculino</option>
-										<option>Femenino</option>
-									    </select>
-									</div>
+   <input type="text" class="form-control1" id="focusedinput" placeholder="Horario disponible" value="<?php print $obj->sexo; ?>" name="sexo">
 									</div>
 
 									<div class="col-sm-2 jlkdfj1">
@@ -265,17 +249,18 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 									</div>
 								</div>
 								
+								
 								<div class="panel-footer">
 
-                                                                    <div class="row">
-                                                                        <div class="col-sm-8 col-sm-offset-2">
-                                                                            <button class="btn-success btn" onclick="agregarAlumnos()">Guardar</button>
-                                                                            
-                                                                            <button class="btn-inverse btn">Reset</button>
-                                                                        </div>
-                                                                    </div>
+                   <div class="row">
+                        <div class="col-sm-8 col-sm-offset-2">
+                            <button class="btn-success btn" onclick="editarAlumnos()">Actualizar</button>
+                            <button class="btn-success btn" onclick="eliminarAlumnos()">Eliminar</button>
+                            <button class="btn-inverse btn">Reset</button>
+                        </div>
+                    </div>
                                                                     
-                                                                </div>
+                </div>
 
 				
 							</form>
