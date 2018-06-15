@@ -13,6 +13,9 @@ require_once $_SERVER['DOCUMENT_ROOT'] . ruta::ruta . "/modelo/bo/AlumnosBo.php"
 require_once $_SERVER['DOCUMENT_ROOT'] . ruta::ruta . "/modelo/bo/ActividadesBo.php";
 require_once $_SERVER['DOCUMENT_ROOT'] . ruta::ruta . "/modelo/objetos/ActividadesObjeto.php";
 
+require_once $_SERVER['DOCUMENT_ROOT'] . ruta::ruta . "/modelo/bo/RelacionBo.php";
+require_once $_SERVER['DOCUMENT_ROOT'] . ruta::ruta . "/modelo/objetos/RelacionObjeto.php";
+
 class MostrarTablaControl {
 
     function tablaTutores() {
@@ -38,13 +41,20 @@ class MostrarTablaControl {
     }
 
     function direccionLogin($u,$p){
+        session_start();
         $bo = new ModuloUsuarios();
-        $obj = new TutoresObjeto();
-        $obj->usuario = $u;
+        $boTu = new ModuloTutores();
+        $obj = new UsuariosObjeto();
+        $objtu = new TutoresObjeto();
+        $obj->matricula = $u;
         $obj->contrasena = $p;
         $res = $bo->validarUsuario($obj);
         if ($res->id_role == 2 ) {
             //print "TutoInicio.php";
+            $objtu->clave = $res->matricula;
+            $r = $boTu->traeTutorPorClave($objtu);
+            $_SESSION["id"] = $r->id;
+            $_SESSION["nom"] = $r->nombre;
             header("Location:TutoInicio.php");
         }elseif ($res->id_role == 1) {
             header("Location:Inicio.php");            
@@ -75,6 +85,14 @@ class MostrarTablaControl {
         $tabla = $acti->traeActividadesPorAlumno($actiObj);
         print $tabla;
 
+    }
+    
+    function tablaRelacionAlumnosPorTutor($id){
+        $relObj = new RelacionObjeto();
+        $relObj->id_tutor = $id;
+        $relaBo = new ModuloRelacion();
+        $tabla = $relaBo->consultaAlumnosPorIdTutor($relObj);
+        print $tabla;
     }
 
 }

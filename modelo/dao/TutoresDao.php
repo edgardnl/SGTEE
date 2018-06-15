@@ -54,12 +54,9 @@ class TutoresDao {
         $row = $query->fetch_array();
         
         $obj = new TutoresObjeto();
+        $obj->id = $row['id_tutores'];                
         $obj->clave = $row['clave'];
-        $obj->nombre = $row['nombre'];
-        $obj->ap_p = $row['ap_p'];
-        $obj->ap_m = $row['ap_m'];
-        $obj->id_asignatura = $row['asignatura'];
-        $obj->horaio = $row['horario'];
+        $obj->nombre = $row['nombre'];        
         
         return $obj;
     }

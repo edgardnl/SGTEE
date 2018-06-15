@@ -19,12 +19,12 @@ class AlumnosDao {
     }
 
     function buscarUsuarioIdPass($datos) {
-        $usuarioArray = array($datos->usuario, $datos->contrasena);
+        $usuarioArray = array($datos->matricula, $datos->contrasena);
         $pP = procesaParametros::PrepareStatement(AlumnosSql::consultaUsuarioPass(), $usuarioArray);
         $query = $this->con->query($pP);
         $row = $query->fetch_array();
         $usu = new UsuariosObjeto();
-        $usu->usuario = $row['usuario'];
+        $usu->matricula = $row['matricula'];
         $usu->contrasena = $row['contrasena'];
         $usu->id_role = $row['id_role'];
 

@@ -26,6 +26,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <!-- chart -->
 <script src="js/Chart.js"></script>
 <!-- //chart -->
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 <!--animate-->
 <link href="css/animate.css" rel="stylesheet" type="text/css" media="all">
 <script src="js/wow.min.js"></script>

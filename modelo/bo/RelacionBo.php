@@ -17,4 +17,10 @@ class ModuloRelacion{
     $vis = $this->vista->generaTablaRelacionNombre($usu);
 	return $vis;
     }
+    
+    function consultaAlumnosPorIdTutor($obj){
+        $usu = $this->dao->traeAlumnosPorIdTutor($obj);
+        $vis = $this->vista->generaTablaAlumosPorTutor($usu);
+        return $vis;
+    }
 }

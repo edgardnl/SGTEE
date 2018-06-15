@@ -1,6 +1,9 @@
 <?php
 session_start();
+require_once "../ruta.php";
+require_once $_SERVER['DOCUMENT_ROOT'] . ruta::ruta . "/controlador/MostrarTablaControl.php";
 
+$tabla = new MostrarTablaControl();
 ?>
 <!--
 Author: W3layouts
@@ -11,7 +14,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 <!DOCTYPE HTML>
 <html>
 <head>
-<title>Easy Admin Panel an Admin Panel Category Flat Bootstrap Responsive Website Template | Tables :: w3layouts</title>
+<title>SGTE - Tutores</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="keywords" content="Easy Admin Panel Responsive web template, Bootstrap Web Templates, Flat Web Templates, Android Compatible web template, 
@@ -27,6 +30,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <!-- lined-icons -->
 <link rel="stylesheet" href="css/icon-font.min.css" type='text/css' />
 <!-- //lined-icons -->
+<script src="jquery/jquery.js"></script>
 <!-- chart -->
 <script src="js/Chart.js"></script>
 <!-- //chart -->
@@ -41,8 +45,45 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <link href='//fonts.googleapis.com/css?family=Cabin:400,400italic,500,500italic,600,600italic,700,700italic' rel='stylesheet' type='text/css'>
 <!---//webfonts---> 
  <!-- Meters graphs -->
-<script src="js/jquery-1.10.2.min.js"></script>
+ <script src="jquery/jquery.min.js"></script>
+ <script src="js/jquery-1.10.2.min.js"></script>
 <!-- Placed js at the end of the document so the pages load faster -->
+
+<!-- DataTable-->
+
+<script src="jquery/jquery.dataTables.js"></script>
+
+
+<!-- Scripts propios-->
+<script src="js/eventos.js"></script>
+
+<style>
+    .flotante{
+        background: #27cce4;
+        border-color: #27cce4;
+        padding: 16px 20px;
+        text-align: center;
+        border-radius: 50%;
+        display:scroll;
+        position:fixed;
+        bottom:55px;
+        right:15px;
+    }
+    
+    i{
+        color: #fff;
+        
+    }
+    
+    .flotante:hover{
+        background: #F44336;
+    }
+
+    .dataTables_filter {
+    	float: right;
+    	text-align: right;
+	}
+</style>
 
 </head> 
    
@@ -53,7 +94,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 
 		<?php
 
-		require_once "../vista/TutoMenu.php"
+		require_once "../vista/Tutomenu.php"
 
 		?>
     <!-- left side end-->
@@ -94,7 +135,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 								<a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
 									<div class="profile_img">											
 										 <div class="user-name">
-											<p><?php echo $_SESSION["nom"]; ?><span>Tutor</span></p>
+											<p>Michael<span>Tutor</span></p>
 										 </div>
 										 <i class="lnr lnr-chevron-down"></i>
 										 <i class="lnr lnr-chevron-up"></i>
@@ -102,7 +143,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 									</div>	
 								</a>
 								<ul class="dropdown-menu drp-mnu">									
-                                                                    <li> <a href="index.php"><i class="fa fa-sign-out"></i>Salir</a> </li>
+									<li> <a href="sign-up.html"><i class="fa fa-sign-out"></i>Salir</a> </li>
 								</ul>
 							</li>
 							<div class="clearfix"> </div>
@@ -114,64 +155,45 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			<!--notification menu end -->
 			</div>
 	<!-- //header-ends -->
-			<div id="page-wrapper">
-                            <div class="graphs">
-                                <h1 class="blank1" style="text-align: center;">SISTEMA DE GESTION DE TUTORIAS ESPECIALES </h1><br>
-                                <h3 class="blank1" style="text-align: center;">Panel de Tutor </h3><br>
-					<div class="col_3">
-						<div class="col-md-3 widget widget1">
-							<div class="r3_counter_box">
-								<i class="fa fa-archive"></i>
-								<div class="stats">
-								  <h5>45 <span>%</span></h5>
-								  <div class="grow">
-									<p>Total</p>
-								  </div>
-								</div>
-							</div>
-						</div>
-						<div class="col-md-3 widget widget1">
-							<div class="r3_counter_box">
-								<i class="fa fa-users"></i>
-								<div class="stats">
-								  <h5>50 <span>%</span></h5>
-								  <div class="grow grow1">
-									<p>Alumnos</p>
-								  </div>
-								</div>
-							</div>
-						</div>
-						<div class="col-md-3 widget widget1">
-							<div class="r3_counter_box">
-								<i class="fa fa-book"></i>
-								<div class="stats">
-								  <h5>70 <span>%</span></h5>
-								  <div class="grow grow3">
-									<p>Actividades</p>
-								  </div>
-								</div>
-							</div>
-						 </div>
-						<div class="col-md-3 widget">
-							<div class="r3_counter_box">
-								<i class="fa fa-list-alt"></i>
-								<div class="stats">
-								  <h5>70 <span>%</span></h5>
-								  <div class="grow grow2">
-									<p>Pendientes</p>
-								  </div>
-								</div>
-							</div>
-						</div>
-						<div class="clearfix"> </div>
-					</div>
-			</div>
-		</div>
+			<div id="page-wrapper">                                                                                    
+                           			
+				<div class="graphs">
+					
+                                    <h1 class="blank1">Alumnos con Tutorias</h1>
+                                        
+                                    <!--<div class="form-group">
+                                            <label for="focusedinput" class="col-sm-2 control-label">Buscar</label>
+                                        <div class="col-sm-8">
+                                            <input type="text" class="form-control1" id="focusedinput" placeholder="Clave" name="focusedinput">
+                                        </div>
+                                        <div class="col-sm-2">
+                                            <button class="btn-success btn" name="bntBuscar" onclick="buscarTutor()">Buscar</button>
+                                        </div>
+                                    </div>-->
+                                        
+                                        
+                                        <h6 class="blank" style="color: #F8F8F8">...</h6>
+                                        <h5 class="blank">Lista de Alumnos:</h5>
+                                        
+					 <div class="xs tabls">
+                                            <div class="bs-example4" data-example-id="simple-responsive-table">
+						<div class="table-responsive">
+
+                                                    <?php
+                                                    $tabla->tablaRelacionAlumnosPorTutor($_SESSION["id"]);
+                                                    ?>
+                                                    
+                                                </div>					   																						
+                                            </div>
+                                        </div>
+                                        <!--<a class="flotante" href="AgregarTutores.php"><i class="fa fa-user"></i></a>-->
+                                </div>
+                        </div>
 		
 		<!--footer section start-->
-			<footer>
-			   <p>&copy 2015 Easy Admin Panel. All Rights Reserved | Design by <a href="https://w3layouts.com/" target="_blank">w3layouts.</a></p>
-			</footer>
+		<footer>
+                    <p>&copy 2015 Easy Admin Panel. All Rights Reserved | Design by <a href="https://w3layouts.com/" target="_blank">w3layouts.</a></p>
+		</footer>
         <!--footer section end-->
 	</section>
 	
