@@ -38,10 +38,11 @@ class ModuloAlumnos {
         try {
             $this->dao->agregaAlumnos($obj);
             $this->daoUsu->ingresaUsuarioAlumnos($obj1);
-        } catch (Exception $ex) {
+        }catch (Exception $ex) {
             $usu = $ex->getMessage();
+            return $usu;
         }
-        return $usu;
+        //return $usu;
     }
 
     function traeAlumnosPorId($id){

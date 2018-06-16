@@ -3,8 +3,8 @@
 
 class UsuariosSqlAlumnos {
     
-    function ingresaUsuraioAlumnos(){
-        $query = "insert into usuario(matricula,correo,contrasena,id_role) values(?,?,?,?);";
+    function ingresaUsuarioAlumnos(){
+        $query = "insert into usuario(matricula,contrasena,id_role) values(?,?,?);";
         return $query;
     }
     

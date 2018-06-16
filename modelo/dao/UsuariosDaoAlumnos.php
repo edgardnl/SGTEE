@@ -18,8 +18,8 @@ class UsuariosDaoAlumnos {
     }
     
     function ingresaUsuarioAlumnos($obj){
-        $datosArray = array($obj->matricula,$obj->correo,$obj->contrasena,$obj->id_role);
-        $pP = procesaParametros::PrepareStatement(UsuariosSqlAlumnos::ingresaUsuraioAlumnos(),$datosArray);                        
+        $datosArray = array($obj->matricula_usuario,$obj->contrasena,$obj->id_role);
+        $pP = procesaParametros::PrepareStatement(UsuariosSqlAlumnos::ingresaUsuarioAlumnos(),$datosArray);                        
         
         try {
             $this->con->query($pP);            

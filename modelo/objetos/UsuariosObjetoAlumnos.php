@@ -2,8 +2,8 @@
 
 class UsuariosObjetoAlumnos {
 	
-	var $id;
-	var $matricula;
+	var $id_usuario;
+	var $matricula_usuario;
 	var $correo;
 	var $contrasena;
 	var $id_role;
