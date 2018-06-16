@@ -32,7 +32,11 @@ class RelacionVista{
     }
     
     function generaTablaAlumosPorTutor($data){
-        $dat = "
+        $dat = "<script type='text/javascript' charset='utf-8'> 
+            $(document).ready(function() {
+                $('#example').dataTable();
+            } );
+        </script>  
         <table class='table' id='example'>
                     <thead>
                         <tr>
@@ -41,7 +45,7 @@ class RelacionVista{
                             <th>Aprobacion</th>                            
                             <th>Observaciones</th>
                             <th></th>
-                        </tr>
+                       </tr>
                     </thead>
                 <tbody>";
         $rows ="";
