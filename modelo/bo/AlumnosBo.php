@@ -40,7 +40,7 @@ class ModuloAlumnos {
             $this->daoUsu->ingresaUsuarioAlumnos($obj1);
         }catch (Exception $ex) {
             $usu = $ex->getMessage();
-            return $usu;
+
         }
         //return $usu;
     }

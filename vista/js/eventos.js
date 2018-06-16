@@ -61,3 +61,7 @@ function regresarActividadesAlumnos(){
     location.href = "ConsultaActividades.php";
 }
 
+function enviarDetalleAlu(id){
+    alert(id);
+    location.href = "TutoAlumnosDetalle.php?id=" + id;
+}
