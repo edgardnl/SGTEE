@@ -42,7 +42,7 @@ class ModuloAlumnos {
             $usu = $ex->getMessage();
 
         }
-        //return $usu;
+        return $usu;
     }
 
     function traeAlumnosPorId($id){

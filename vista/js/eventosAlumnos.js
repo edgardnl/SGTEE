@@ -18,14 +18,15 @@ function agregarAlumnos() {
     //$.post("../controlador/AgregarControl.php", datos, function (resp) {
         if (resp === "1") {
             alert("Registro Exitoso" + resp);
-            location.href = "Alumnos.php";
+            location.href = "#";
         } else {
             alert("No se realizo el registro" + resp);
-            location.href = "Alumnos.php";
+            location.href = "#";
         }
 
     });
 }
+
 
 function editarAlumnos() {
     

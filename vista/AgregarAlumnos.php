@@ -12,7 +12,13 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="keywords" content="Easy Admin Panel Responsive web template, Bootstrap Web Templates, Flat Web Templates, Android Compatible web template, 
 Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyEricsson, Motorola web design" />
+
+
+
 <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
+
+<script type="text/Javascript" src="../js/validacion_datosalumno.js"></script>
+
  <!-- Bootstrap Core CSS -->
 <link href="css/bootstrap.min.css" rel='stylesheet' type='text/css' />
 <!-- Custom CSS -->
@@ -40,6 +46,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
  <!-- Meters graphs -->
 <script src="js/jquery-1.10.2.min.js"></script>
 <!-- Placed js at the end of the document so the pages load faster -->
+
 <script src="js/eventosAlumnos.js"></script>
 
 </head> 
@@ -119,12 +126,12 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 						<div class="tab-pane active" id="horizontal-form">
 
 
-                                                    <form class="form-horizontal" name="FormAlumnos" id="FormAlumnos">
+ <form class="form-horizontal" name="FormAlumnos" id="FormAlumnos">
 								<div class="form-group">
 									<!--inicio de los imput del formulario -->
 									<label for="focusedinput" class="col-sm-2 control-label">Matricula</label>
 									<div class="col-sm-8">
-                                    <input type="text" class="form-control1" id="focusedinput" name="matricula">
+                                    <input type="text" class="form-control1" id="focusedinput" name="matricula" pattern=".{1,}" required title="minimo 3 caracteres" maxlength="15">
 									</div>
 
 									<div class="col-sm-2 jlkdfj1">
@@ -135,7 +142,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 									<!--inicio de los imput del formulario -->
 									<label for="focusedinput" class="col-sm-2 control-label">Nombre</label>
 									<div class="col-sm-8">
-                                    <input type="text" class="form-control1" id="focusedinput" name="nombre">
+                                    <input type="text" class="form-control1" id="focusedinput" name="nombre" pattern=".{1,}" required title="minimo 3 caracteres" maxlength="15" >
 									</div>
 
 									<div class="col-sm-2 jlkdfj1">
@@ -146,7 +153,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 									<!--dos-->
 									<label for="focusedinput" class="col-sm-2 control-label">Apellido Paternos</label>
 									<div class="col-sm-8">
-										<input type="text" class="form-control1" id="focusedinput" name="ap_p">
+										<input type="text" class="form-control1" id="focusedinput" name="ap_p" pattern=".{1,}" required title="minimo 3 caracteres" maxlength="15">
 									</div>
 
 									<div class="col-sm-2 jlkdfj1">
@@ -157,7 +164,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 									<!--dos-->
 									<label for="focusedinput" class="col-sm-2 control-label">Apellido Materno</label>
 									<div class="col-sm-8">
-										<input type="text" class="form-control1" id="focusedinput" name="ap_m">
+										<input type="text" class="form-control1" id="focusedinput" name="ap_m" pattern=".{1,}" required title="minimo 3 caracteres" maxlength="15">
 									</div>
 
 									<div class="col-sm-2 jlkdfj1">
@@ -168,7 +175,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 									<!--dos-->
 									<label for="focusedinput" class="col-sm-2 control-label">Grupo</label>
 									<div class="col-sm-8">
-										<input type="text" class="form-control1" id="focusedinput" name="grupo">
+										<input type="text" class="form-control1" id="focusedinput" name="grupo" pattern=".{1,}" required title="minimo 3 caracteres" maxlength="15">
 									</div>
 
 									<div class="col-sm-2 jlkdfj1">
@@ -180,7 +187,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 									<label for="focusedinput" class="col-sm-2 control-label">Carrera</label>
 									<div class="col-sm-8">
 
-										<select name="carrera" id="selector1" class="form-control1">
+										<select name="carrera" id="selector1" class="form-control1" pattern=".{1,}" required title="minimo 3 caracteres" maxlength="15">
 										<option value="1">Ingenieria en Sistemas Computacioneles</option>
 										<option value="2">Ingenieria  Industrial</option>
 										<option value="3">Ingenieria es Informatica</option>
@@ -199,7 +206,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 									<!--dos-->
 									<label for="focusedinput" class="col-sm-2 control-label">Telefono</label>
 									<div class="col-sm-8">
-										<input type="text" class="form-control1" id="focusedinput"  name="telefono">
+										<input type="text" class="form-control1" id="focusedinput"  name="telefono" pattern=".{1,}" required title="minimo 3 caracteres" maxlength="15">
 									</div>
 
 									<div class="col-sm-2 jlkdfj1">
@@ -210,7 +217,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 									<!--dos-->
 									<label for="focusedinput" class="col-sm-2 control-label">Celular</label>
 									<div class="col-sm-8">
-										<input type="text" class="form-control1" id="focusedinput" name="telefono_cel">
+										<input type="text" class="form-control1" id="focusedinput" name="telefono_cel" pattern=".{1,}" required title="minimo 3 caracteres" maxlength="15">
 									</div>
 
 									<div class="col-sm-2 jlkdfj1">
@@ -221,7 +228,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 									<!--dos-->
 									<label for="focusedinput" class="col-sm-2 control-label">Semestre</label>
 									<div class="col-sm-8">
-										<select name="semestre" id="selector1" class="form-control1">
+										<select name="semestre" id="selector1" class="form-control1"
+										pattern=".{1,}" required title="minimo 3 caracteres" maxlength="15">
 										<option>Primero</option>
 										<option>Segundo</option>
 										<option>Tercero</option>
@@ -242,7 +250,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 									<!--dos-->
 									<label for="focusedinput" class="col-sm-2 control-label">Correo</label>
 									<div class="col-sm-8">
-										<input type="text" class="form-control1" id="focusedinput" placeholder="ejemplo@tescha.com" name="correo">
+										<input type="text" class="form-control1" id="focusedinput" placeholder="ejemplo@tescha.com" name="correo" pattern=".{1,}" required title="minimo 3 caracteres" maxlength="15">
 									</div>
 
 									<div class="col-sm-2 jlkdfj1">
@@ -254,7 +262,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 									<label for="focusedinput" class="col-sm-2 control-label">Sexo</label>
 									<div class="col-sm-8">
 										<div class="col-sm-8">
-										<select name="sexo" id="selector1" class="form-control1">
+										<select name="sexo" id="selector1" class="form-control1" pattern=".{1,}" required title="minimo 3 caracteres" maxlength="15">
 										<option>Masculino</option>
 										<option>Femenino</option>
 									    </select>
@@ -269,7 +277,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 									<!--dos-->
 									<label for="focusedinput" class="col-sm-2 control-label">Contraseña</label>
 									<div class="col-sm-8">
-										<input type="text" class="form-control1" id="focusedinput"  name="contrasena">
+										<input type="text" class="form-control1" id="focusedinput"  name="contrasena" pattern=".{1,}" required title="minimo 3 caracteres" maxlength="15">
 									</div>
 
 									<div class="col-sm-2 jlkdfj1">
@@ -280,7 +288,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 									<!--dos-->
 									<label for="focusedinput" class="col-sm-2 control-label">Confirmar Contraseña</label>
 									<div class="col-sm-8">
-										<input type="text" class="form-control1" id="focusedinput"  name="confirmar_contrasena">
+										<input type="text" class="form-control1" id="focusedinput"  name="confirmar_contrasena" pattern=".{1,}" required title="minimo 3 caracteres" maxlength="15">
 									</div>
 
 									<div class="col-sm-2 jlkdfj1">
@@ -293,7 +301,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 
                                                                     <div class="row">
                                                                         <div class="col-sm-8 col-sm-offset-2">
-                                                                            <button class="btn-success btn" onclick="agregarAlumnos()">Guardar</button>
+         <button type="submit" class="btn-success btn" onclick=" return validar(),agregarAlumnos()">Guardar</button>
                                                                             
                                                                             <button class="btn-inverse btn">Reset</button>
                                                                         </div>
