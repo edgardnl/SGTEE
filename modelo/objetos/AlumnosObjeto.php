@@ -14,4 +14,6 @@ class AlumnosObjeto{
     var $semestre;
     var $correo;
     var $sexo;
+    //Extra
+    var $nombreAll;
 }

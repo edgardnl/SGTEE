@@ -65,3 +65,16 @@ function enviarDetalleAlu(id){
     alert(id);
     location.href = "TutoAlumnosDetalle.php?id=" + id;
 }
+
+function regresarTutorAlumnos(){
+    location.href ="TutoAlumnos.php";
+}
+
+function regresarSegAlum(){
+    location.href="TutoSeguimientoAlumnos.php";
+}
+
+function enviarSeguimiento(id){
+    alert(id);
+    location.href = "TutoSeguimientoTutorial.php?id=" + id;   
+}

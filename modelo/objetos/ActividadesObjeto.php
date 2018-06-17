@@ -11,8 +11,10 @@ class ActividadesObjeto {
     var $avance;
     var $id_motivo;
     var $motivo;
+    #EXTRAS
     var $ntutor;
     var $nAlumno;
     var $id_alumno;
     var $id_tutor;
+    var $nTotal;
 }

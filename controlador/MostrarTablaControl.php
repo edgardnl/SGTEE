@@ -9,12 +9,16 @@ require_once $_SERVER['DOCUMENT_ROOT'] . ruta::ruta . "/modelo/bo/UsuariosBo.php
 require_once $_SERVER['DOCUMENT_ROOT'] . ruta::ruta . "/modelo/objetos/UsuariosObjeto.php";
 
 require_once $_SERVER['DOCUMENT_ROOT'] . ruta::ruta . "/modelo/bo/AlumnosBo.php";
+require_once $_SERVER['DOCUMENT_ROOT'] . ruta::ruta . "/modelo/objetos/AlumnosObjeto.php";
 
 require_once $_SERVER['DOCUMENT_ROOT'] . ruta::ruta . "/modelo/bo/ActividadesBo.php";
 require_once $_SERVER['DOCUMENT_ROOT'] . ruta::ruta . "/modelo/objetos/ActividadesObjeto.php";
 
 require_once $_SERVER['DOCUMENT_ROOT'] . ruta::ruta . "/modelo/bo/RelacionBo.php";
 require_once $_SERVER['DOCUMENT_ROOT'] . ruta::ruta . "/modelo/objetos/RelacionObjeto.php";
+
+require_once $_SERVER['DOCUMENT_ROOT'] . ruta::ruta . "/modelo/bo/SeguimientoTutorBo.php";
+require_once $_SERVER['DOCUMENT_ROOT'] . ruta::ruta . "/modelo/objetos/SeguimientoTutorObjeto.php";
 
 class MostrarTablaControl {
 
@@ -93,6 +97,37 @@ class MostrarTablaControl {
         $relaBo = new ModuloRelacion();
         $tabla = $relaBo->consultaAlumnosPorIdTutor($relObj);
         print $tabla;
+    }
+
+    function mostrarAlumnoDetalles($id){
+        $aluObj = new AlumnosObjeto();
+        $aluObj->id = $id;
+        $aluBo = new ModuloAlumnos();
+        return $aluBo->traeAlumnosPorId($aluObj);
+    }
+
+    function tablaSeguimientoTutorAlumnoActividades($id){
+        $segObj = new SeguimientoTutorObjeto();
+        $segObj->id_tutor = $id;
+        $segBo = new ModuloSeguimientoTutor();
+        $tabla = $segBo->traeSeguimientoActividades($segObj);
+        print $tabla;
+    }
+
+    function tablaActividadesPorIdSeguimiento($id){
+        $actiObj = new ActividadesObjeto();
+        $actiObj->id_seguimiento = $id;
+        $acti = new ModuloActividades();
+        $tabla = $acti->traeActividadesPorIdSeguimiento($actiObj);
+        print $tabla;        
+    }
+
+    function mostrarDatosSeguimientoTutoAlum($id){
+        $segObj = new SeguimientoTutorObjeto();
+        $segObj->id_seguimiento = $id;
+        $segBo = new ModuloSeguimientoTutor();
+        return $segBo->traeSegumientoDatosAlumnoTutor($segObj);
+        
     }
 
 }

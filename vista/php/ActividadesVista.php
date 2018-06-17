@@ -42,4 +42,53 @@ class ActividadesVista {
         
         return $dat.$rows.$fin;
 	}
+
+    function tablaActividadPorIdSeguimiento($data){
+        $dat ="<table class='table' id='example'>
+                    <thead>
+                        <tr>
+                            <th>#</th>                            
+                            <th>Fecha</th>
+                            <th>Hora</th>
+                            <th>Lugar</th>
+                            <th>Detecto Problematica</th>
+                            <th>Avance</th>
+                            <th>Motivo</th>                            
+                        </tr>
+                    </thead>
+                <tbody>";
+        $rows ="";
+        foreach ($data as $r){
+
+            if ($r->id_motivo == 3) {
+                $row = "<tr>
+                        <td scope='row'>".$r->id_actividades."</td>
+                        <td>".$r->fecha."</td>
+                        <td>".$r->hora."</td>
+                        <td>".$r->lugar."</td>
+                        <td>".$r->detecto_problematica."</td> 
+                        <td>".$r->avance."</td>
+                        <td><button class='btn-success btn' onclick='enviarCanaliza(".$r->id_motivo.")'>Canalizacion</button></td>
+                    </tr>";
+                $rows = $rows.$row;
+            }else{
+                $row = "<tr>
+                        <td scope='row'>".$r->id_actividades."</td>
+                        <td>".$r->fecha."</td>
+                        <td>".$r->hora."</td>
+                        <td>".$r->lugar."</td>
+                        <td>".$r->detecto_problematica."</td> 
+                        <td>".$r->avance."</td>
+                        <td>".$r->motivo."</td>
+                    </tr>";
+                $rows = $rows.$row;
+            }
+            
+        }
+        $fin = "</tbody>
+                </table>";
+        
+        
+        return $dat.$rows.$fin;
+    }
 }

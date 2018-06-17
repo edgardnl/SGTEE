@@ -28,6 +28,6 @@ print $objT->horaio."\n";
     </style>	
 </head>
 <body>
-	<?php $tabla->tablaTutores(); ?>
+	<?php $tabla->tablaSeguimientoTutorAlumnoActividades(1); ?>
 </body>
 </html>

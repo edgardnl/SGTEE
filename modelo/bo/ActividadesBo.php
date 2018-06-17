@@ -19,4 +19,10 @@ class ModuloActividades {
         return $tabla;
     }
 
+    function traeActividadesPorIdSeguimiento($obj){
+        $act = $this->dao->traeActividadesPorIdSeguimiento($obj);
+        $vis = $this->vista->tablaActividadPorIdSeguimiento($act);
+        return $vis;
+    }
+
 }

@@ -37,4 +37,38 @@ class ActividadesDao {
         }
         return $lista;
     }
+
+    function traeTotalActividadesPorSegumiento($obj){
+        $datosArray = array($obj->id_seguimiento);
+        $pP = procesaParametros::PrepareStatement(ActividadesSql::traeTotalActividadesPorSeguimiento(),$datosArray);
+       
+        $query = $this->con->query($pP);
+        $row = $query->fetch_array();
+        
+        $obj = new ActividadesObjeto();
+        $obj->nTotal = $row['n_actividades'];        
+        return $obj;
+    }
+
+    function traeActividadesPorIdSeguimiento($obj){
+        $datosArray = array($obj->id_seguimiento);
+        $pP = procesaParametros::PrepareStatement(ActividadesSql::traeActividadesPorIdSeguimiento(),$datosArray);
+       
+        $query = $this->con->query($pP);
+        $lista = [];
+        $x = 0;
+        while ($row = $query->fetch_array()) {
+            $lista[] = new ActividadesObjeto();
+            $lista[$x]->id_actividades = $row['id_actividades'];            
+            $lista[$x]->fecha = $row['fecha'];
+            $lista[$x]->hora = $row['hora'];            
+            $lista[$x]->lugar = $row['lugar'];
+            $lista[$x]->detecto_problematica = $row['detecto_problematica'];
+            $lista[$x]->avance = $row['avance'];
+            $lista[$x]->id_motivo = $row['id_motivo'];
+            $lista[$x]->motivo = $row['descripcion'];
+            $x++;
+        }
+        return $lista;   
+    }
 }

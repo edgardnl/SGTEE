@@ -3,7 +3,7 @@ require_once "../ruta.php";
 require_once $_SERVER['DOCUMENT_ROOT'] . ruta::ruta . "/controlador/MostrarTablaControl.php";
 $tabla = new MostrarTablaControl();
 $id = $_GET['id'];
-$obj = $tabla->mostrarAlumnoDetalles($id);
+$obj = $tabla->mostrarDatosSeguimientoTutoAlum($id);
 ?>
 <!--
 Author: W3layouts
@@ -30,6 +30,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
         <!-- lined-icons -->
         <link rel="stylesheet" href="css/icon-font.min.css" type='text/css' />
         <!-- //lined-icons -->
+        <script src="jquery/jquery.js"></script>
         <!-- chart -->
         <script src="js/Chart.js"></script>
         <!-- //chart -->
@@ -44,9 +45,42 @@ License URL: http://creativecommons.org/licenses/by/3.0/
         <link href='//fonts.googleapis.com/css?family=Cabin:400,400italic,500,500italic,600,600italic,700,700italic' rel='stylesheet' type='text/css'>
         <!---//webfonts---> 
         <!-- Meters graphs -->
+        <script src="jquery/jquery.min.js"></script>
         <script src="js/jquery-1.10.2.min.js"></script>
         <!-- Placed js at the end of the document so the pages load faster -->
         <script src="js/eventos.js"></script>
+
+        <!-- DataTable-->
+
+        <script src="jquery/jquery.dataTables.js"></script>
+
+        <style>
+            .flotante{
+                background: #27cce4;
+                border-color: #27cce4;
+                padding: 16px 20px;
+                text-align: center;
+                border-radius: 50%;
+                display:scroll;
+                position:fixed;
+                bottom:55px;
+                right:15px;
+            }
+            
+            i{
+                color: #fff;
+                
+            }
+            
+            .flotante:hover{
+                background: #F44336;
+            }
+
+            .dataTables_filter {
+                float: right;
+                text-align: right;
+            }
+        </style>
 
     </head> 
 
@@ -118,43 +152,17 @@ new UISearch(document.getElementById('sb-search'));
                 <!-- //header-ends -->
                 <div id="page-wrapper">
                     <div class="graphs">
-                        <h3 class="blank1">Detalle del Alumno</h3>
+                        <h3 class="blank1">Seguimiento Tutorial</h3>
                         <div class="tab-content">
                             <div class="tab-pane active" id="horizontal-form">
                                                                 
                                 <form class="form-horizontal" name="formEdit" id="formEdit">
                                     
-                                    <div class="form-group"><h5 class="blank">Datos personales</h5></div>                                  
+                                    <div class="form-group"><h5 class="blank">Datos escolares</h5></div>                                  
                                     <div class="form-group">
-                                        <label for="disabledinput" class="col-sm-2 control-label">Matricula</label>
+                                        <label for="disabledinput" class="col-sm-2 control-label">Mtro. Tutor:</label>
                                         <div class="col-sm-8">
-                                            <input disabled="" type="text" class="form-control1" id="disabledinput" value="<?php print $obj->matricula; ?>">
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="disabledinput" class="col-sm-2 control-label">Contraseña</label>
-                                        <div class="col-sm-8">
-                                            <input disabled="" type="text" class="form-control1" id="disabledinput" value="">
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="disabledinput" class="col-sm-2 control-label">Nombre</label>
-                                        <div class="col-sm-8">
-                                            <input disabled="" type="text" class="form-control1" id="disabledinput" value="<?php print $obj->nombreAll; ?>">
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="disabledinput" class="col-sm-2 control-label">Sexo</label>
-                                        <div class="col-sm-8">
-                                            <input disabled="" type="text" class="form-control1" id="disabledinput" value="<?php print $obj->sexo; ?>">
-                                        </div>
-                                    </div>
-                                    
-                                    <div class="form-group"><h5 class="blank">Datos Escolares</h5></div>                                  
-                                    <div class="form-group">
-                                        <label for="disabledinput" class="col-sm-2 control-label">Carrera</label>
-                                        <div class="col-sm-8">
-                                            <input disabled="" type="text" class="form-control1" id="disabledinput" value="<?php print $obj->carrera; ?>">
+                                            <input disabled="" type="text" class="form-control1" id="disabledinput" value="<?php print $obj->nomTutor; ?>">
                                         </div>
                                     </div>
                                     <div class="form-group">
@@ -163,52 +171,72 @@ new UISearch(document.getElementById('sb-search'));
                                             <input disabled="" type="text" class="form-control1" id="disabledinput" value="<?php print $obj->semestre; ?>">
                                         </div>
                                     </div>
+                                    <h6 class="blank" style="color: #F8F8F8">...</h6>
                                     <div class="form-group">
-                                        <label for="disabledinput" class="col-sm-2 control-label">Grupo</label>
+                                        <label for="disabledinput" class="col-sm-2 control-label">Nombre del alumno(a)</label>
                                         <div class="col-sm-8">
-                                            <input disabled="" type="text" class="form-control1" id="disabledinput" value="<?php print $obj->grupo; ?>">
+                                            <input disabled="" type="text" class="form-control1" id="disabledinput" value="<?php print $obj->nomAlumno; ?>">
                                         </div>
                                     </div>
-                                    
-                                    <div class="form-group"><h5 class="blank">Datos de contacto</h5></div>                                  
                                     <div class="form-group">
-                                        <label for="disabledinput" class="col-sm-2 control-label">Correo</label>
+                                        <label for="disabledinput" class="col-sm-2 control-label">Matricula</label>
+                                        <div class="col-sm-3">
+                                            <input disabled="" type="text" class="form-control1" id="disabledinput" value="<?php print $obj->matricula; ?>">
+                                        </div>
+                                        <label for="disabledinput" class="col-sm-2 control-label">Grupo</label>
+                                        <div class="col-sm-3">
+                                            <input disabled="" type="text" class="form-control1" id="disabledinput" value="<?php print $obj->grupo; ?>">
+                                        </div>
+                                    </div>                                                                                         <div class="form-group">
+                                        <label for="disabledinput" class="col-sm-2 control-label">Ingenieria</label>
+                                        <div class="col-sm-8">
+                                            <input disabled="" type="text" class="form-control1" id="disabledinput" value="<?php print $obj->carrera; ?>">
+                                        </div>                                        
+                                    </div>                                                                                         <div class="form-group">
+                                        <label for="disabledinput" class="col-sm-2 control-label">Programa</label>
+                                        <div class="col-sm-8">
+                                            <input disabled="" type="text" class="form-control1" id="disabledinput" value="<?php print $obj->programa; ?>">
+                                        </div>
+                                    </div>                  
+                                    <h6 class="blank" style="color: #F8F8F8">...</h6>
+                                    <div class="form-group">
+                                        <label for="disabledinput" class="col-sm-2 control-label">Correo Electronico</label>
                                         <div class="col-sm-8">
                                             <input disabled="" type="text" class="form-control1" id="disabledinput" value="<?php print $obj->correo; ?>">
                                         </div>
-                                    </div>
-                                    <div class="form-group">
+                                    </div>                                                                                         <div class="form-group">
                                         <label for="disabledinput" class="col-sm-2 control-label">Telefono fijo</label>
-                                        <div class="col-sm-8">
+                                        <div class="col-sm-3">
                                             <input disabled="" type="text" class="form-control1" id="disabledinput" value="<?php print $obj->telefono; ?>">
                                         </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="disabledinput" class="col-sm-2 control-label">Telfono movil</label>
-                                        <div class="col-sm-8">
+                                        <label for="disabledinput" class="col-sm-2 control-label">Celular</label>
+                                        <div class="col-sm-3">
                                             <input disabled="" type="text" class="form-control1" id="disabledinput" value="<?php print $obj->telefono_cel; ?>">
                                         </div>
-                                    </div>
-
-                                    <div class="panel-footer">
-
-                                        <div class="row">
-                                            <div class="col-sm-8 col-sm-offset-2">
-                                                                                                
-                                            </div>
-                                        </div>
-
-                                    </div>
-
-
+                                    </div>                                                                                                                                                                                        
                                 </form>
-                                <button class="btn-default btn" onclick="regresarTutorAlumnos()">Cancelar</button>
+
+                                
                             </div>
                         </div>
 
+                        <h6 class="blank" style="color: #F8F8F8">...</h6>
+                        <h5 class="blank">Lista de Actividades:</h5>
+                                        
+                        <div class="xs tabls">
+                            <div class="bs-example4" data-example-id="simple-responsive-table">
+                                <div class="table-responsive">
 
+                                <?php
+                                $tabla->tablaActividadesPorIdSeguimiento($id);
+                                ?>
+                                                    
+                                </div>                                                                    
+                            </div>
+                        </div>                
 
-
+                        <h6 class="blank" style="color: #F8F8F8">...</h6>
+                        <button class="btn-default btn" onclick="regresarSegAlum()">Regresar</button>
                     </div>
 
                 </div>

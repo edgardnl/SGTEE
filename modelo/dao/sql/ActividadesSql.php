@@ -14,4 +14,19 @@ class ActividadesSql {
         return $query;
     }
 
+    function traeTotalActividadesPorSeguimiento(){
+        $query = "SELECT COUNT(actividades.id_actividades) as n_actividades
+            FROM actividades,seguimiento_tutor
+            WHERE actividades.id_seguimiento = seguimiento_tutor.id_seguimiento
+            AND seguimiento_tutor.id_seguimiento = ?";
+        return $query;   
+    }
+
+    function traeActividadesPorIdSeguimiento(){
+        $query = "SELECT actividades.id_actividades,actividades.fecha,actividades.hora,actividades.lugar,actividades.detecto_problematica,actividades.avance,motivo.descripcion,actividades.id_motivo FROM actividades,motivo 
+            WHERE actividades.id_actividades = motivo.id_motivo
+            AND actividades.id_seguimiento = ?";
+        return $query;      
+    }
+
 }
