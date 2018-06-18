@@ -29,4 +29,9 @@ class ActividadesSql {
         return $query;      
     }
 
+    function guardaActividades(){
+        $query = "INSERT INTO actividades(id_seguimiento,fecha,hora,lugar,detecto_problematica,avance,id_motivo) VALUES (?,?,?,?,?,?,?);";
+        return $query;         
+    }
+
 }
