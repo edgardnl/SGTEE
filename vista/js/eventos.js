@@ -89,10 +89,15 @@ function agregaActividad(){
 }
 
 function regresarTutoSeg(){
-    location.href = "TutoSeguimientoTutorial.php";
+    location.href = "TutoSeguimientoAlumnos.php";
 }
 
 function addActividad(id){
     alert(id);
     location.href = "TutoAgregarActividad.php?id=" + id;   
+}
+
+function enviarCanaliza(id){
+    alert(id);
+    location.href = "TutoCanalizacionDetalle.php?id=" + id;
 }

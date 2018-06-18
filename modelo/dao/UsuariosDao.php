@@ -37,4 +37,19 @@ class UsuariosDao {
             print $exc->getTraceAsString();
         }
     }
+    
+    function traeUsuarioPorClave($obj){
+        $datosArray = array($obj->matricula);
+        $pP = procesaParametros::PrepareStatement(UsuariosSql::traeUsuarioPorClave(),$datosArray);
+       
+        $query = $this->con->query($pP);
+        $row = $query->fetch_array();
+        
+        $obj = new UsuariosObjeto();
+        $obj->id_usuario = $row['id_usuario'];                
+        $obj->matricula = $row['matricula'];
+        $obj->contrasena = $row['contrasena'];        
+        
+        return $obj;
+    }
 }

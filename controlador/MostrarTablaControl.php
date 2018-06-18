@@ -20,6 +20,9 @@ require_once $_SERVER['DOCUMENT_ROOT'] . ruta::ruta . "/modelo/objetos/RelacionO
 require_once $_SERVER['DOCUMENT_ROOT'] . ruta::ruta . "/modelo/bo/SeguimientoTutorBo.php";
 require_once $_SERVER['DOCUMENT_ROOT'] . ruta::ruta . "/modelo/objetos/SeguimientoTutorObjeto.php";
 
+require_once $_SERVER['DOCUMENT_ROOT'] . ruta::ruta . "/modelo/bo/CanalizacionBo.php";
+require_once $_SERVER['DOCUMENT_ROOT'] . ruta::ruta . "/modelo/objetos/CanalizacionObjeto.php";
+
 class MostrarTablaControl {
 
     function tablaTutores() {
@@ -128,6 +131,20 @@ class MostrarTablaControl {
         $segBo = new ModuloSeguimientoTutor();
         return $segBo->traeSegumientoDatosAlumnoTutor($segObj);
         
+    }
+    
+    function mostrarUsuarioAlumnoPorClave($obj){
+        $usuObj = new UsuariosObjeto();
+        $usuObj->matricula = $obj;
+        $usuBo = new ModuloUsuarios();
+        return $usuBo->traeUsuarioPorClave($usuObj);
+    }
+    
+    function mostrarCanalizacionPorActividad($id){
+        $objCa = new CanalizacionObjeto();
+        $objCa->id_actividades = $id;
+        $modCa = new ModuloCanalizacion();
+        return $modCa->traeCanalizacionPorIdActividad($objCa);
     }
 
 }

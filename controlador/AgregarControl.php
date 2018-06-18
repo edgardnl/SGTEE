@@ -8,6 +8,8 @@ require_once $_SERVER['DOCUMENT_ROOT'] . ruta::ruta . "/modelo/objetos/TutoresOb
 require_once $_SERVER['DOCUMENT_ROOT'] . ruta::ruta . "/modelo/bo/ActividadesBo.php";
 require_once $_SERVER['DOCUMENT_ROOT'] . ruta::ruta . "/modelo/objetos/ActividadesObjeto.php";
 
+require_once $_SERVER['DOCUMENT_ROOT'] . ruta::ruta . "/modelo/objetos/CanalizacionObjeto.php";
+
 $bo = new ModuloTutores();
 $action = "agregarActividad";
 switch ($action) {#$_REQUEST['action']
@@ -35,6 +37,9 @@ switch ($action) {#$_REQUEST['action']
         break;
 
     case 'agregarActividad':
+        
+        $modulo = new ModuloActividades();
+        
         $obj = new ActividadesObjeto();
         $obj->id_seguimiento = $_POST['seg'];
         $obj->fecha = $_POST['fecha'];
@@ -43,6 +48,20 @@ switch ($action) {#$_REQUEST['action']
         $obj->detecto_problematica = $_POST['problema'];
         $obj->avance = $_POST['avance'];
         $obj->id_motivo = $_POST['selector1'];
+        
+        if ($_POST['selector1'] == 3) {
+            $objc = new CanalizacionObjeto();        
+            $objc->id_area = 1;
+            $objc->encargado = $_POST['encargado'];
+            $objc->observacion = $_POST['observacion'];
+            $resA = $modulo->guardaActividadCa($obj,$objc);
+            print $resA;
+        } else {
+            $resA = $modulo->guardaActividad($obj);
+            print $resA;
+        }
+        
+               
 
         /*$obj->id_seguimiento = 2;
         $obj->fecha = "2018-06-17";
@@ -52,9 +71,8 @@ switch ($action) {#$_REQUEST['action']
         $obj->avance = "programacion";
         $obj->id_motivo = 1;*/
 
-        $modulo = new ModuloActividades();
-        $resA = $modulo->guardaActividad($obj);
-        print $resA;
+        
+        
         break;
 }
 

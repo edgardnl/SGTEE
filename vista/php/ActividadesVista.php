@@ -68,7 +68,7 @@ class ActividadesVista {
                         <td>".$r->lugar."</td>
                         <td>".$r->detecto_problematica."</td> 
                         <td>".$r->avance."</td>
-                        <td><button class='btn-success btn' onclick='enviarCanaliza(".$r->id_motivo.")'>Canalizacion</button></td>
+                        <td><button class='btn-success btn' onclick='enviarCanaliza(".$r->id_actividades.")'>Canalizacion</button></td>
                     </tr>";
                 $rows = $rows.$row;
             }else{

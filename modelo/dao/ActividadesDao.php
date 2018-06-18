@@ -83,4 +83,18 @@ class ActividadesDao {
         }
         
     }
+    
+    function traeUltimaActividadPorIdSeguimiento($obj){
+        $datosArray = array($obj->id_seguimiento);
+        $pP = procesaParametros::PrepareStatement(ActividadesSql::traeUltimaActividadPorIdSeguimiento(),$datosArray);
+        //id_actividades
+        
+        $query = $this->con->query($pP);
+        $row = $query->fetch_array();
+        
+        $obja = new ActividadesObjeto();
+        $obja->id_actividades = $row['id_actividades'];        
+        return $obja;
+        
+    }
 }

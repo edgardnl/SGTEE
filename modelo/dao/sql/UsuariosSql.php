@@ -12,4 +12,9 @@ class UsuariosSql {
         $query = "delete from usuario where matricula = ?;";
         return $query;
     }
+    
+    function traeUsuarioPorClave(){
+        $query = "SELECT * FROM usuario where matricula = ? ;";
+        return $query;
+    }
 }
