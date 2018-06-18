@@ -74,16 +74,16 @@ return false;
 	
 }
 	//grupo
-var ok1="yes";
+var ok2="yes";
 var temp;
 var valid="0123456789";
 var valor2=document.FormAlumnos.grupo.value;
 for (var i=0; i<valor2.length; i++){
 	temp=""+valor2.substring(i,i+1);
 	if(valid.indexOf(temp)=="-1"){
-		ok1="no";
+		ok2="no";
 	}
-	if(ok1=="no"){
+	if(ok2=="no"){
 alert("Debe ingresar solo numeros en el campo teléfono")
 document.FormAlumnos.grupo.focus();
 return false;
