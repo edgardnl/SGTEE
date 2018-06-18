@@ -71,4 +71,16 @@ class ActividadesDao {
         }
         return $lista;   
     }
+
+    function guardaActividad($obj){
+        $datosArray = array($obj->id_seguimiento,$obj->fecha,$obj->hora,$obj->lugar,$obj->detecto_problematica,$obj->avance,$obj->id_motivo);
+        $pP = procesaParametros::PrepareStatement(ActividadesSql::guardaActividades(),$datosArray); 
+
+        try {
+            $this->con->query($pP);            
+        } catch (Exception $exc) {
+            print $exc->getMessage();
+        }
+        
+    }
 }

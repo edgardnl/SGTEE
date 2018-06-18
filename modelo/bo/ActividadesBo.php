@@ -25,4 +25,16 @@ class ModuloActividades {
         return $vis;
     }
 
+    function guardaActividad($obj){
+        $usu = "";
+        try {
+            $this->dao->guardaActividad($obj);            
+        } catch (Exception $ex) {
+            $usu = $ex->getMessage();
+        }
+        
+        return $usu;
+
+    }
+
 }

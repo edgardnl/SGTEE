@@ -78,3 +78,21 @@ function enviarSeguimiento(id){
     alert(id);
     location.href = "TutoSeguimientoTutorial.php?id=" + id;   
 }
+
+function agregaActividad(){
+    var datos = "action=agregarActividad&" + $("#FormActividades").serialize();
+    alert(datos);
+    $.post("../controlador/AgregarControl.php", datos, function(resp) {
+        console.log(resp);
+        location.href = "";
+    });   
+}
+
+function regresarTutoSeg(){
+    location.href = "TutoSeguimientoTutorial.php";
+}
+
+function addActividad(id){
+    alert(id);
+    location.href = "TutoAgregarActividad.php?id=" + id;   
+}
