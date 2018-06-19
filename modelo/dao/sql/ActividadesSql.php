@@ -24,7 +24,7 @@ class ActividadesSql {
 
     function traeActividadesPorIdSeguimiento(){
         $query = "SELECT actividades.id_actividades,actividades.fecha,actividades.hora,actividades.lugar,actividades.detecto_problematica,actividades.avance,motivo.descripcion,actividades.id_motivo 
-            FROM sgte.actividades,sgte.motivo 
+            FROM actividades,motivo 
             WHERE actividades.id_motivo = motivo.id_motivo
             AND actividades.id_seguimiento = ?";
         return $query;      
@@ -36,7 +36,7 @@ class ActividadesSql {
     }
     
     function traeUltimaActividadPorIdSeguimiento(){
-        $query = "select max(id_actividades) as id_actividades from sgte.actividades where id_seguimiento = ?;";
+        $query = "select max(id_actividades) as id_actividades from actividades where id_seguimiento = ?;";
         return $query;   
     }
 
