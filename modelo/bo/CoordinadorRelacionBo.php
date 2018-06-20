@@ -12,7 +12,7 @@ class ModuloRelacion_Alumno_Tutor{
 	function __construct(){
 		$this->dao = new CoordinadorRelacionDao();
 		$this->vista = new CoordinadorRelacionVista();
-		$this->daoUsu = new UsuariosDaoAlumnos();
+		
 	}
 
 	function ConsultarCoordinadorRelacion(){

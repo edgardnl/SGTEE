@@ -54,7 +54,7 @@ class CoordinadorDao{
         $lista = [];
         $x = 0;
         while ($row = $query->fetch_array()) {
-            $lista[] = new AlumnosObjeto();
+            $lista[] = new AlumnosObjetoCoordinador1();
             $lista[$x]->id = $row['id_alumno'];
             $lista[$x]->clave = $row['matricula'];
             $lista[$x]->nombre = $row['nombre'];

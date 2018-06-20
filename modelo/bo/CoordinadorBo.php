@@ -14,7 +14,7 @@ class ModuloCoordinador1 {
 		$this->vista = new Coordinador1Vista();
 		$this->daoUsu = new UsuariosDaoAlumnos();
 	}
-
+    /*
 	function validarUsuario($id){
 		$usu = $this->dao->buscarUsuarioIdPass($id);
 		//$vis = $this->vista->loginDatos($usu);
@@ -25,7 +25,7 @@ class ModuloCoordinador1 {
 		$usu = $this->dao->traeAlumnosActividades();
 		$vis = $this->vista->tablaAlumnosActividades($usu);
 		return $vis;	
-	}
+	}*/
 
 	function ConsultarAlumnosCordinador1(){
     	$alumnos =$this->dao->TraerAlumnoCoordinador1();
@@ -33,7 +33,7 @@ class ModuloCoordinador1 {
     	return $traervista;
 
     }
-
+    /*
     function agregaAlumnos($obj,$obj1){
         try {
             $this->dao->agregaAlumnos($obj);
@@ -58,7 +58,7 @@ class ModuloCoordinador1 {
     function eliminaDatosAlumnos($obj){
         $usu = $this->dao->eliminaDatosAlumnos($obj);
         return $usu;
-    }
+    }*/
 
 }
 

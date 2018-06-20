@@ -1,7 +1,7 @@
 <?php
 require_once "../ruta.php";
 require_once $_SERVER['DOCUMENT_ROOT'] . ruta::ruta . "/modelo/bo/CoordinadorBo.php";
-require_once $_SERVER['DOCUMENT_ROOT'] . ruta::ruta . "/modelo/objetos/AlumnosObjeto.php";
+require_once $_SERVER['DOCUMENT_ROOT'] . ruta::ruta . "/modelo/objetos/AlumnosObjetoCoordinador1.php";
 
 //estructura 
 
@@ -14,7 +14,7 @@ class MostrarTablaControlCoordinador1 {
 	}
 	
 	function mostrarDatosalumId($id){
-        $obj = new AlumnosObjeto();
+        $obj = new AlumnosObjetoCoordinador1();
         $obj->id = $id;
         $bo = new ModuloCoordinador1();
         return $bo->traeAlumnosPorId($obj);

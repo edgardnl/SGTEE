@@ -155,19 +155,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                            			
 				<div class="graphs">
 					
-                                    <h1 class="blank1">Relacion Alumnos Tutor </h1>
-                                        
-                                    <!--<div class="form-group">
-                                            <label for="focusedinput" class="col-sm-2 control-label">Buscar</label>
-                                        <div class="col-sm-8">
-                                            <input type="text" class="form-control1" id="focusedinput" placeholder="Clave">
-                                        </div>
-                                        <div class="col-sm-2">
-                                            <button class="btn-success btn">Buscar</button>
-                                        </div>
-                                    </div>-->
-                                        
-                                        
+                                    <h1 class="blank1">Coordinador Institucional</h1>
+   
                                         <h6 class="blank" style="color: #F8F8F8">...</h6>
                                         <h5 class="blank">Lista de Alumnos:</h5>
                                         
@@ -182,7 +171,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                                                 </div>					   																						
                                             </div>
                                         </div>
-                                        <a class="flotante" href="AgregarAlumnos.php"><i class="fa fa-user"></i></a>
+          <!--<a class="flotante" href="AgregarAlumnos.php"><i class="fa fa-user"></i></a>-->
                                 </div>
                         </div>
 		

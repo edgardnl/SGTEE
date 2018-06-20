@@ -11,5 +11,6 @@ class TutoresObjeto{
     var $asignatura;
     var $horaio;
     var $correo;
+    var $nombre_tutor;
 }
 

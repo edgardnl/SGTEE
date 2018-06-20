@@ -65,5 +65,12 @@ class ModuloTutores{
         
         return $usu;
     }
+    function consultaTutoresNombres(){
+    $usu = $this->dao->traeTutorNombre();
+        $vis = $this->vista->generaSelectTutores($usu);
+    return $vis;
+    }
+
+
 }
 

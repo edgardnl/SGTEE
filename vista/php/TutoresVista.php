@@ -38,6 +38,26 @@ class TutoresVista{
         
         return $dat.$rows.$fin;
     }
+
+    function generaSelectTutores($data){
+        $cad="<div class='form-group'>
+                <!--dos-->
+                <label for='focusedinput' class='col-sm-2 control-label'>Tutores</label>
+                <div class='col-sm-8'>
+
+                    <select name='carrera' id='selector1' class='form-control1' pattern='.{1,}' required title='minimo 3 caracteres' maxlength='15'>";
+        $opts = "";
+        foreach ($data as $key) {
+            $opt = "<option value='".$key->id."'>".$key->nombre_tutor."</option>";
+            $opts = $opts.$opt;
+        }
+                            
+        $fin ="</select></div>";            
+
+    return $cad.$opts.$fin;
+
+      
+    }
 }
 
 

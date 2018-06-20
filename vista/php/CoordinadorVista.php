@@ -14,9 +14,9 @@ class Coordinador1Vista {
                         <tr>
                             <th>#</th>
                             <th>Claves</th>
-                            <th>Nombre</th>
-                            <th>Apellido Paterno</th>
-                            <th>Apellido Materno</th>
+                            <th>Nombre </th>
+                            <th>Status</th>
+                            <th></th>
                             <th></th>
                         </tr>
                     </thead>

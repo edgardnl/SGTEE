@@ -104,4 +104,18 @@ class TutoresDao {
         
     }
 
+    function traeTutorNombre() {
+        $pP = TutoresSql::traeTutores();
+        $query = $this->con->query($pP);
+        $lista = [];
+        $x = 0;
+        while ($row = $query->fetch_array()) {
+            $lista[] = new TutoresObjeto();
+            $lista[$x]->id = $row['id_tutores'];
+            $lista[$x]->nombre_tutor = $row['nombre']." ".$row['ap_p']." ".$row['ap_m'];          
+            $x++;
+        }
+        return $lista;
+    }
+
 }

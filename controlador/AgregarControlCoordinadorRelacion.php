@@ -4,7 +4,7 @@ require_once $_SERVER['DOCUMENT_ROOT'] . ruta::ruta . "/modelo/bo/AlumnosBo.php"
 require_once $_SERVER['DOCUMENT_ROOT'] . ruta::ruta . "/modelo/objetos/AlumnosObjeto.php";
 require_once $_SERVER['DOCUMENT_ROOT'] . ruta::ruta . "/modelo/objetos/UsuariosObjetoAlumnos.php";
 
-$bo = new ModuloAlumnos();
+$bo = new ModuloRelacion_Alumno_Tutor();
 
 switch ($_REQUEST['action']) {#
     case 'agregarAlumnos':

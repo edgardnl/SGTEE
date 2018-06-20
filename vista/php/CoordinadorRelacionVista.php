@@ -10,31 +10,48 @@ class CoordinadorRelacionVista{
                     <thead>
                         <tr>
                             <th>#</th>
-                            <th>Clave</th>
-                            <th>Nombre Del Alumno</th>
-                            <th>Nombre Del Tutor</th>
-                            <th>Apellido Materno</th>
-                            <th></th>
+                            <th>Matricula</th>
+                            <th>Nombre del Alumno</th>
+                            <th>Apellido Paterno</th>
+                            <th>apellido Maternos </th>
+                            <th>Status</th>
+                            <th>llllll</th>
                         </tr>
                     </thead>
                 <tbody>";
         $rows ="";
         foreach ($data as $r){
+        if($r->estatus == 0){
             $row = "<tr>
                         <td scope='row'>".$r->id."</td>
                         <td>".$r->clave."</td>
-                        <td>".$r->nombre.",".$r->ap_p."</td>
+                        <td>".$r->nombre."</td>
                         <td>".$r->ap_p."</td>
                         <td>".$r->ap_m."</td>
-                        <td></td>
+                        <td>".$r->estatus."</td>
+                        <td><button class='btn-success btn' onclick='enviarCanaliza(".$r->id.")'>Asignar Tutor</button></td>
                     </tr>";
             $rows = $rows.$row;
         }
+        else{
+            $row = "<tr>
+                        <td scope='row'>".$r->id."</td>
+                        <td>".$r->clave."</td>
+                        <td>".$r->nombre."</td>
+                        <td>".$r->ap_p."</td>
+                        <td>".$r->ap_m."</td>
+                        <td>".$r->estatus."</td>
+                    </tr>";
+            $rows = $rows.$row;
+
+        }
+    }
         $fin = "</tbody>
                 </table>";
         
         
         return $dat.$rows.$fin;
+
     }
 }
 ?>

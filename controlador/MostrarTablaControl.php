@@ -147,4 +147,11 @@ class MostrarTablaControl {
         return $modCa->traeCanalizacionPorIdActividad($objCa);
     }
 
+    function selectNombreTutores(){
+        $alumnoBo = new ModuloTutores();
+        $tabla = $alumnoBo->consultaTutoresNombres();
+        print $tabla;
+
+    }
+
 }
