@@ -126,7 +126,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 						<div class="tab-pane active" id="horizontal-form">
 
 
- <form class="form-horizontal" name="FormAlumnos" id="FormAlumnos" onchange =" return validar()">
+ <form class="form-horizontal" name="FormAlumnos" id="FormAlumnos">
 								<div class="form-group">
 									<!--inicio de los imput del formulario -->
 									<label for="focusedinput" class="col-sm-2 control-label">Matricula</label>
@@ -301,7 +301,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 
                                                                     <div class="row">
                                                                         <div class="col-sm-8 col-sm-offset-2">
-         <button type="submit" class="btn-success btn" onclick="agregarAlumnos()">Guardar</button>
+         <button type="submit" class="btn-success btn" onclick=" return validar(),agregarAlumnos()">Guardar</button>
                                                                             
                                                                             <button class="btn-inverse btn">Reset</button>
                                                                         </div>
