@@ -9,15 +9,8 @@ class MostrarTablaControlCoordinadorRelacion {
 
 	function tablaCoordindorRelacion(){
 		$alumnosBo = new ModuloRelacion_Alumno_Tutor();// acceso a mi estructura bo
-		$alumnos= $alumnosBo->ConsultarAlumnos();
+		$alumnos= $alumnosBo ->ConsultarCoordinadorRelacion();
         print $alumnos;
 	}
 	
-	function mostrarDatosalumId($id){
-        $obj = new AlumnosObjeto();
-        $obj->id = $id;
-        $bo = new ModuloAlumnos();
-        return $bo->traeAlumnosPorId($obj);
-    }
-
 }
