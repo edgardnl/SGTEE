@@ -147,4 +147,12 @@ class MostrarTablaControl {
         return $modCa->traeCanalizacionPorIdActividad($objCa);
     }
 
+    function tablaRelacionAlumnosNombrePorTutor($id){
+        $relObj = new RelacionObjeto();
+        $relObj->id_tutor = $id;
+        $relaBo = new ModuloRelacion();
+        $tabla = $relaBo->consultaAlumnosNombrePorIdTutor($relObj);
+        print $tabla;
+    }
+
 }

@@ -65,6 +65,37 @@ class RelacionVista{
         
         return $dat.$rows.$fin;
     }
+
+    function generaTablaAlumosNombrePorTutor($data){
+        $dat = "<script type='text/javascript' charset='utf-8'> 
+            $(document).ready(function() {
+                $('#example').dataTable();
+            } );
+        </script>  
+        <table class='table' id='example'>
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>Alumno</th>                            
+                            <th></th>
+                       </tr>
+                    </thead>
+                <tbody>";
+        $rows ="";
+        foreach ($data as $r){
+            $row = "<tr>
+                        <td scope='row'>".$r->id_relacion."</td>
+                        <td>".$r->NomAll."</td>                        
+                        <td><button class='btn-success btn' onclick='enviarDetalleAlu(".$r->id_alumno.")'>Calificaciones</button></td>                      
+                    </tr>";
+            $rows = $rows.$row;
+        }
+        $fin = "</tbody>
+                </table>";
+        
+        
+        return $dat.$rows.$fin;
+    }
 }
 
 
