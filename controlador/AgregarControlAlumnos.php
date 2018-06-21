@@ -26,7 +26,7 @@ switch ($_REQUEST['action']) {#
         $obj1->matricula_usuario= $_POST['matricula'];
         $obj1->correo = $_POST['correo'];
         $obj1->contrasena = $_POST['contrasena'];
-        $obj1->id_role = 1;
+        $obj1->id_role = 3;
         
         //$obj->correo = $_POST['correo'];
         $res = $bo->agregaAlumnos($obj,$obj1);

@@ -18,6 +18,36 @@ class AlumnosDao {
         $this->con->close();
     }
 
+    function buscarUsuarioIdPass($datos) {
+        $usuarioArray = array($datos->matricula, $datos->contrasena);
+        $pP = procesaParametros::PrepareStatement(AlumnosSql::consultaUsuarioPass(), $usuarioArray);
+        $query = $this->con->query($pP);
+        $row = $query->fetch_array();
+        $usu = new UsuariosObjeto();
+        $usu->matricula = $row['matricula'];
+        $usu->contrasena = $row['contrasena'];
+        $usu->id_role = $row['id_role'];
+
+        return $usu;
+    }
+
+    function traeAlumnosActividades() {
+        $pP = AlumnosSql::cosultaAlumnos();
+        $query = $this->con->query($pP);
+        $lista = [];
+        $x = 0;
+        while ($row = $query->fetch_array()) {
+            $lista[] = new TutoresObjeto();
+            $lista[$x]->id = $row['id_alumno'];
+            $lista[$x]->matricula = $row['matricula'];
+            $lista[$x]->nombre = $row['nombre'];
+            $lista[$x]->ap_p = $row['ap_p'];
+            $lista[$x]->ap_m = $row['ap_m'];
+            $x++;
+        }
+        return $lista;
+    }
+
     function TraerAlumno() {
         $pP = AlumnosSql::traeAlumnos();
         $query = $this->con->query($pP);

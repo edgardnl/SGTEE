@@ -11,8 +11,8 @@ require_once $_SERVER['DOCUMENT_ROOT'] . ruta::ruta . "/modelo/objetos/Actividad
 require_once $_SERVER['DOCUMENT_ROOT'] . ruta::ruta . "/modelo/objetos/CanalizacionObjeto.php";
 
 $bo = new ModuloTutores();
-$action = "agregarActividad";
-switch ($action) {#$_REQUEST['action']
+//$action = "agregarActividad";
+switch ($_REQUEST['action']) {#$_REQUEST['action']
     case 'agregarTutor':
         $obj = new TutoresObjeto();
         $obj->clave = $_POST['clave'];

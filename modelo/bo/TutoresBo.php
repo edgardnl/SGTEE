@@ -24,6 +24,7 @@ class ModuloTutores{
     }
     
     function agregaTutor($obj,$obj1){
+        $usu ="";
         try {
             $this->dao->agregaTutor($obj);
             $this->daoUsu->ingresaUsuarioTutor($obj1);
