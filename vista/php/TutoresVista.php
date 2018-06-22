@@ -52,7 +52,12 @@ class TutoresVista{
             $opts = $opts.$opt;
         }
                             
-        $fin ="</select></div>";            
+        $fin ="</select></div>
+        <div class='col-sm-2 jlkdfj'>
+                                        <p class='help-block'></p>
+                                    </div>
+
+                                </div>";            
 
     return $cad.$opts.$fin;
 

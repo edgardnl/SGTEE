@@ -1,4 +1,5 @@
 <?php
+
 require_once $_SERVER['DOCUMENT_ROOT'].ruta::ruta."/modelo/dao/AlumnosDao.php";
 require_once $_SERVER['DOCUMENT_ROOT'].ruta::ruta."/vista/php/AlumnoVista.php";
 require_once $_SERVER['DOCUMENT_ROOT'].ruta::ruta."/modelo/dao/UsuariosDaoAlumnos.php";
@@ -56,7 +57,14 @@ class ModuloAlumnos {
     }
     
     function eliminaDatosAlumnos($obj){
-        $usu = $this->dao->eliminaDatosAlumnos($obj);
+
+        try {
+           $tuto = $this->dao->traeAlumnosPorId($obj);
+           $this->dao->eliminaDatosAlumnos($obj);
+           $this->daoUsu->eliminaUsurioAlumno($tuto);
+        } catch (Exception $ex) {
+            $usu = $ex->getMessage();
+        }
         return $usu;
     }
 

@@ -4,10 +4,18 @@ Author URL: http://w3layouts.com
 License: Creative Commons Attribution 3.0 Unported
 License URL: http://creativecommons.org/licenses/by/3.0/
 -->
+<?php
+require_once "../ruta.php";
+require_once $_SERVER['DOCUMENT_ROOT'] . ruta::ruta . "/controlador/MostrarTablaControl.php";
+require_once $_SERVER['DOCUMENT_ROOT'] . ruta::ruta . "/modelo/objetos/TutoresObjeto.php";
+
+$tabla = new MostrarTablaControl();
+?>
+
 <!DOCTYPE HTML>
 <html>
 <head>
-<title>SGTE - Agregar Alumnos</title>
+<title>SGTE - Agregar Coordinador</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="keywords" content="Easy Admin Panel Responsive web template, Bootstrap Web Templates, Flat Web Templates, Android Compatible web template, 
@@ -58,7 +66,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 
 		<?php
 
-		require_once "../vista/menu.php"
+		require_once "../vista/CordMenu.php"
 
 		?>
     <!-- left side end-->
@@ -121,26 +129,27 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 	<!-- //header-ends -->
 			<div id="page-wrapper">
 				<div class="graphs">
-					<h3 class="blank1">Agregar Alumnos </h3>
+					<h3 class="blank1">Agregar Tutor </h3>
 						<div class="tab-content">
 						<div class="tab-pane active" id="horizontal-form">
 
 
- <form class="form-horizontal" name="FormAlumnos" id="FormAlumnos" onchange =" return validar()">
+ <form class="form-horizontal" name="FormCoordinador" id="FormCoordinador">
 								<div class="form-group">
 									<!--inicio de los imput del formulario -->
-									<label for="focusedinput" class="col-sm-2 control-label">Matricula</label>
+									<label for="focusedinput" class="col-sm-2 control-label">Alumno</label>
 									<div class="col-sm-8">
-                                    <input type="text" class="form-control1" id="focusedinput" name="matricula" pattern=".{1,}" required title="minimo 3 caracteres" maxlength="15">
+  <input type="text" class="form-control1" id="focusedinput" name="matricula" pattern=".{1,}" required title="minimo 3 caracteres" maxlength="15" value="<?php print $id = $_GET['id']; ?>">
 									</div>
 
 									<div class="col-sm-2 jlkdfj1">
 										<p class="help-block"></p>
 									</div>
 								</div>
+								<?php $tabla->selectNombreTutores(); ?>
 								<div class="form-group">
 									<!--inicio de los imput del formulario -->
-									<label for="focusedinput" class="col-sm-2 control-label">Nombre</label>
+									<label for="focusedinput" class="col-sm-2 control-label">Aprobacion De Alumno</label>
 									<div class="col-sm-8">
                                     <input type="text" class="form-control1" id="focusedinput" name="nombre" pattern=".{1,}" required title="minimo 3 caracteres" maxlength="15" >
 									</div>
@@ -151,7 +160,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 								</div>
 								<div class="form-group">
 									<!--dos-->
-									<label for="focusedinput" class="col-sm-2 control-label">Apellido Paternos</label>
+									<label for="focusedinput" class="col-sm-2 control-label">Observacion</label>
 									<div class="col-sm-8">
 										<input type="text" class="form-control1" id="focusedinput" name="ap_p" pattern=".{1,}" required title="minimo 3 caracteres" maxlength="15">
 									</div>
@@ -162,133 +171,9 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 								</div>
 								<div class="form-group">
 									<!--dos-->
-									<label for="focusedinput" class="col-sm-2 control-label">Apellido Materno</label>
+									<label for="focusedinput" class="col-sm-2 control-label">Status</label>
 									<div class="col-sm-8">
 										<input type="text" class="form-control1" id="focusedinput" name="ap_m" pattern=".{1,}" required title="minimo 3 caracteres" maxlength="15">
-									</div>
-
-									<div class="col-sm-2 jlkdfj1">
-										<p class="help-block"></p>
-									</div>
-								</div>
-								<div class="form-group">
-									<!--dos-->
-									<label for="focusedinput" class="col-sm-2 control-label">Grupo</label>
-									<div class="col-sm-8">
-										<input type="text" class="form-control1" id="focusedinput" name="grupo" pattern=".{1,}" required title="minimo 3 caracteres" maxlength="15">
-									</div>
-
-									<div class="col-sm-2 jlkdfj1">
-										<p class="help-block"></p>
-									</div>
-								</div>
-								<div class="form-group">
-									<!--dos-->
-									<label for="focusedinput" class="col-sm-2 control-label">Carrera</label>
-									<div class="col-sm-8">
-
-										<select name="carrera" id="selector1" class="form-control1" pattern=".{1,}" required title="minimo 3 caracteres" maxlength="15">
-										<option value="1">Ingenieria en Sistemas Computacioneles</option>
-										<option value="2">Ingenieria  Industrial</option>
-										<option value="3">Ingenieria es Informatica</option>
-										<option value="4">Ingenieria en Electronica </option>
-										<option value="5">Ingenieria en Electromecanica</option>
-									    </select>
-
-									</div>
-
-									<div class="col-sm-2 jlkdfj1">
-										<p class="help-block"></p>
-									</div>
-
-								</div>
-                                <div class="form-group">
-									<!--dos-->
-									<label for="focusedinput" class="col-sm-2 control-label">Telefono</label>
-									<div class="col-sm-8">
-										<input type="text" class="form-control1" id="focusedinput"  name="telefono" pattern=".{1,}" required title="minimo 3 caracteres" maxlength="15">
-									</div>
-
-									<div class="col-sm-2 jlkdfj1">
-										<p class="help-block"></p>
-									</div>
-								</div>
-								<div class="form-group">
-									<!--dos-->
-									<label for="focusedinput" class="col-sm-2 control-label">Celular</label>
-									<div class="col-sm-8">
-										<input type="text" class="form-control1" id="focusedinput" name="telefono_cel" pattern=".{1,}" required title="minimo 3 caracteres" maxlength="15">
-									</div>
-
-									<div class="col-sm-2 jlkdfj1">
-										<p class="help-block"></p>
-									</div>
-								</div>
-								<div class="form-group">
-									<!--dos-->
-									<label for="focusedinput" class="col-sm-2 control-label">Semestre</label>
-									<div class="col-sm-8">
-										<select name="semestre" id="selector1" class="form-control1"
-										pattern=".{1,}" required title="minimo 3 caracteres" maxlength="15">
-										<option>Primero</option>
-										<option>Segundo</option>
-										<option>Tercero</option>
-										<option>Cuarto</option>
-										<option>Quinto</option>
-										<option>Sexto</option>
-										<option>Septimo</option>
-										<option>Octavo</option>
-										<option>Noveno</option>
-									    </select>
-									</div>
-
-									<div class="col-sm-2 jlkdfj1">
-										<p class="help-block"></p>
-									</div>
-								</div>
-								<div class="form-group">
-									<!--dos-->
-									<label for="focusedinput" class="col-sm-2 control-label">Correo</label>
-									<div class="col-sm-8">
-										<input type="text" class="form-control1" id="focusedinput" placeholder="ejemplo@tescha.com" name="correo" pattern=".{1,}" required title="minimo 3 caracteres" maxlength="15">
-									</div>
-
-									<div class="col-sm-2 jlkdfj1">
-										<p class="help-block"></p>
-									</div>
-								</div>
-								<div class="form-group">
-									<!--dos-->
-									<label for="focusedinput" class="col-sm-2 control-label">Sexo</label>
-									<div class="col-sm-8">
-										<div class="col-sm-8">
-										<select name="sexo" id="selector1" class="form-control1" pattern=".{1,}" required title="minimo 3 caracteres" maxlength="15">
-										<option>Masculino</option>
-										<option>Femenino</option>
-									    </select>
-									</div>
-									</div>
-
-									<div class="col-sm-2 jlkdfj1">
-										<p class="help-block"></p>
-									</div>
-								</div>
-								<div class="form-group">
-									<!--dos-->
-									<label for="focusedinput" class="col-sm-2 control-label">Contraseña</label>
-									<div class="col-sm-8">
-										<input type="text" class="form-control1" id="focusedinput"  name="contrasena" pattern=".{1,}" required title="minimo 3 caracteres" maxlength="15">
-									</div>
-
-									<div class="col-sm-2 jlkdfj1">
-										<p class="help-block"></p>
-									</div>
-								</div>
-								<div class="form-group">
-									<!--dos-->
-									<label for="focusedinput" class="col-sm-2 control-label">Confirmar Contraseña</label>
-									<div class="col-sm-8">
-										<input type="text" class="form-control1" id="focusedinput"  name="confirmar_contrasena" pattern=".{1,}" required title="minimo 3 caracteres" maxlength="15">
 									</div>
 
 									<div class="col-sm-2 jlkdfj1">
@@ -301,7 +186,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 
                                                                     <div class="row">
                                                                         <div class="col-sm-8 col-sm-offset-2">
-         <button type="submit" class="btn-success btn" onclick="agregarAlumnos()">Guardar</button>
+         <button type="submit" class="btn-success btn" onclick="agregarCoordinador()">Agregar Coordinador</button>
                                                                             
                                                                             <button class="btn-inverse btn">Reset</button>
                                                                         </div>
@@ -311,7 +196,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 
 				
 							</form>
-                                                    <button class="btn-default btn" onclick="regresarAlumnosInicio()">Cancelar</button>
+                                                    <button class="btn-default btn" onclick="regresarTutoresInicio()">Cancelar</button>
 						</div>
 					</div>
 					

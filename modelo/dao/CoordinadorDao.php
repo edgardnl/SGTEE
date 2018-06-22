@@ -74,7 +74,7 @@ class CoordinadorDao{
         return $pP;
     }
     
-    function eliminaDatosAlumnos($obj){
+    /*function eliminaDatosAlumnos($obj){
         $datosArray = array($obj->id);
         $pP = procesaParametros::PrepareStatement(AlumnosSql::eliminaDatosAlumnos(),$datosArray);
         $res ="";
@@ -86,7 +86,7 @@ class CoordinadorDao{
         
         return $res;
         
-    }
+    }*/
 
 
 

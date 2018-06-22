@@ -29,7 +29,7 @@ class CoordinadorRelacionVista{
                         <td>".$r->ap_p."</td>
                         <td>".$r->ap_m."</td>
                         <td>".$r->estatus."</td>
-                        <td><button class='btn-success btn' onclick='enviarCanaliza(".$r->id.")'>Asignar Tutor</button></td>
+                        <td><button class='btn-success btn' onclick='enviaridCoordinador(".$r->id.")'>Asignar Tutor</button></td>
                     </tr>";
             $rows = $rows.$row;
         }

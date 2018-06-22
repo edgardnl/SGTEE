@@ -28,9 +28,9 @@ class UsuariosDaoAlumnos {
         }
     }
     
-    function eliminaUsurioTutor($obj){
-        $datosArray = array($obj->clave);
-        $pP = procesaParametros::PrepareStatement(UsuariosSql::eliminaUsuarioTutor(),$datosArray);        
+    function eliminaUsurioAlumno($obj){
+        $datosArray = array($obj->matricula);
+        $pP = procesaParametros::PrepareStatement(UsuariosSqlAlumnos::eliminaUsuarioAlumnos(),$datosArray);        
         try {
             $this->con->query($pP);
         } catch (Exception $exc) {

@@ -46,7 +46,7 @@ function editarAlumnos() {
 
 }
 
-function eliminarAlumnos(){
+function eliminarCoordinador(){
     var r = confirm("Estas seguro de actualizar este registro");
     if (r == true) {
         var datos = "action=eliminarAlumno&" + $("#formEditAlumnos").serialize();

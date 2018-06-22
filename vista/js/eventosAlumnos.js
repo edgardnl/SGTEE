@@ -5,7 +5,7 @@ function enviarEditarAlumnos(id) {
     location.href = "EditarAlumnos.php?id=" + id;
 }
 
-function regresarTutoresInicio() {
+function regresarAlumnosInicio() {
 
     location.href = "Alumnos.php";
 }
@@ -18,10 +18,10 @@ function agregarAlumnos() {
     //$.post("../controlador/AgregarControl.php", datos, function (resp) {
         if (resp === "1") {
             alert("Registro Exitoso" + resp);
-            location.href = "#";
+            location.href = "Alumnos.php";
         } else {
             alert("No se realizo el registro" + resp);
-            location.href = "#";
+            location.href = "Alumnos.php";
         }
 
     });
@@ -52,10 +52,15 @@ function eliminarAlumnos(){
         alert(datos);
         $.post("../controlador/EliminarDatosAlumno.php", datos, function (data) {
             alert(data);
-            location.href = "Tutores.php";
+            location.href = "Alumnos.php";
         });
     } else if(r == false) {
         return false;
     }
+
 }
 
+function enviaridCoordinador(id){
+    alert(id);
+    location.href = "AgregarCoordindor.php?id=" + id;
+}
