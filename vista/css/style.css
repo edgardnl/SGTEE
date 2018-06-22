@@ -1057,7 +1057,7 @@ ul.nav li a span {
     left: 0;
     width: 200px;
     z-index: 100;
-    background: #8BC34A;
+    background: #2C8A28;
     border-bottom: 1px solid #303B4D;
     text-align: center;
     padding:0.55em 0 1em;
@@ -1803,7 +1803,7 @@ ul.dropdown-menu.drp-mnu li a i {
 	width:87%;
 }
 .user-name p{
-	font-size:14px;
+	font-size:18px;
 	color:#F44336;
 	line-height:1em;
 	font-weight:700;
