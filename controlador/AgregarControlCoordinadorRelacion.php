@@ -1,12 +1,17 @@
 <?php
 require_once "../ruta.php";
-require_once $_SERVER['DOCUMENT_ROOT'] . ruta::ruta . "/modelo/bo/AlumnosBo.php";
-require_once $_SERVER['DOCUMENT_ROOT'] . ruta::ruta . "/modelo/objetos/AlumnosObjeto.php";
-require_once $_SERVER['DOCUMENT_ROOT'] . ruta::ruta . "/modelo/objetos/UsuariosObjetoAlumnos.php";
+//require_once $_SERVER['DOCUMENT_ROOT'] . ruta::ruta . "/modelo/bo/AlumnosBo.php";
+//require_once $_SERVER['DOCUMENT_ROOT'] . ruta::ruta . "/modelo/objetos/AlumnosObjeto.php";
+//require_once $_SERVER['DOCUMENT_ROOT'] . ruta::ruta . "/modelo/objetos/UsuariosObjetoAlumnos.php";
+//coordinadora 
+require_once $_SERVER['DOCUMENT_ROOT'] . ruta::ruta . "/modelo/objetos/CoordinadorRelacionObjeto.php";
+require_once $_SERVER['DOCUMENT_ROOT'] . ruta::ruta . "/modelo/bo/CoordinadorRelacionBo.php";
+
 
 $bo = new ModuloRelacion_Alumno_Tutor();
 
-switch ($_REQUEST['action']) {#
+switch ($_REQUEST['action']) {
+    /*
     case 'agregarAlumnos':
         $obj = new AlumnosObjeto();
         $obj->matricula = $_POST['matricula'];
@@ -32,5 +37,20 @@ switch ($_REQUEST['action']) {#
         $res = $bo->agregaAlumnos($obj,$obj1);
         print $res;
         break;
+*/
+    case 'agregarCoordinador':
+        $obj = new CoordinadorRelacionObjeto();
+        $obj->id_alumno = $_POST['id_alumno'];
+        $obj->id_tutor= $_POST['id_tutor'];
+        $obj->aprobacion= $_POST['aprobacion'];
+        $obj->observacion = $_POST['observacion'];
+        //$obj->estatuss= $_POST['estatus'];
+        $obj->estatuss= 1;
+        //$obj->correo = $_POST['correo'];
+        $res = $bo->agregaCoordinador1($obj);
+        print $res;
+    break;
+
+
 }
 

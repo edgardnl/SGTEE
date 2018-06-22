@@ -45,7 +45,7 @@ class TutoresVista{
                 <label for='focusedinput' class='col-sm-2 control-label'>Tutores</label>
                 <div class='col-sm-8'>
 
-                    <select name='carrera' id='selector1' class='form-control1' pattern='.{1,}' required title='minimo 3 caracteres' maxlength='15'>";
+                    <select name='id_tutor' id='selector1' class='form-control1' pattern='.{1,}' required title='minimo 3 caracteres' maxlength='15'>";
         $opts = "";
         foreach ($data as $key) {
             $opt = "<option value='".$key->id."'>".$key->nombre_tutor."</option>";

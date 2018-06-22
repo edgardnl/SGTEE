@@ -13,5 +13,10 @@ class CoordinadorRelacionSql{
     ";
       return $query;
     } 
+
+    function InsertarRelacionCoordinador() {
+     $query = "INSERT INTO relacion_alumno_tutor(id_alumno,id_tutor,aprobacion,observacion,estatus) values(?,?,?,?,?);";
+        return $query;
+    }
 }
 ?>

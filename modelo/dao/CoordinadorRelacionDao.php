@@ -37,6 +37,20 @@ class CoordinadorRelacionDao {
         return $lista;
     }
 
+    function agregaCoordinador1($obj){
+        $datosArray = array($obj->id_alumno,$obj->id_tutor,$obj->aprobacion,$obj->observacion,$obj->estatuss);
+        $pP = procesaParametros::PrepareStatement(CoordinadorRelacionSql::InsertarRelacionCoordinador(),$datosArray);                   
+        try {
+            $this->con->query($pP);
+            $res = "1";
+        } catch (Exception $exc) {
+            $res = $exc->getTraceAsString();
+        }
+
+        return $res;
+        
+    }
+
 }
 
 ?>

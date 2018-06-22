@@ -64,3 +64,19 @@ function enviaridCoordinador(id){
     alert(id);
     location.href = "AgregarCoordindor.php?id=" + id;
 }
+
+function agregarCoordinador() {
+    var datos = "action=agregarCoordinador&" + $("#FormCoordinador").serialize();
+    alert(datos);
+    $.post("../controlador/AgregarControlCoordinadorRelacion.php", datos, function (resp) {
+    //$.post("../controlador/AgregarControl.php", datos, function (resp) {
+        if (resp === "1") {
+            alert("Registro Exitoso" + resp);
+            location.href = "#";
+        } else {
+            alert("No se realizo el registro" + resp);
+            location.href = "#";
+        }
+
+    });
+}

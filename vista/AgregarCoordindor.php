@@ -139,7 +139,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 									<!--inicio de los imput del formulario -->
 									<label for="focusedinput" class="col-sm-2 control-label">Alumno</label>
 									<div class="col-sm-8">
-  <input type="text" class="form-control1" id="focusedinput" name="matricula" pattern=".{1,}" required title="minimo 3 caracteres" maxlength="15" value="<?php print $id = $_GET['id']; ?>">
+  <input type="text" class="form-control1" id="focusedinput" name="id_alumno" pattern=".{1,}" required title="minimo 3 caracteres" maxlength="15" value="<?php print $id = $_GET['id']; ?>">
 									</div>
 
 									<div class="col-sm-2 jlkdfj1">
@@ -151,7 +151,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 									<!--inicio de los imput del formulario -->
 									<label for="focusedinput" class="col-sm-2 control-label">Aprobacion De Alumno</label>
 									<div class="col-sm-8">
-                                    <input type="text" class="form-control1" id="focusedinput" name="nombre" pattern=".{1,}" required title="minimo 3 caracteres" maxlength="15" >
+                                    <input type="text" class="form-control1" id="focusedinput" name="aprobacion" pattern=".{1,}" required title="minimo 3 caracteres" maxlength="15" >
 									</div>
 
 									<div class="col-sm-2 jlkdfj1">
@@ -162,7 +162,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 									<!--dos-->
 									<label for="focusedinput" class="col-sm-2 control-label">Observacion</label>
 									<div class="col-sm-8">
-										<input type="text" class="form-control1" id="focusedinput" name="ap_p" pattern=".{1,}" required title="minimo 3 caracteres" maxlength="15">
+										<input type="text" class="form-control1" id="focusedinput" name="observacion" pattern=".{1,}" required title="minimo 3 caracteres" maxlength="15">
 									</div>
 
 									<div class="col-sm-2 jlkdfj1">
@@ -173,7 +173,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 									<!--dos-->
 									<label for="focusedinput" class="col-sm-2 control-label">Status</label>
 									<div class="col-sm-8">
-										<input type="text" class="form-control1" id="focusedinput" name="ap_m" pattern=".{1,}" required title="minimo 3 caracteres" maxlength="15">
+										<input type="text" class="form-control1" id="focusedinput" name="estatus" pattern=".{1,}" required title="minimo 3 caracteres" maxlength="15">
 									</div>
 
 									<div class="col-sm-2 jlkdfj1">

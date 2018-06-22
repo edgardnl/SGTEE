@@ -41,6 +41,7 @@ class CoordinadorRelacionVista{
                         <td>".$r->ap_p."</td>
                         <td>".$r->ap_m."</td>
                         <td>".$r->estatus."</td>
+                        <td><button class='btn-success btn' onclick='enviaridCoordinador(".$r->id.")'>Editar</button></td>
                     </tr>";
             $rows = $rows.$row;
 

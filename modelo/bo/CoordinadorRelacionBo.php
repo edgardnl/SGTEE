@@ -21,6 +21,15 @@ class ModuloRelacion_Alumno_Tutor{
     	return $traervista;
 
     } 
+    
+    function agregaCoordinador1($obj){
+        try {
+            $this->dao->agregaCoordinador1($obj);
+        }catch (Exception $ex) {
+            $usu = $ex->getMessage();
+        }
+        return $usu;
+    }
 
 }
 
