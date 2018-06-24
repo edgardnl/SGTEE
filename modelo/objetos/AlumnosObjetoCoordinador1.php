@@ -16,4 +16,16 @@ class AlumnosObjetoCoordinador1{
     var $sexo;
     //Extra
     var $nombreAll;
+    var $estatus;
+    // Coordinaodor
+    var $id_relacion;
+    var $id_alumno;
+    var $id_tutor;
+    var $aprobacion;
+    var $observacion;
+    var $estatuss;
+
+
+
+
 }

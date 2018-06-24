@@ -11,41 +11,31 @@ class CoordinadorRelacionVista{
                         <tr>
                             <th>#</th>
                             <th>Matricula</th>
-                            <th>Nombre del Alumno</th>
-                            <th>Apellido Paterno</th>
-                            <th>apellido Maternos </th>
+                            <th>Nombre Del Alumno</th>
+                            <th>Clave tutor</th>
+                            <th>Nombre Del Tutor </th>
                             <th>Status</th>
-                            <th>llllll</th>
+                            <th>Eliminar</th>
+                            
                         </tr>
                     </thead>
                 <tbody>";
         $rows ="";
         foreach ($data as $r){
-        if($r->estatus == 0){
+        
             $row = "<tr>
                         <td scope='row'>".$r->id."</td>
                         <td>".$r->clave."</td>
-                        <td>".$r->nombre."</td>
-                        <td>".$r->ap_p."</td>
-                        <td>".$r->ap_m."</td>
+                        <td>".$r->nombre.",".$r->ap_p.",".$r->ap_m."</td>
+                        <td>".$r->clavet."</td>
+                        <td>".$r->nombret.",".$r->ap_pt.",".$r->ap_mt."</</td>
                         <td>".$r->estatus."</td>
-                        <td><button class='btn-success btn' onclick='enviaridCoordinador(".$r->id.")'>Asignar Tutor</button></td>
+                         <td><button class='btn-success btn' onclick='eliminarsinmvc(".$r->id.")'>Eliminar Relacion</button></td>
+                        
                     </tr>";
             $rows = $rows.$row;
-        }
-        else{
-            $row = "<tr>
-                        <td scope='row'>".$r->id."</td>
-                        <td>".$r->clave."</td>
-                        <td>".$r->nombre."</td>
-                        <td>".$r->ap_p."</td>
-                        <td>".$r->ap_m."</td>
-                        <td>".$r->estatus."</td>
-                        <td><button class='btn-success btn' onclick='enviaridCoordinador(".$r->id.")'>Editar</button></td>
-                    </tr>";
-            $rows = $rows.$row;
-
-        }
+        
+        
     }
         $fin = "</tbody>
                 </table>";

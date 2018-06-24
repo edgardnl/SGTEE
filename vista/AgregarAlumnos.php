@@ -275,6 +275,17 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 								</div>
 								<div class="form-group">
 									<!--dos-->
+									<label for="focusedinput" class="col-sm-2 control-label">Asignatura Adeudadas</label>
+									<div class="col-sm-8">
+										<input type="text" class="form-control1" id="focusedinput"  name="materias_adeudadas" pattern=".{1,}" required title="minimo 3 caracteres" maxlength="15">
+									</div>
+
+									<div class="col-sm-2 jlkdfj1">
+										<p class="help-block"></p>
+									</div>
+								</div>
+								<div class="form-group">
+									<!--dos-->
 									<label for="focusedinput" class="col-sm-2 control-label">Contraseña</label>
 									<div class="col-sm-8">
 										<input type="text" class="form-control1" id="focusedinput"  name="contrasena" pattern=".{1,}" required title="minimo 3 caracteres" maxlength="15">

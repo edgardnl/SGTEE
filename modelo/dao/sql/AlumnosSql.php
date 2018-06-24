@@ -18,7 +18,20 @@ class AlumnosSql {
     }
 
     function agregaAlumnossql() {
-        $query = "INSERT INTO alumno(matricula,nombre,ap_p,ap_m,grupo,carrera,telefono,telefono_cel,semestre,correo,sexo)values(?,?,?,?,?,?,?,?,?,?,?);";
+        $query = "INSERT INTO alumno(
+        matricula,
+        nombre,
+        ap_p,
+        ap_m,
+        grupo,
+        carrera,
+        telefono,
+        telefono_cel,
+        semestre,
+        correo,
+        sexo,
+        materias_adeudadas,
+        estatus)values(?,?,?,?,?,?,?,?,?,?,?,?,?);";
         return $query;
     }
 

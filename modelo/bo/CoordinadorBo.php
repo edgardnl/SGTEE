@@ -44,21 +44,25 @@ class ModuloCoordinador1 {
         }
         return $usu;
     }
-
-    function traeAlumnosPorId($id){
-        $usu = $this->dao->traeAlumnosPorId($id);
+    */
+    function traeCoordinadorPorId($id){
+        $usu = $this->dao->traeCoordinadorPorId($id);
         return $usu;
     }
     
-    function editaDatosAlumnos($obj){
-        $usu = $this->dao->editaDatosAlumnos($obj);
+    function editaDatosCoordinador($obj){
+        $usu = $this->dao->editaDatosCoordinador($obj);
         return $usu;
     }
-    
+    /*    
     function eliminaDatosAlumnos($obj){
         $usu = $this->dao->eliminaDatosAlumnos($obj);
         return $usu;
     }*/
+    function eliminaDatosCoordinador($obj){
+        $usu= $this->dao->eliminaDatosCoordinador($obj);
+        return $usu;
+    }
 
 }
 

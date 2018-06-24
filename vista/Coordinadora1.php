@@ -53,6 +53,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <script src="jquery/jquery.dataTables.js"></script>
 
 <script src="js/eventosCoordinador1.js"></script>
+<script src="js/eventosAlumnos.js"></script>
 
 <style>
     .flotante{
@@ -156,7 +157,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                            			
 				<div class="graphs">
 					
-                                    <h1 class="blank1">Coordinador Institucional</h1>
+                                    <h1 class="blank1">Asignar Tutor</h1>
                                         
                                     <!--<div class="form-group">
                                             <label for="focusedinput" class="col-sm-2 control-label">Buscar</label>

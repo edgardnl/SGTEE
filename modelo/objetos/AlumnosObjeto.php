@@ -14,6 +14,8 @@ class AlumnosObjeto{
     var $semestre;
     var $correo;
     var $sexo;
+    var $materias_adeudadas;
+    var $estatus;
     //Extra
     var $nombreAll;
 }

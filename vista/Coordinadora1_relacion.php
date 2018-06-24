@@ -155,10 +155,10 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                            			
 				<div class="graphs">
 					
-                                    <h1 class="blank1">Coordinador Institucional</h1>
+                                    <h1 class="blank1">Visualizacion de Alumno y Tutor</h1>
    
                                         <h6 class="blank" style="color: #F8F8F8">...</h6>
-                                        <h5 class="blank">Lista de Alumnos:</h5>
+                                        <h5 class="blank">Relacion:</h5>
                                         
 					 <div class="xs tabls">
                                             <div class="bs-example4" data-example-id="simple-responsive-table">

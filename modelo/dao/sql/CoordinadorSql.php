@@ -17,41 +17,27 @@ class CoordinadorSql {
         return $query;
     }
 
-    function agregaAlumnossql() {
-        $query = "INSERT INTO alumno(matricula,nombre,ap_p,ap_m,grupo,carrera,telefono,telefono_cel,semestre,correo,sexo)values(?,?,?,?,?,?,?,?,?,?,?);";
+    
+    
+    function traeCoordinadorPorId(){
+        $query = "SELECT * from relacion_alumno_tutor where id_relacion = ?;";
+        return $query;
+    }
+    
+    function editaDatosCoordinador($obj){
+        $query = "UPDATE relacion_alumno_tutor set id_alumno = '".$obj->id_alumno."'
+        , id_tutor = '".$obj->id_tutor."'
+        , aprobacion ='".$obj->aprobacion."'
+        , observacion = '".$obj->observacion."'
+        , estatus= '".$obj->estatuss."'
+         where id_alumno= ".$obj->id_alumno.";";
+        return $query;
+    }
+    
+    function eliminaDatosCoordinador(){
+        $query = "DELETE FROM relacion_alumno_tutor where id_relacion = ?;";
         return $query;
     }
 
-
-    function traeAlumnoPorClaveAlumnos(){
-        $query = "SELECT * FROM alumno WHERE matricuala = ? ;";
-        return $query;
-    }
-    
-    function traeAlumnosPorIdAlumnos(){
-        $query = "SELECT * FROM alumno WHERE id_alumno = ? ;";
-        return $query;
-    }
-    
-    function editaDatosAlumnoss($obj){
-        $query = "update alumno set matricula = '".$obj->matricula."'
-        , nombre = '".$obj->nombre."'
-        , ap_p = '".$obj->ap_p."'
-        , ap_m = '".$obj->ap_m."'
-        , grupo = '".$obj->grupo."'
-        , carrera = '".$obj->carrera."'
-        , telefono = '".$obj->telefono."'
-        , telefono_cel = '".$obj->telefono_cel."'
-        , semestre= '".$obj->semestre."'
-        , correo= '".$obj->correo."'
-        , sexo= '".$obj->sexo."'
-         where id_alumno = ".$obj->id.";";
-        return $query;
-    }
-    
-    function eliminaDatosAlumnos(){
-        $query = "delete from alumno where id_alumno = ?;";
-        return $query;# 
-    }
 }
 ?>

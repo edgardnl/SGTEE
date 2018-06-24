@@ -2,11 +2,16 @@
 require_once "../ruta.php";
 require_once $_SERVER['DOCUMENT_ROOT'] . ruta::ruta . "/modelo/bo/AlumnosBo.php";
 require_once $_SERVER['DOCUMENT_ROOT'] . ruta::ruta . "/modelo/objetos/AlumnosObjeto.php";
+
 require_once $_SERVER['DOCUMENT_ROOT'] . ruta::ruta . "/modelo/objetos/UsuariosObjetoAlumnos.php";
+
+
+
+
 
 $bo = new ModuloAlumnos();
 
-switch ($_REQUEST['action']) {#
+switch ($_REQUEST['action']) {
     case 'agregarAlumnos':
         $obj = new AlumnosObjeto();
         $obj->matricula = $_POST['matricula'];
@@ -20,6 +25,8 @@ switch ($_REQUEST['action']) {#
         $obj->semestre = $_POST['semestre'];
         $obj->correo = $_POST['correo'];
         $obj->sexo = $_POST['sexo'];
+        $obj->materias_adeudadas = $_POST['materias_adeudadas'];
+        $obj->estatus = 1;
 
 
         $obj1 = new UsuariosObjetoAlumnos();
@@ -32,5 +39,8 @@ switch ($_REQUEST['action']) {#
         $res = $bo->agregaAlumnos($obj,$obj1);
         print $res;
         break;
+
+    
+
 }
 

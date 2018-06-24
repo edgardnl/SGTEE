@@ -28,7 +28,7 @@ class ModuloRelacion_Alumno_Tutor{
         }catch (Exception $ex) {
             $usu = $ex->getMessage();
         }
-        return $usu;
+        //return $usu;
     }
 
 }

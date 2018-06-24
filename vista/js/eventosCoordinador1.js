@@ -29,22 +29,6 @@ function agregarCordinador() {
 }
 
 
-function editarAlumnos() {
-    
-    var r = confirm("Estas seguro de actualizar este registro");
-    if (r == true) {
-        var datos = "action=editarAlumnos&" + $("#formEditAlumnos").serialize();
-        alert(datos);
-        //$.post("../controlador/EditarDatosControl.php", datos, function (data) {
-        $.post("../controlador/EditarDatosControlAlumnos.php", datos, function (data) {
-            alert(data);
-            location.href = "Alumnos.php";
-        });
-    } else if(r == false) {
-        return false;
-    }
-
-}
 
 function eliminarCoordinador(){
     var r = confirm("Estas seguro de actualizar este registro");

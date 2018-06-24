@@ -66,7 +66,7 @@ class AlumnosDao {
         return $lista;
     }
      function agregaAlumnos($obj){
-        $datosArray = array($obj->matricula,$obj->nombre,$obj->ap_p,$obj->ap_m,$obj->grupo,$obj->carrera,$obj->telefono,$obj->telefono_cel,$obj->semestre,$obj->correo,$obj->sexo);
+        $datosArray = array($obj->matricula,$obj->nombre,$obj->ap_p,$obj->ap_m,$obj->grupo,$obj->carrera,$obj->telefono,$obj->telefono_cel,$obj->semestre,$obj->correo,$obj->sexo,$obj->materias_adeudadas,$obj->estatus);
         $pP = procesaParametros::PrepareStatement(AlumnosSql::agregaAlumnossql(),$datosArray);                
         
         try {

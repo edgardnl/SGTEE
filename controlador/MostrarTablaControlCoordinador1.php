@@ -13,11 +13,11 @@ class MostrarTablaControlCoordinador1 {
         print $alumnos;
 	}
 	
-	function mostrarDatosalumId($id){
+	function MostrarDatosCoordinadorId($id){
         $obj = new AlumnosObjetoCoordinador1();
         $obj->id = $id;
         $bo = new ModuloCoordinador1();
-        return $bo->traeAlumnosPorId($obj);
+        return $bo->traeCoordinadorPorId($obj);
     }
 
 }

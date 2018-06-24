@@ -19,7 +19,6 @@ class CoordinadorRelacionDao {
     }
 
     function TraerCoordinadorRelacion() {
-
         $pP = CoordinadorRelacionSql::traeCoordinadoraRelacion();
         $query = $this->con->query($pP);
         $lista =[];
@@ -31,7 +30,11 @@ class CoordinadorRelacionDao {
             $lista[$x]->nombre = $row['nombre'];
             $lista[$x]->ap_p = $row['ap_p'];
             $lista[$x]->ap_m = $row['ap_m']; 
-            $lista[$x]->estatus= $row['estatus'];          
+            $lista[$x]->clavet=$row['clave'];
+            $lista[$x]->nombret = $row['ta'];
+            $lista[$x]->ap_pt = $row['tp'];
+            $lista[$x]->ap_mt = $row['tm']; 
+            $lista[$x]->estatus= $row['est'];          
             $x++;
         }
         return $lista;
