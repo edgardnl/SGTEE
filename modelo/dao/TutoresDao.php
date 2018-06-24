@@ -35,7 +35,7 @@ class TutoresDao {
     }
     
     function agregaTutor($obj){
-        $datosArray = array($obj->clave,$obj->nombre,$obj->ap_p,$obj->ap_m,$obj->asignatura,$obj->horaio,$obj->correo);
+        $datosArray = array($obj->clave,$obj->nombre,$obj->ap_p,$obj->ap_m,$obj->asignatura,$obj->horaio,$obj->correo,$obj->telefono);
         $pP = procesaParametros::PrepareStatement(TutoresSql::agregaTutores(),$datosArray);                        
         
         try {
@@ -77,6 +77,7 @@ class TutoresDao {
         $obj->asignatura = $row['asignatura'];
         $obj->horaio = $row['horario'];
         $obj->correo = $row['correo'];
+        $obj->telefono = $row['telefono'];
         
         return $obj;
     }
@@ -116,6 +117,19 @@ class TutoresDao {
             $x++;
         }
         return $lista;
+    }
+
+    function buscarTutorClave($obj){
+        $datosArray = array($obj->clave);
+        $pP = procesaParametros::PrepareStatement(TutoresSql::buscarTutorClave(),$datosArray);        
+
+        $query = $this->con->query($pP);
+        $row = $query->fetch_array();
+        
+        $obj = new TutoresObjeto();
+        $obj->nclave = $row['nclave'];                        
+        
+        return $obj;
     }
 
 }

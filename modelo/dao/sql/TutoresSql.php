@@ -8,7 +8,7 @@ class TutoresSql {
     }
 
     function agregaTutores() {
-        $query = "insert into tutor(clave,nombre,ap_p,ap_m,asignatura,horario,correo) values(?,?,?,?,?,?,?);";
+        $query = "insert into tutor(clave,nombre,ap_p,ap_m,asignatura,horario,correo,telefono) values(?,?,?,?,?,?,?,?);";
         return $query;
     }
     
@@ -23,13 +23,18 @@ class TutoresSql {
     }
     
     function editaDatosTutor($obj){
-        $query = "update tutor set clave = '".$obj->clave."', nombre = '".$obj->nombre."', ap_p = '".$obj->ap_p."', ap_m = '".$obj->ap_m."', asignatura = '".$obj->asignatura."',horario = '".$obj->horaio."',correo = '".$obj->correo."' where id_tutores = ".$obj->id.";";
+        $query = "update tutor set clave = '".$obj->clave."', nombre = '".$obj->nombre."', ap_p = '".$obj->ap_p."', ap_m = '".$obj->ap_m."', asignatura = '".$obj->asignatura."',horario = '".$obj->horaio."',correo = '".$obj->correo."', telefono = '".$obj->telefono."' where id_tutores = ".$obj->id.";";
         return $query;
     }
     
     function eliminaDatosTutor(){
         $query = "delete from tutor where id_tutores = ?;";
         return $query;# 
+    }
+
+    function buscarTutorClave(){
+        $query = "SELECT COUNT(tutor.clave) as nclave FROM tutor WHERE tutor.clave = ?;";
+        return $query;#    
     }
 
 }

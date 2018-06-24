@@ -24,14 +24,19 @@ class ModuloTutores{
     }
     
     function agregaTutor($obj,$obj1){
-        $usu ="";
-        try {
-            $this->dao->agregaTutor($obj);
-            $this->daoUsu->ingresaUsuarioTutor($obj1);
-        } catch (Exception $ex) {
-            $usu = $ex->getMessage();
-        }
-        
+        $usu = 0;
+        $n = $this->dao->buscarTutorClave($obj);
+        if ($n->nclave > 0) {
+            $usu = 1;            
+        }else{
+            try {
+                $this->dao->agregaTutor($obj);
+                $this->daoUsu->ingresaUsuarioTutor($obj1);
+                $usu = 2;
+            } catch (Exception $ex) {
+                $usu = 3;//$ex->getMessage();
+            }
+        }                                
         return $usu;
     }
     
@@ -46,22 +51,27 @@ class ModuloTutores{
     }
     
     function editaDatosTutor($obj){
-        $usu = "";
+        $usu = 0;
+                    
         try {
             $this->dao->editaDatosTutor($obj);
+            $usu = 2;
         } catch (Exception $ex) {
-            $usu = $ex->getMessage();
+            $usu = 3;//$ex->getMessage();
         }
-        return $usu;
+                                        
+        return $usu;                
     }
     
     function eliminaDatosTutor($obj){
+        $usu = 0;
         try {
            $tuto = $this->dao->treTutorPorId($obj);
            $this->daoUsu->eliminaUsurioTutor($tuto);
            $this->dao->eliminaDatosTutor($obj);
+           $usu = 2;
         } catch (Exception $ex) {
-            $usu = $ex->getMessage();
+            $usu = 3;//$ex->getMessage();
         }
         
         return $usu;

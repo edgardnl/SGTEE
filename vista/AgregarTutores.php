@@ -41,6 +41,88 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <!-- Placed js at the end of the document so the pages load faster -->
 <script src="js/eventos.js"></script>
 
+<script type="text/javascript">
+	$(document).ready(function() {
+    	console.log( "ready!" );
+
+    	$("#agregar").click(function(){
+    		//alert("Hola");
+
+    		if ($("#clave").val() == "" || $("#nombre").val() == "" || $("#ap_p").val() == "" || $("#ap_m").val() == "" || $("#asignat").val() == "" || $("#correo").val() == "" || $("#horario").val() == "" || $("#pass").val() == "" || $("#pass1").val() == "" || $("#tel").val() == "") {
+    			alert("Algun campo esta vacio");
+    			return false;
+    		}
+
+    		if (!/^([0-9])*$/.test($("#clave").val())){
+      			alert("El campo Clave solo permiete numeros");
+      			return false;
+    		}
+
+    		if (!isNaN($("#nombre").val())) {
+    			alert("El campo Nombre solo permite letras");
+    			return false;
+    		}
+
+    		if (!isNaN($("#ap_p").val())) {
+    			alert("El campo Apellido Paterno solo permite letras");
+    			return false;
+    		}
+
+    		if (!isNaN($("#ap_m").val())) {
+    			alert("El campo Apellido Materno solo permite letras");
+    			return false;
+    		}
+
+    		if (!isNaN($("#asignat").val())) {
+    			alert("El campo Asignaturas solo permite letras");
+    			return false;
+    		}
+    		expr = /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
+    		if (!expr.test($("#correo").val())){
+      			alert("El correo no es valido");
+      			return false;
+    		}    		
+
+			if (!/^([0-9])*$/.test($("#tel").val())){
+      			alert("El campo Telefono solo permiete numeros");
+      			return false;
+    		}
+
+    		var n = $("#tel").val();
+    		//alert(n.length);
+    		if (n.length != 10) {    			
+    			alert("El telefono debe ser de 10 digitos");
+    			return false;
+    		}
+
+    		if ($("#pass").val() != $("#pass1").val()) {
+    			alert("Las contraseñas no son iguales");
+    			return false;
+    		}
+
+    		var datos = "action=agregarTutor&" + $("#FormTutores").serialize();
+		    alert(datos);
+		    $.post("../controlador/AgregarControl.php", datos, function(data) {
+		        console.log(data);
+		        //alert(data);
+		        if (data == 1) {
+		        	alert("Error la clave existe en le sistema");
+		        }else if (data == 2) {
+		        	alert("Registro exitoso");
+		        	window.location.href = "Tutores.php";
+		        }else if (data == 3) {
+		        	alert("Erro al realizar el registro");
+		        	window.location.href = "Tutores.php";
+		        }
+		        
+		        //$("#FormTutores").html(data);
+		    });
+    		    	
+    	});
+    	
+	});
+</script>
+
 </head> 
    
  <body class="sticky-header left-side-collapsed"  onload="initMap()">
@@ -123,7 +205,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 									<!--inicio de los imput del formulario -->
 									<label for="focusedinput" class="col-sm-2 control-label">Clave</label>
 									<div class="col-sm-8">
-                                                                            <input type="text" class="form-control1" id="focusedinput" placeholder="" name="clave">
+                                                                            <input type="text" class="form-control1" id="clave" placeholder="" name="clave">
 									</div>
 
 									<div class="col-sm-2 jlkdfj1">
@@ -134,7 +216,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 									<!--inicio de los imput del formulario -->
 									<label for="focusedinput" class="col-sm-2 control-label">Nombre</label>
 									<div class="col-sm-8">
-                                                                            <input type="text" class="form-control1" id="" placeholder="" name="nombre">
+                                                                            <input type="text" class="form-control1" id="nombre" placeholder="" name="nombre">
 									</div>
 
 									<div class="col-sm-2 jlkdfj1">
@@ -145,7 +227,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 									<!--dos-->
 									<label for="focusedinput" class="col-sm-2 control-label">Apellido Paternos</label>
 									<div class="col-sm-8">
-										<input type="text" class="form-control1" id="" placeholder="" name="ap_p">
+										<input type="text" class="form-control1" id="ap_p" placeholder="" name="ap_p">
 									</div>
 
 									<div class="col-sm-2 jlkdfj1">
@@ -156,7 +238,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 									<!--dos-->
 									<label for="focusedinput" class="col-sm-2 control-label">Apellido Materno</label>
 									<div class="col-sm-8">
-										<input type="text" class="form-control1" id="" placeholder="" name="ap_m">
+										<input type="text" class="form-control1" id="ap_m" placeholder="" name="ap_m">
 									</div>
 
 									<div class="col-sm-2 jlkdfj1">
@@ -167,7 +249,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 									<!--dos-->
 									<label for="focusedinput" class="col-sm-2 control-label">Asignaturas</label>
 									<div class="col-sm-8">
-										<input type="text" class="form-control1" id="" placeholder="" name="asignat">
+										<input type="text" class="form-control1" id="asignat" placeholder="" name="asignat">
 									</div>
 
 									<div class="col-sm-2 jlkdfj1">
@@ -176,9 +258,9 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 								</div>
 								<div class="form-group">
 									<!--dos-->
-									<label for="focusedinput" class="col-sm-2 control-label">Horario</label>
+									<label for="focusedinput" class="col-sm-2 control-label">Horario disponible</label>
 									<div class="col-sm-8">
-										<input type="text" class="form-control1" id="" placeholder="Horario disponible" name="horario">
+										<input type="text" class="form-control1" id="horario" placeholder="Ejemplo: 13:00 a 14:00" name="horario">
 									</div>
 
 									<div class="col-sm-2 jlkdfj1">
@@ -189,7 +271,18 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 									<!--dos-->
 									<label for="focusedinput" class="col-sm-2 control-label">Correo</label>
 									<div class="col-sm-8">
-										<input type="text" class="form-control1" id="" placeholder="ejemplo@tescha.com" name="correo">
+										<input type="text" class="form-control1" id="correo" placeholder="ejemplo@tescha.com" name="correo">
+									</div>
+
+									<div class="col-sm-2 jlkdfj1">
+										<p class="help-block"></p>
+									</div>
+								</div>
+								<div class="form-group">
+									<!--dos-->
+									<label for="focusedinput" class="col-sm-2 control-label">Telefono</label>
+									<div class="col-sm-8">
+										<input type="text" class="form-control1" id="tel" placeholder="" name="tel">
 									</div>
 
 									<div class="col-sm-2 jlkdfj1">
@@ -200,7 +293,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 									<!--dos-->
 									<label for="focusedinput" class="col-sm-2 control-label">Contraseña</label>
 									<div class="col-sm-8">
-                                                                            <input type="password" class="form-control1" id="" placeholder="" name="pass">
+                                                                            <input type="password" class="form-control1" id="pass" placeholder="" name="pass">
 									</div>
 
 									<div class="col-sm-2 jlkdfj1">
@@ -211,29 +304,28 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 									<!--dos-->
 									<label for="focusedinput" class="col-sm-2 control-label">Confirma contraseña</label>
 									<div class="col-sm-8">
-                                                                            <input type="password" class="form-control1" id="" placeholder="" name="pass1">
+                                                                            <input type="password" class="form-control1" id="pass1" placeholder="" name="pass1">
 									</div>
 
 									<div class="col-sm-2 jlkdfj1">
 										<p class="help-block"></p>
 									</div>
-								</div>
-								
-								<div class="panel-footer">
-
-                                                                    <div class="row">
-                                                                        <div class="col-sm-8 col-sm-offset-2">
-                                                                            <button class="btn-success btn" onclick="agregarTutores()">Guardar</button>
-                                                                            
-                                                                            <button class="btn-inverse btn">Reset</button>
-                                                                        </div>
-                                                                    </div>
-                                                                    
-                                                                </div>
+								</div>																
 
 				
 							</form>
-                                                    <button class="btn-default btn" onclick="regresarTutoresInicio()">Cancelar</button>
+							<div class="panel-footer">
+
+	                                <div class="row">
+	                                    <div class="col-sm-8 col-sm-offset-2">
+	                                        <!--<button class="btn-success btn" onclick="agregarTutores()">Guardar</button>-->
+	                                        <button class="btn-success btn" id="agregar">Guardar</button>                                        	                                        
+	                                        <button class="btn-default btn" onclick="regresarTutoresInicio()">Cancelar</button>
+	                                    </div>
+	                                </div>
+	                                
+	                            </div>
+                                                    
 						</div>
 					</div>
 					

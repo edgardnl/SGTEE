@@ -48,6 +48,105 @@ License URL: http://creativecommons.org/licenses/by/3.0/
         <!-- Placed js at the end of the document so the pages load faster -->
         <script src="js/eventos.js"></script>
 
+        <script type="text/javascript">
+            $(document).ready(function() {
+                console.log( "ready!" );
+
+                $("#editar").click(function(){
+                    //alert("Hola");
+
+                    if ($("#clav").val() == "" || $("#nom").val() == "" || $("#apa").val() == "" || $("#ama").val() == "" || $("#asig").val() == "" || $("#correo").val() == "" || $("#hori").val() == "" || $("#tel").val() == "") {
+                        alert("Algun campo esta vacio");
+                        return false;
+                    }
+
+                    if (!/^([0-9])*$/.test($("#clav").val())){
+                        alert("El campo Clave solo permiete numeros");
+                        return false;
+                    }
+
+                    if (!isNaN($("#nom").val())) {
+                        alert("El campo Nombre solo permite letras");
+                        return false;
+                    }
+
+                    if (!isNaN($("#apa").val())) {
+                        alert("El campo Apellido Paterno solo permite letras");
+                        return false;
+                    }
+
+                    if (!isNaN($("#ama").val())) {
+                        alert("El campo Apellido Materno solo permite letras");
+                        return false;
+                    }
+
+                    if (!isNaN($("#asig").val())) {
+                        alert("El campo Asignaturas solo permite letras");
+                        return false;
+                    }
+                    expr = /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
+                    if (!expr.test($("#correo").val())){
+                        alert("El correo no es valido");
+                        return false;
+                    }           
+
+                    if (!/^([0-9])*$/.test($("#tel").val())){
+                        alert("El campo Telefono solo permiete numeros");
+                        return false;
+                    }
+
+                    var n = $("#tel").val();
+                    //alert(n.length);
+                    if (n.length != 10) {               
+                        alert("El telefono debe ser de 10 digitos");
+                        return false;
+                    }                    
+
+                    var r = confirm("Estas seguro de actualizar este registro");
+                    if (r == true) {
+                        var datos = "action=editarTutor&" + $("#formEdit").serialize();
+                        alert(datos);
+                        $.post("../controlador/EditarDatosControl.php", datos, function (data) {
+                           if (data == 1) {
+                                alert("Error la clave existe en le sistema");
+                            }else if (data == 2) {
+                                alert("Actualizacion exitosa");
+                                window.location.href = "Tutores.php";
+                            }else if (data == 3) {
+                                alert("Error al realizar la accion");
+                                window.location.href = "Tutores.php";
+                            }
+                        });
+                    } else if(r == false) {
+                        return false;
+                    }
+                            
+                });
+
+                $("#eliminar").click(function(){
+                    var r = confirm("Estas seguro de eliminar este registro");
+                    if (r == true) {
+                        var datos = "action=eliminarTutor&" + $("#formEdit").serialize();
+                        alert(datos);
+                        $.post("../controlador/EliminarDatos.php", datos, function (data) {
+                            if (data == 1) {
+                                alert("Error la clave existe en le sistema");
+                            }else if (data == 2) {
+                                alert("Eliminacion exitosa");
+                                window.location.href = "Tutores.php";
+                            }else if (data == 3) {
+                                alert("Error al realizar la accion");
+                                window.location.href = "Tutores.php";
+                            }
+                        });
+                    } else if(r == false) {
+                        return false;
+                    }
+                });
+                
+            });
+        </script>
+
     </head> 
 
     <body class="sticky-header left-side-collapsed"  onload="initMap()">
@@ -129,7 +228,7 @@ new UISearch(document.getElementById('sb-search'));
                                         <input type="hidden" class="form-control1" id="focusedinput" placeholder="" value="<?php print $objT->id; ?>" name="id">
                                         <label for="focusedinput" class="col-sm-2 control-label">Clave</label>
                                         <div class="col-sm-8">
-                                            <input type="text" class="form-control1" id="focusedinput" placeholder="" value="<?php print $objT->clave; ?>" name="clav">
+                                            <input type="text" class="form-control1" id="clav" placeholder="" value="<?php print $objT->clave; ?>" name="clav">
                                         </div>
 
                                         <div class="col-sm-2 jlkdfj1">
@@ -140,7 +239,7 @@ new UISearch(document.getElementById('sb-search'));
                                         <!--inicio de los imput del formulario -->
                                         <label for="focusedinput" class="col-sm-2 control-label">Nombre</label>
                                         <div class="col-sm-8">
-                                            <input type="text" class="form-control1" id="focusedinput" placeholder="" value="<?php print $objT->nombre; ?>" name="nom">
+                                            <input type="text" class="form-control1" id="nom" placeholder="" value="<?php print $objT->nombre; ?>" name="nom">
                                         </div>
 
                                         <div class="col-sm-2 jlkdfj1">
@@ -151,7 +250,7 @@ new UISearch(document.getElementById('sb-search'));
                                         <!--dos-->
                                         <label for="focusedinput" class="col-sm-2 control-label">Apellido Paternos</label>
                                         <div class="col-sm-8">
-                                            <input type="text" class="form-control1" id="focusedinput" placeholder="" value="<?php print $objT->ap_p; ?>" name="apa">
+                                            <input type="text" class="form-control1" id="apa" placeholder="" value="<?php print $objT->ap_p; ?>" name="apa">
                                         </div>
 
                                         <div class="col-sm-2 jlkdfj1">
@@ -162,7 +261,7 @@ new UISearch(document.getElementById('sb-search'));
                                         <!--dos-->
                                         <label for="focusedinput" class="col-sm-2 control-label">Apellido Materno</label>
                                         <div class="col-sm-8">
-                                            <input type="text" class="form-control1" id="focusedinput" placeholder="" value="<?php print $objT->ap_m; ?>" name="ama">
+                                            <input type="text" class="form-control1" id="ama" placeholder="" value="<?php print $objT->ap_m; ?>" name="ama">
                                         </div>
 
                                         <div class="col-sm-2 jlkdfj1">
@@ -173,7 +272,7 @@ new UISearch(document.getElementById('sb-search'));
                                         <!--dos-->
                                         <label for="focusedinput" class="col-sm-2 control-label">Asignaturas</label>
                                         <div class="col-sm-8">
-                                            <input type="text" class="form-control1" id="focusedinput" value="<?php print $objT->asignatura; ?>" name="asig">
+                                            <input type="text" class="form-control1" id="asig" value="<?php print $objT->asignatura; ?>" name="asig">
                                         </div>
 
                                         <div class="col-sm-2 jlkdfj1">
@@ -184,7 +283,7 @@ new UISearch(document.getElementById('sb-search'));
                                         <!--dos-->
                                         <label for="focusedinput" class="col-sm-2 control-label">Horario</label>
                                         <div class="col-sm-8">
-                                            <input type="text" class="form-control1" id="focusedinput" placeholder="Horario disponible" value="<?php print $objT->horaio; ?>" name="hori">
+                                            <input type="text" class="form-control1" id="hori" placeholder="Horario disponible" value="<?php print $objT->horaio; ?>" name="hori">
                                         </div>
 
                                         <div class="col-sm-2 jlkdfj1">
@@ -195,29 +294,39 @@ new UISearch(document.getElementById('sb-search'));
                                         <!--dos-->
                                         <label for="focusedinput" class="col-sm-2 control-label">Correo</label>
                                         <div class="col-sm-8">
-                                            <input type="text" class="form-control1" id="focusedinput" placeholder="Horario disponible" value="<?php print $objT->correo; ?>" name="correo">
+                                            <input type="text" class="form-control1" id="correo" placeholder="Horario disponible" value="<?php print $objT->correo; ?>" name="correo">
                                         </div>
 
                                         <div class="col-sm-2 jlkdfj1">
                                             <p class="help-block"></p>
                                         </div>
-                                    </div>
-
-                                    <div class="panel-footer">
-
-                                        <div class="row">
-                                            <div class="col-sm-8 col-sm-offset-2">
-                                                <button class="btn-success btn" onclick="editarTutores()">Actualizar</button>
-                                                <button class="btn-danger btn" onclick="eliminarTutor()">Eliminar</button>                                                
-                                                <button class="btn-warning btn" onclick="eliminarTutor()">Contraseña</button>                                                
-                                            </div>
+                                    </div>                                    
+                                    <div class="form-group">
+                                        <!--dos-->
+                                        <label for="focusedinput" class="col-sm-2 control-label">Telefono</label>
+                                        <div class="col-sm-8">
+                                            <input type="text" class="form-control1" id="tel" placeholder="" value="<?php print $objT->telefono; ?>" name="tel">
                                         </div>
 
-                                    </div>
-
+                                        <div class="col-sm-2 jlkdfj1">
+                                            <p class="help-block"></p>
+                                        </div>
+                                    </div>                                    
 
                                 </form>
-                                <button class="btn-default btn" onclick="regresarTutoresInicio()">Cancelar</button>
+                                <div class="panel-footer">
+
+                                    <div class="row">
+                                        <div class="col-sm-8 col-sm-offset-2">
+                                            <button class="btn-success btn" onclick="" id="editar">Actualizar</button>
+                                            <button class="btn-danger btn" onclick="" id="eliminar" >Eliminar</button>
+                                            <button class="btn-warning btn" onclick="">Contraseña</button>
+                                            <button class="btn-default btn" onclick="regresarTutoresInicio()">Cancelar</button>                                                
+                                        </div>
+                                    </div>
+
+                                </div>
+                                
                             </div>
                         </div>
 

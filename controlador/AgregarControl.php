@@ -22,7 +22,7 @@ switch ($_REQUEST['action']) {#$_REQUEST['action']
         $obj->asignatura = $_POST['asignat'];
         $obj->horaio = $_POST['horario'];
         $obj->correo = $_POST['correo'];
-        
+        $obj->telefono = $_POST['tel'];
         $obj1 = new UsuariosObjeto();
         $obj1->matricula = $_POST['clave'];
         //$obj1->correo = $_POST['correo'];

@@ -11,6 +11,7 @@ switch ($_REQUEST['action']) {#$_REQUEST['action']
         $obj = new TutoresObjeto();
         $obj->id = $_POST['id'];#                
         $res = $bo->eliminaDatosTutor($obj);
-        header("Location:Tutores.php");
+        //header("Location:Tutores.php");
+        print $res;
         break;
 }
