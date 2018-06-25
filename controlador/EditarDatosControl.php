@@ -10,7 +10,7 @@ switch ($_REQUEST['action']) {#$_REQUEST['action']
     case 'editarTutor':
         $obj = new TutoresObjeto();
         $obj->id = $_POST['id'];#
-        $obj->clave = $_POST['clav'];
+        //$obj->clave = $_POST['clav'];
         $obj->nombre = $_POST['nom'];
         $obj->ap_p = $_POST['apa'];
         $obj->ap_m = $_POST['ama'];

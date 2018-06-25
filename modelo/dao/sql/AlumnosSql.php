@@ -47,8 +47,7 @@ class AlumnosSql {
     }
     
     function editaDatosAlumnoss($obj){
-        $query = "update alumno set matricula = '".$obj->matricula."'
-        , nombre = '".$obj->nombre."'
+        $query = "update alumno set nombre = '".$obj->nombre."'
         , ap_p = '".$obj->ap_p."'
         , ap_m = '".$obj->ap_m."'
         , grupo = '".$obj->grupo."'
@@ -65,6 +64,11 @@ class AlumnosSql {
     function eliminaDatosAlumnos(){
         $query = "delete from alumno where id_alumno = ?;";
         return $query;# 
+    }
+
+    function cosultaMatricula(){
+        $query = "SELECT COUNT(alumno.matricula) as nMatricula FROM alumno WHERE alumno.matricula = ? ;";
+        return $query;#    
     }
 }
 ?>

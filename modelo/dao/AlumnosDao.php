@@ -70,13 +70,10 @@ class AlumnosDao {
         $pP = procesaParametros::PrepareStatement(AlumnosSql::agregaAlumnossql(),$datosArray);                
         
         try {
-            $this->con->query($pP);
-            $res = "1";
+            $this->con->query($pP);            
         } catch (Exception $exc) {
-            $res = $exc->getTraceAsString();
-        }
-
-        return $res;
+            print $exc->getTraceAsString();
+        }        
         
     }
 
@@ -111,26 +108,33 @@ class AlumnosDao {
         
         try {
             $this->con->query($pP);
-            $res = "1";
+            
         } catch (Exception $exc) {
-            $res = $exc->getTraceAsString();
-        }
-
-        return $pP;
+            print $exc->getMessage();
+        }        
     }
     
     function eliminaDatosAlumnos($obj){
         $datosArray = array($obj->id);
         $pP = procesaParametros::PrepareStatement(AlumnosSql::eliminaDatosAlumnos(),$datosArray);
-        $res ="";
+        
         try {
             $this->con->query($pP);
         } catch (Exception $exc) {
-            $res = $exc->getTraceAsString();
-        }
+            print $exc->getMessage();
+        }            
         
-        return $res;
-        
+    }
+
+    function consultaMatricula($obj){
+        $usuarioArray = array($obj->matricula);
+        $pP = procesaParametros::PrepareStatement(AlumnosSql::cosultaMatricula(), $usuarioArray);
+        $query = $this->con->query($pP);
+        $row = $query->fetch_array();
+        $usu = new AlumnosObjeto();
+        $usu->nMatricula = $row['nMatricula'];        
+
+        return $usu;
     }
 
 

@@ -18,4 +18,5 @@ class AlumnosObjeto{
     var $estatus;
     //Extra
     var $nombreAll;
+    var $nMatricula;
 }

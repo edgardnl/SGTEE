@@ -48,6 +48,130 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <!-- Placed js at the end of the document so the pages load faster -->
 <script src="js/eventosAlumnos.js"></script>
 
+<script type="text/javascript">
+	$(document).ready(function() {
+        console.log( "ready!" );
+
+        $("#actualiza").click(function(){
+            //alert("Hola");
+
+            if ($("#matricula").val() == "" || $("#nombre").val() == "" || $("#ap_p").val() == "" || $("#ap_m").val() == "" || $("#grupo").val() == "" || $("#telefono").val() == "" || $("#telefono_cel").val() == "" || $("#correo").val() == "" || $("#materias_adeudadas").val() == "" || $("#carrera").val() == "" || $("#semestre").val() == "" || $("#sexo").val() == "") {
+    			alert("Algun campo esta vacio");
+    			return false;
+    		}
+
+    		/*if ($("#carrera").val() == "0" || $("#semestre").val() == "0" || $("#sexo").val() == "0") {
+    			alert("Debes seleccionar alguna opcion");
+    			return false;
+    		}*/
+
+    		if (!/^([0-9])*$/.test($("#matricula").val())){
+      			alert("El campo Clave solo permiete numeros");
+      			return false;
+    		}
+
+    		if (!isNaN($("#nombre").val())) {
+    			alert("El campo Nombre solo permite letras");
+    			return false;
+    		}
+
+    		if (!isNaN($("#ap_p").val())) {
+    			alert("El campo Apellido Paterno solo permite letras");
+    			return false;
+    		}
+
+    		if (!isNaN($("#ap_m").val())) {
+    			alert("El campo Apellido Materno solo permite letras");
+    			return false;
+    		}
+
+    		if (!isNaN($("#materias_adeudadas").val())) {
+    			alert("El campo Asignatura Adeudadas solo permite letras");
+    			return false;
+    		}
+
+    		expr = /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
+    		if (!expr.test($("#correo").val())){
+      			alert("El correo no es valido");
+      			return false;
+    		}    		
+
+    		if (!/^([0-9])*$/.test($("#grupo").val())){
+      			alert("El campo Grupo solo permiete numeros");
+      			return false;
+    		}
+
+			if (!/^([0-9])*$/.test($("#telefono").val())){
+      			alert("El campo Telefono solo permiete numeros");
+      			return false;
+    		}
+
+    		if (!/^([0-9])*$/.test($("#telefono_cel").val())){
+      			alert("El campo Telefono Celular solo permiete numeros");
+      			return false;
+    		}
+
+    		var n = $("#telefono").val();
+    		//alert(n.length);
+    		if (n.length != 10) {    			
+    			alert("El telefono debe ser de 10 digitos");
+    			return false;
+    		}
+
+    		var nc = $("#telefono_cel").val();
+    		//alert(n.length);
+    		if (nc.length != 10) {    			
+    			alert("El Telefono Celular debe ser de 10 digitos");
+    			return false;
+    		}
+
+    		var r = confirm("Estas seguro de actualizar este registro");
+		    if (r == true) {
+		        var datos = "action=editarAlumnos&" + $("#formEditAlumnos").serialize();
+		        alert(datos);
+		        //$.post("../controlador/EditarDatosControl.php", datos, function (data) {
+		        $.post("../controlador/EditarDatosControlAlumnos.php", datos, function (data) {
+		           	console.log(data);
+		        //alert(data);
+			        if (data == 1) {
+			        	alert("Error la matricula existe en le sistema");
+			        }else if (data == 2) {
+			        	alert("Actualizacion exitosa");
+			        	window.location.href = "Alumnos.php";
+			        }else if (data == 3) {
+			        	alert("Error al realizar al actualizar");
+			        	window.location.href = "Alumnos.php";
+			        }
+		        });
+		    } else if(r == false) {
+		        return false;
+		    }    		    		                
+        });
+
+        $("#eliminar").click(function(){
+        	var r = confirm("Estas seguro de eliminar este registro");
+		    	if (r == true) {
+		        var datos = "action=eliminarAlumno&" + $("#formEditAlumnos").serialize();
+		        alert(datos);
+		        $.post("../controlador/EliminarDatosAlumno.php", datos, function (data) {
+		            if (data == 1) {
+                        alert("Error la clave existe en le sistema");
+                    }else if (data == 2) {
+                        alert("Eliminacion exitosa");
+                        window.location.href = "Alumnos.php";
+                    }else if (data == 3) {
+                        alert("Error al realizar la accion");
+                        window.location.href = "Alumnos.php";
+                    }
+		        });
+		    } else if(r == false) {
+		        return false;
+		    }
+        });
+        
+    });
+</script>
+	
 </head> 
    
  <body class="sticky-header left-side-collapsed"  onload="initMap()">
@@ -128,10 +252,10 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                 <form class="form-horizontal" name="formEditAlumnos" id="formEditAlumnos">
 					<div class="form-group">
 									<!--inicio de los imput del formulario -->
-                 <input type="hidden" class="form-control1" id="focusedinput" placeholder="" value="<?php print $obj->id; ?>" name="id_alumno">
+                 			<input type="hidden" class="form-control1" id="id_alumno" placeholder="" value="<?php print $obj->id; ?>" name="id_alumno">
 							<label for="focusedinput" class="col-sm-2 control-label">Matricula</label>
 						<div class="col-sm-8">
-       <input type="text" class="form-control1" id="focusedinput" value="<?php print $obj->matricula; ?>" name="matricula">
+       							<input disabled="" type="text" class="form-control1" id="matricula" value="<?php print $obj->matricula; ?>" name ="matricula">
 									</div>
 
 									<div class="col-sm-2 jlkdfj1">
@@ -142,7 +266,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 									<!--inicio de los imput del formulario -->
 									<label for="focusedinput" class="col-sm-2 control-label">Nombre</label>
 									<div class="col-sm-8">
-                              <input type="text" class="form-control1" id="focusedinput" placeholder="" value="<?php print $obj->nombre; ?>" name="nombre">
+                              <input type="text" class="form-control1" id="nombre" placeholder="" value="<?php print $obj->nombre; ?>" name="nombre">
 									</div>
 
 									<div class="col-sm-2 jlkdfj1">
@@ -153,7 +277,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 									<!--dos-->
 									<label for="focusedinput" class="col-sm-2 control-label">Apellido Paternos</label>
 									<div class="col-sm-8">
-                              <input type="text" class="form-control1" id="focusedinput" placeholder="" value="<?php print $obj->ap_p; ?>" name="ap_p">
+                              <input type="text" class="form-control1" id="ap_p" placeholder="" value="<?php print $obj->ap_p; ?>" name="ap_p">
 									</div>
 
 									<div class="col-sm-2 jlkdfj1">
@@ -164,7 +288,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 									<!--dos-->
 									<label for="focusedinput" class="col-sm-2 control-label">Apellido Materno</label>
 									<div class="col-sm-8">
-        <input type="text" class="form-control1" id="focusedinput" placeholder="" value="<?php print $obj->ap_m; ?>" name="ap_m">
+        <input type="text" class="form-control1" id="ap_m" placeholder="" value="<?php print $obj->ap_m; ?>" name="ap_m">
 									</div>
 
 									<div class="col-sm-2 jlkdfj1">
@@ -175,7 +299,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 									<!--dos-->
 									<label for="focusedinput" class="col-sm-2 control-label">Grupo</label>
 									<div class="col-sm-8">
-              <input type="text" class="form-control1" id="focusedinput" placeholder="" value="<?php print $obj->grupo; ?>" name="grupo">
+              <input type="text" class="form-control1" id="grupo" placeholder="" value="<?php print $obj->grupo; ?>" name="grupo">
 									</div>
 
 									<div class="col-sm-2 jlkdfj1">
@@ -186,7 +310,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 									<!--dos-->
 									<label for="focusedinput" class="col-sm-2 control-label">Carrera</label>
 									<div class="col-sm-8">
-   <input type="text" class="form-control1" id="focusedinput" placeholder="Horario disponible" value="<?php print $obj->carrera; ?>" name="carrera">
+   <input type="text" class="form-control1" id="carrera" placeholder="Horario disponible" value="<?php print $obj->carrera; ?>" name="carrera">
 									</div>
 
 									<div class="col-sm-2 jlkdfj1">
@@ -197,7 +321,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 									<!--dos-->
 									<label for="focusedinput" class="col-sm-2 control-label">Telefono</label>
 									<div class="col-sm-8">
-   <input type="text" class="form-control1" id="focusedinput" placeholder="Horario disponible" value="<?php print $obj->telefono; ?>" name="telefono">
+   <input type="text" class="form-control1" id="telefono" placeholder="" value="<?php print $obj->telefono; ?>" name="telefono">
 									</div>
 
 									<div class="col-sm-2 jlkdfj1">
@@ -208,7 +332,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 									<!--dos-->
 									<label for="focusedinput" class="col-sm-2 control-label">Celular</label>
 									<div class="col-sm-8">
-   <input type="text" class="form-control1" id="focusedinput" placeholder="Horario disponible" value="<?php print $obj->telefono_cel; ?>" name="telefono_cel">
+   <input type="text" class="form-control1" id="telefono_cel" placeholder="" value="<?php print $obj->telefono_cel; ?>" name="telefono_cel">
 									</div>
 
 									<div class="col-sm-2 jlkdfj1">
@@ -219,7 +343,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 									<!--dos-->
 									<label for="focusedinput" class="col-sm-2 control-label">Semestre</label>
 									<div class="col-sm-8">
-   <input type="text" class="form-control1" id="focusedinput" placeholder="Horario disponible" value="<?php print $obj->semestre; ?>" name="semestre">
+   <input type="text" class="form-control1" id="semestre" placeholder="" value="<?php print $obj->semestre; ?>" name="semestre">
 									</div>
 
 									<div class="col-sm-2 jlkdfj1">
@@ -230,7 +354,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 									<!--dos-->
 									<label for="focusedinput" class="col-sm-2 control-label">Correo</label>
 									<div class="col-sm-8">
-   <input type="text" class="form-control1" id="focusedinput" placeholder="Horario disponible" value="<?php print $obj->correo; ?>" name="correo">
+   <input type="text" class="form-control1" id="correo" placeholder="" value="<?php print $obj->correo; ?>" name="correo">
 									</div>
 
 									<div class="col-sm-2 jlkdfj1">
@@ -241,30 +365,27 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 									<!--dos-->
 									<label for="focusedinput" class="col-sm-2 control-label">Sexo</label>
 									<div class="col-sm-8">
-   <input type="text" class="form-control1" id="focusedinput" placeholder="Horario disponible" value="<?php print $obj->sexo; ?>" name="sexo">
+   <input type="text" class="form-control1" id="sexo" placeholder="" value="<?php print $obj->sexo; ?>" name="sexo">
 									</div>
 
 									<div class="col-sm-2 jlkdfj1">
 										<p class="help-block"></p>
 									</div>
 								</div>
-								
-								
-								<div class="panel-footer">
-
-                   <div class="row">
-                        <div class="col-sm-8 col-sm-offset-2">
-                            <button class="btn-success btn" onclick="editarAlumnos()">Actualizar</button>
-                            <button class="btn-success btn" onclick="eliminarAlumnos()">Eliminar</button>
-                            <button class="btn-inverse btn">Reset</button>
-                        </div>
-                    </div>
-                                                                    
-                </div>
-
-				
+																								
 							</form>
-                                                    <button class="btn-default btn" onclick="regresarTutoresInicio()">Cancelar</button>
+							<div class="panel-footer">
+
+			                   <div class="row">
+			                        <div class="col-sm-8 col-sm-offset-2">
+			                            <button class="btn-success btn" onclick="" id="actualiza" >Actualizar</button>
+			                            <button class="btn-danger btn" onclick="" id="eliminar">Eliminar</button>
+										<button class="btn-default btn" onclick="regresarAlumnosInicio()">Cancelar</button>                            
+			                        </div>
+			                    </div>
+			                                                                    
+			                </div>
+                                                    
 						</div>
 					</div>
 					

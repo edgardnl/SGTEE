@@ -4,7 +4,7 @@ require_once $_SERVER['DOCUMENT_ROOT'] . ruta::ruta . "/modelo/bo/AlumnosBo.php"
 require_once $_SERVER['DOCUMENT_ROOT'] . ruta::ruta . "/modelo/objetos/AlumnosObjeto.php";
 
 require_once $_SERVER['DOCUMENT_ROOT'] . ruta::ruta . "/modelo/objetos/UsuariosObjetoAlumnos.php";
-
+require_once $_SERVER['DOCUMENT_ROOT'] . ruta::ruta . "/controlador/EspecialControl.php";
 
 
 
@@ -28,11 +28,11 @@ switch ($_REQUEST['action']) {
         $obj->materias_adeudadas = $_POST['materias_adeudadas'];
         $obj->estatus = 1;
 
-
+        $especial = new EspecialControl();
         $obj1 = new UsuariosObjetoAlumnos();
         $obj1->matricula_usuario= $_POST['matricula'];
         $obj1->correo = $_POST['correo'];
-        $obj1->contrasena = $_POST['contrasena'];
+        $obj1->contrasena = $especial->generaPass();
         $obj1->id_role = 3;
         
         //$obj->correo = $_POST['correo'];

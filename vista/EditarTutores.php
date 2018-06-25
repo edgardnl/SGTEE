@@ -222,13 +222,13 @@ new UISearch(document.getElementById('sb-search'));
                             <div class="tab-pane active" id="horizontal-form">
 
 
-                                <form class="form-horizontal" name="formEdit" id="formEdit">
+                                <form class="form-horizontal" name="formEdit" id="formEdit">                                    
                                     <div class="form-group">
                                         <!--inicio de los imput del formulario -->
                                         <input type="hidden" class="form-control1" id="focusedinput" placeholder="" value="<?php print $objT->id; ?>" name="id">
                                         <label for="focusedinput" class="col-sm-2 control-label">Clave</label>
                                         <div class="col-sm-8">
-                                            <input type="text" class="form-control1" id="clav" placeholder="" value="<?php print $objT->clave; ?>" name="clav">
+                                            <input disabled="" type="text" class="form-control1" id="clav" placeholder="" value="<?php print $objT->clave; ?>" name="clav">
                                         </div>
 
                                         <div class="col-sm-2 jlkdfj1">

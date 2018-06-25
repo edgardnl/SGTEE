@@ -2,9 +2,10 @@
 require_once "../ruta.php";
 require_once $_SERVER['DOCUMENT_ROOT'] . ruta::ruta . "/controlador/MostrarTablaControl.php";
 require_once $_SERVER['DOCUMENT_ROOT'] . ruta::ruta . "/modelo/objetos/TutoresObjeto.php";
+require_once $_SERVER['DOCUMENT_ROOT'] . ruta::ruta . "/controlador/EspecialControl.php";
 
 $tabla = new MostrarTablaControl();
-
+$especial = new EspecialControl();
 
 
 //$objT = new TutoresObjeto();
@@ -28,6 +29,6 @@ print $objT->horaio."\n";
     </style>	
 </head>
 <body>
-	<?php $tabla->selectNombreTutores(); ?>
+	<?php $especial->generaPass(); ?>
 </body>
 </html>

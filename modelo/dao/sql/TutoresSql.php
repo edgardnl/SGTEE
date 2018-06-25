@@ -23,7 +23,7 @@ class TutoresSql {
     }
     
     function editaDatosTutor($obj){
-        $query = "update tutor set clave = '".$obj->clave."', nombre = '".$obj->nombre."', ap_p = '".$obj->ap_p."', ap_m = '".$obj->ap_m."', asignatura = '".$obj->asignatura."',horario = '".$obj->horaio."',correo = '".$obj->correo."', telefono = '".$obj->telefono."' where id_tutores = ".$obj->id.";";
+        $query = "update tutor set nombre = '".$obj->nombre."', ap_p = '".$obj->ap_p."', ap_m = '".$obj->ap_m."', asignatura = '".$obj->asignatura."',horario = '".$obj->horaio."',correo = '".$obj->correo."', telefono = '".$obj->telefono."' where id_tutores = ".$obj->id.";";
         return $query;
     }
     

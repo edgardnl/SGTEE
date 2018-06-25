@@ -9,8 +9,8 @@ $bo = new ModuloAlumnos();
 switch ($_REQUEST['action']) {#$_REQUEST['action']
     case 'editarAlumnos':
         $obj = new AlumnosObjeto();
-        $obj->id = $_POST['id_alumno'];#
-        $obj->matricula = $_POST['matricula'];
+        $obj->id = $_POST['id_alumno'];
+        //$obj->matricula = $_POST['matricula'];
         $obj->nombre = $_POST['nombre'];
         $obj->ap_p = $_POST['ap_p'];
         $obj->ap_m = $_POST['ap_m'];

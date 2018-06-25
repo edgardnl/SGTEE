@@ -36,34 +36,51 @@ class ModuloAlumnos {
     }
 
     function agregaAlumnos($obj,$obj1){
-        try {
-            $this->dao->agregaAlumnos($obj);
-            $this->daoUsu->ingresaUsuarioAlumnos($obj1);
-        }catch (Exception $ex) {
-            $usu = $ex->getMessage();
+        $usu = 0;
+        $ma = $this->dao->consultaMatricula($obj);
+        if ($ma->nMatricula > 0) {
+            $usu = 1;
+        }else{
+            try {
+                $this->dao->agregaAlumnos($obj);
+                $this->daoUsu->ingresaUsuarioAlumnos($obj1);
+                $usu = 2;
+            }catch (Exception $ex) {
+                $usu = 3;//$ex->getMessage();
 
+            }    
         }
+        
         return $usu;
     }
 
     function traeAlumnosPorId($id){
         $usu = $this->dao->traeAlumnosPorId($id);
         return $usu;
+
     }
     
-    function editaDatosAlumnos($obj){
-        $usu = $this->dao->editaDatosAlumnos($obj);
-        return $usu;
+    function editaDatosAlumnos($obj){                
+        $usu = 0;                    
+        try {
+            $this->dao->editaDatosAlumnos($obj);
+            $usu = 2;
+        } catch (Exception $ex) {
+            $usu = 3;//$ex->getMessage();
+        }
+                                        
+        return $usu;                
     }
     
     function eliminaDatosAlumnos($obj){
-
+        $usu = 0;
         try {
            $tuto = $this->dao->traeAlumnosPorId($obj);
            $this->dao->eliminaDatosAlumnos($obj);
            $this->daoUsu->eliminaUsurioAlumno($tuto);
+           $usu = 2;
         } catch (Exception $ex) {
-            $usu = $ex->getMessage();
+            $usu = 3;//$ex->getMessage();
         }
         return $usu;
     }
