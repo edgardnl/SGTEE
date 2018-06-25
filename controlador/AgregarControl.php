@@ -51,7 +51,7 @@ switch ($_REQUEST['action']) {#$_REQUEST['action']
         
         if ($_POST['selector1'] == 3) {
             $objc = new CanalizacionObjeto();        
-            $objc->id_area = 1;
+            $objc->id_area = $_POST['area'];
             $objc->encargado = $_POST['encargado'];
             $objc->observacion = $_POST['observacion'];
             $resA = $modulo->guardaActividadCa($obj,$objc);

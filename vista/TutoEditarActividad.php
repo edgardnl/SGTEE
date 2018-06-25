@@ -333,7 +333,8 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 
                                     <div class="row">
                                         <div class="col-sm-8 col-sm-offset-2">
-                                            <button class="btn-success btn" onclick="" id="add">Guardar</button>
+                                            <button class="btn-success btn" onclick="" id="add">Actualizar</button>
+                                            <button class="btn-danger btn" onclick="" id="actualizar">Eliminar</button>
                                             <button class="btn-default btn" onclick="regresarSegAlum()">Cancelar</button>
                                             
                                         </div>

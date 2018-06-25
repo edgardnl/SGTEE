@@ -9,7 +9,7 @@ class CanalizacionSql {
     }
     
     function guardaCanalizacion(){
-        $query = "insert into canalizacion(id_actividades,id_area,encargado,observacion)value(?,?,?,?); ";
+        $query = "insert into canalizacion(id_actividades,area,encargado,observacion)value(?,?,?,?); ";
         return $query;
     }
 }

@@ -54,6 +54,31 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 
         <script src="jquery/jquery.dataTables.js"></script>
 
+        <script type="text/javascript">
+            $(document).ready(function () {
+                console.log("ready!");
+
+                $("#eliminar").click(function () {
+                    var r = confirm("Estas seguro de eliminar esta actividad");
+                    if (r == true) {
+                        var datos = "action=eliminarActividad&idacti=" + $("#idacti").val();
+                        alert(datos);
+                        /*$.post("../controlador/EliminarDatos.php", datos, function (data) {
+                         if (data == 1) {
+                         alert("Eliminacion exitosa");
+                         window.location.href = "TutoSeguimientoAlumnos.php";
+                         } else if (data == 2) {
+                         alert("Error al realizar la accion");
+                         window.location.href = "TutoSeguimientoAlumnos.php";
+                         } 
+                         });*/
+                    } else if (r == false) {
+                        return false;
+                    }
+                });
+            });
+        </script>
+
         <style>
             .flotante{
                 background: #27cce4;
@@ -66,12 +91,12 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                 bottom:55px;
                 right:15px;
             }
-            
+
             i{
                 color: #fff;
-                
+
             }
-            
+
             .flotante:hover{
                 background: #F44336;
             }
@@ -116,7 +141,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                                         <script src="js/classie.js"></script>
                                         <script src="js/uisearch.js"></script>
                                         <script>
-new UISearch(document.getElementById('sb-search'));
+        new UISearch(document.getElementById('sb-search'));
                                         </script>
                                         <!-- //search-scripts -->
                                     </li>	
@@ -155,9 +180,9 @@ new UISearch(document.getElementById('sb-search'));
                         <h3 class="blank1">Seguimiento Tutorial</h3>
                         <div class="tab-content">
                             <div class="tab-pane active" id="horizontal-form">
-                                                                
+
                                 <form class="form-horizontal" name="formEdit" id="formEdit">
-                                    
+
                                     <div class="form-group"><h5 class="blank">Datos escolares</h5></div>                                  
                                     <div class="form-group">
                                         <label for="disabledinput" class="col-sm-2 control-label">Mtro. Tutor:</label>
@@ -216,21 +241,21 @@ new UISearch(document.getElementById('sb-search'));
                                     </div>                                                                                                                                                                                        
                                 </form>
 
-                                
+
                             </div>
                         </div>
 
                         <h6 class="blank" style="color: #F8F8F8">...</h6>
                         <h5 class="blank">Lista de Actividades:</h5>
-                                        
+
                         <div class="xs tabls">
                             <div class="bs-example4" data-example-id="simple-responsive-table">
                                 <div class="table-responsive">
 
-                                <?php
-                                $tabla->tablaActividadesPorIdSeguimiento($id);
-                                ?>
-                                                    
+                                    <?php
+                                    $tabla->tablaActividadesPorIdSeguimiento($id);
+                                    ?>
+
                                 </div>                                                                    
                             </div>
                         </div>                

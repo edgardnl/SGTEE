@@ -53,7 +53,8 @@ class ActividadesVista {
                             <th>Lugar</th>
                             <th>Detecto Problematica</th>
                             <th>Avance</th>
-                            <th>Motivo</th>                            
+                            <th>Motivo</th>
+                            <th></th>                            
                         </tr>
                     </thead>
                 <tbody>";
@@ -61,7 +62,7 @@ class ActividadesVista {
         foreach ($data as $r){
 
             if ($r->id_motivo == 3) {
-                $row = "<tr>
+                $row = "<tr>                        
                         <td scope='row'>".$r->id_actividades."</td>
                         <td>".$r->fecha."</td>
                         <td>".$r->hora."</td>
@@ -69,10 +70,11 @@ class ActividadesVista {
                         <td>".$r->detecto_problematica."</td> 
                         <td>".$r->avance."</td>
                         <td><button class='btn-success btn' onclick='enviarCanaliza(".$r->id_actividades.")'>Canalizacion</button></td>
+                        <td><button class='btn-warning btn' onclick='enviarEdicionAct(".$r->id_actividades.")'>Editar</button></td>                        
                     </tr>";
                 $rows = $rows.$row;
             }else{
-                $row = "<tr>
+                $row = "<tr>                        
                         <td scope='row'>".$r->id_actividades."</td>
                         <td>".$r->fecha."</td>
                         <td>".$r->hora."</td>
@@ -80,6 +82,7 @@ class ActividadesVista {
                         <td>".$r->detecto_problematica."</td> 
                         <td>".$r->avance."</td>
                         <td>".$r->motivo."</td>
+                        <td><button class='btn-warning btn' onclick='enviarEdicionAct(".$r->id_actividades.")'>Editar</button></td>                        
                     </tr>";
                 $rows = $rows.$row;
             }

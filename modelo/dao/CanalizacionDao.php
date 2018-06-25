@@ -25,7 +25,7 @@ class CanalizacionDao {
         
         $objC = new CanalizacionObjeto();
         $objC->id_actividades = $row['id_actividades'];
-        $objC->id_area = $row['id_area'];
+        $objC->id_area = $row['area'];
         $objC->encargado = $row['encargado'];        
         $objC->observacion = $row['observacion'];        
         return $objC;

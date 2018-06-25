@@ -30,14 +30,15 @@ class ModuloActividades {
     }
 
     function guardaActividadCa($obj,$objc){
-        $usu = "";
+        $usu = 0;
         try {
             $this->dao->guardaActividad($obj);
             $obja = $this->dao->traeUltimaActividadPorIdSeguimiento($obj);
             $objc->id_actividades = $obja->id_actividades;
             $this->daoCa->guardaActividad($objc);
+            $usu = 1;
         } catch (Exception $ex) {
-            $usu = $ex->getMessage();
+            $usu = 2;//$ex->getMessage();
         }
         
         return $usu;
@@ -45,11 +46,12 @@ class ModuloActividades {
     }
     
     function guardaActividad($obj){
-        $usu = "";
+        $usu = 0;
         try {
             $this->dao->guardaActividad($obj);            
+            $usu = 1;
         } catch (Exception $ex) {
-            $usu = $ex->getMessage();
+            $usu = 2;//$ex->getMessage();
         }
         
         return $usu;

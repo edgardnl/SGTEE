@@ -39,5 +39,10 @@ class ActividadesSql {
         $query = "select max(id_actividades) as id_actividades from actividades where id_seguimiento = ?;";
         return $query;   
     }
+    
+    function traeDatosActividadPorId(){
+        $query = "SELECT * FROM sgte.actividades where actividades.id_actividades = ?;";
+        return $query;
+    }
 
 }

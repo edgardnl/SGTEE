@@ -9,9 +9,15 @@ $bo = new ModuloTutores();
 switch ($_REQUEST['action']) {#$_REQUEST['action']
     case 'eliminarTutor':
         $obj = new TutoresObjeto();
-        $obj->id = $_POST['id'];#                
+        $obj->id = $_POST['id']; #                
         $res = $bo->eliminaDatosTutor($obj);
         //header("Location:Tutores.php");
         print $res;
         break;
+    
+    case 'eliminarActividad':
+        
+        break;
+        
+            
 }
