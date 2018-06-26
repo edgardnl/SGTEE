@@ -115,3 +115,12 @@ function enviarScoreAlu(id){
 function regresarAlumnosAvance(){
     location.href = "TutoCalificacionesAlumnos.php";   
 }
+
+function agregarCalificaciones(id){
+    alert(id);
+    location.href = "TutoAgregarCalificaciones.php?id="+id;
+}
+
+function regresarCalifica(){
+    window.history.go(-1);
+}

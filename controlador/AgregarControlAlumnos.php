@@ -11,7 +11,8 @@ require_once $_SERVER['DOCUMENT_ROOT'] . ruta::ruta . "/controlador/EspecialCont
 
 $bo = new ModuloAlumnos();
 
-switch ($_REQUEST['action']) {
+$action = 'agregarAlumnos';
+switch ($action) {#$_REQUEST['action']
     case 'agregarAlumnos':
         $obj = new AlumnosObjeto();
         $obj->matricula = $_POST['matricula'];
@@ -27,11 +28,11 @@ switch ($_REQUEST['action']) {
         $obj->sexo = $_POST['sexo'];
         $obj->materias_adeudadas = $_POST['materias_adeudadas'];
         $obj->estatus = 1;
-
+        
         $especial = new EspecialControl();
         $obj1 = new UsuariosObjetoAlumnos();
         $obj1->matricula_usuario= $_POST['matricula'];
-        $obj1->correo = $_POST['correo'];
+        //$obj1->correo = $_POST['correo'];
         $obj1->contrasena = $especial->generaPass();
         $obj1->id_role = 3;
         

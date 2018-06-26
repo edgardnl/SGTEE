@@ -1,11 +1,3 @@
-<?php
-require_once "../ruta.php";
-require_once $_SERVER['DOCUMENT_ROOT'] . ruta::ruta . "/controlador/MostrarTablaControl.php";
-$tabla = new MostrarTablaControl();
-$id = $_GET['id'];
-$obj = $tabla->mostrarAlumnoDetalles($id);
-$objU = $tabla->mostrarUsuarioAlumnoPorClave($obj->matricula);
-?>
 <!--
 Author: W3layouts
 Author URL: http://w3layouts.com
@@ -15,7 +7,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 <!DOCTYPE HTML>
 <html>
     <head>
-        <title>SGTE - Editar Tutores</title>
+        <title>SGTE - Agregar Calificaciones</title>
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
         <meta name="keywords" content="Easy Admin Panel Responsive web template, Bootstrap Web Templates, Flat Web Templates, Android Compatible web template, 
@@ -47,6 +39,66 @@ License URL: http://creativecommons.org/licenses/by/3.0/
         <!-- Meters graphs -->
         <script src="js/jquery-1.10.2.min.js"></script>
         <!-- Placed js at the end of the document so the pages load faster -->
+        <!--Datapicker-->
+        <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+        <link rel="stylesheet" href="/resources/demos/style.css">
+        <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+        <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+        <script>
+
+            $(document).ready(function(){
+                console.log( "ready!" );
+                
+                
+                //$("#selector1").val(<?//php print '2';?>);
+                
+                $("#add").click(function(){
+                    if ($("#datepicker").val() == "" || $("#timepicker").val() == "" || $("#lugar").val() == "" || $("#avance").val() == "" ) {
+    			alert("Algun campo esta vacio");
+    			return false;
+                    }
+                    if ($("#selector1").val() == "0" || $("#problema").val() == "0") {
+                        alert("Selecciona una opcion");
+                        return false;
+                    }                    
+                    
+                    if (!isNaN($("#lugar").val())) {
+    			alert("El campo Lugar solo permite letras");
+    			return false;
+                    }                    
+
+                    if (!isNaN($("#avance").val())) {
+                            alert("El campo Apellido Materno solo permite letras");
+                            return false;
+                    }
+                    
+                    var datos = "action=agregarActividad&" + $("#FormActividades").serialize();
+                    alert(datos);
+                    $.post("../controlador/AgregarControl.php", datos, function(data) {
+                        console.log(data);
+                        if (data == 1) {
+                            alert("Registro Exitoso");
+                            window.location.href = "TutoSeguimientoAlumnos.php";
+                        }else if(data == 2){
+                            alert("Error al realizar el registro");
+                            window.location.href = "TutoSeguimientoAlumnos.php";
+                        }
+                                                        
+                    });  
+                    
+                });
+                                
+                
+            });
+            
+            
+        </script>
+
+        <!--timepicker-->
+        <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/timepicker/1.3.5/jquery.timepicker.min.css">
+        <script src="//cdnjs.cloudflare.com/ajax/libs/timepicker/1.3.5/jquery.timepicker.min.js"></script>
+
+
         <script src="js/eventos.js"></script>
 
     </head> 
@@ -83,7 +135,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                                         <script src="js/classie.js"></script>
                                         <script src="js/uisearch.js"></script>
                                         <script>
-new UISearch(document.getElementById('sb-search'));
+            new UISearch(document.getElementById('sb-search'));
                                         </script>
                                         <!-- //search-scripts -->
                                     </li>	
@@ -119,97 +171,67 @@ new UISearch(document.getElementById('sb-search'));
                 <!-- //header-ends -->
                 <div id="page-wrapper">
                     <div class="graphs">
-                        <h3 class="blank1">Detalle del Alumno</h3>
+                        <h3 class="blank1">Agregar Calificaciones</h3>
                         <div class="tab-content">
                             <div class="tab-pane active" id="horizontal-form">
-                                                                
-                                <form class="form-horizontal" name="formEdit" id="formEdit">
+
+
+                                <form class="form-horizontal" name="FormCalificaciones" id="FormCalificaciones">
+                                                                                                      
+                                    <div class="form-group">
+                                        <label for="problema" class="col-sm-2 control-label">Profesor</label>
+                                        <div class="col-sm-8"><select name="profesor" id="profesor" class="form-control1">
+                                                <option value="0">Selecciona una opcion</option>
+                                                <option value="Si">Si</option>
+                                                <option value="No">No</option>                                                
+                                            </select></div>
+                                    </div>                                    
+                                    <div class="form-group">
+                                        <label for="selector1" class="col-sm-2 control-label">Asignatura</label>
+                                        <div class="col-sm-8"><select name="asignatura" id="asignatura" class="form-control1">
+                                                <option value="0">Selecciona una opcion</option>
+                                                <option value="1">Problemas Academicos</option>
+                                                <option value="2">Problemas Economicos</option>
+                                                <option value="3">Canalizacion</option>
+                                                <option value="4">Informacion General</option>
+                                                <option value="5">Asesoria Academica</option>
+                                                <option value="6">Problemas Interpersonales</option>
+                                            </select></div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="problema" class="col-sm-2 control-label">Parcial</label>
+                                        <div class="col-sm-8"><select name="parcial" id="parcial" class="form-control1">
+                                                <option value="0">Selecciona una opcion</option>
+                                                <option value="Si">Si</option>
+                                                <option value="No">No</option>                                                
+                                            </select></div>
+                                    </div>  
+                                    <div class="form-group">                                        
+                                        <label for="focusedinput" class="col-sm-2 control-label">Calificacion</label>
+                                        <div class="col-sm-8">
+                                            <input type="hidden" class="form-control1" id="" placeholder="" name="idalu" value="<?php print $_GET['id']; ?>">
+                                            <input type="text" class="form-control1" id="calificacion" placeholder="" name="calificacion">
+                                        </div>
+
+                                        <div class="col-sm-2 jlkdfj1">
+                                            <p class="help-block"></p>
+                                        </div>
+                                    </div>     
                                     
-                                    <div class="form-group"><h5 class="blank">Datos personales</h5></div>                                  
-                                    <div class="form-group">
-                                        <label for="disabledinput" class="col-sm-2 control-label">Matricula</label>
-                                        <div class="col-sm-8">
-                                            <input disabled="" type="text" class="form-control1" id="disabledinput" value="<?php print $obj->matricula; ?>">
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="disabledinput" class="col-sm-2 control-label">Contraseña</label>
-                                        <div class="col-sm-8">
-                                            <input disabled="" type="text" class="form-control1" id="disabledinput" value="<?php print $objU->contrasena; ?>">
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="disabledinput" class="col-sm-2 control-label">Materias Adeudadas</label>
-                                        <div class="col-sm-8">
-                                            <input disabled="" type="text" class="form-control1" id="disabledinput" value="<?php print $obj->materias_adeudadas; ?>">
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="disabledinput" class="col-sm-2 control-label">Nombre</label>
-                                        <div class="col-sm-8">
-                                            <input disabled="" type="text" class="form-control1" id="disabledinput" value="<?php print $obj->nombreAll; ?>">
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="disabledinput" class="col-sm-2 control-label">Sexo</label>
-                                        <div class="col-sm-8">
-                                            <input disabled="" type="text" class="form-control1" id="disabledinput" value="<?php print $obj->sexo; ?>">
-                                        </div>
-                                    </div>
-                                    
-                                    <div class="form-group"><h5 class="blank">Datos Escolares</h5></div>                                  
-                                    <div class="form-group">
-                                        <label for="disabledinput" class="col-sm-2 control-label">Carrera</label>
-                                        <div class="col-sm-8">
-                                            <input disabled="" type="text" class="form-control1" id="disabledinput" value="<?php print $obj->carrera; ?>">
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="disabledinput" class="col-sm-2 control-label">Semestre</label>
-                                        <div class="col-sm-8">
-                                            <input disabled="" type="text" class="form-control1" id="disabledinput" value="<?php print $obj->semestre; ?>">
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="disabledinput" class="col-sm-2 control-label">Grupo</label>
-                                        <div class="col-sm-8">
-                                            <input disabled="" type="text" class="form-control1" id="disabledinput" value="<?php print $obj->grupo; ?>">
-                                        </div>
-                                    </div>
-                                    
-                                    <div class="form-group"><h5 class="blank">Datos de contacto</h5></div>                                  
-                                    <div class="form-group">
-                                        <label for="disabledinput" class="col-sm-2 control-label">Correo</label>
-                                        <div class="col-sm-8">
-                                            <input disabled="" type="text" class="form-control1" id="disabledinput" value="<?php print $obj->correo; ?>">
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="disabledinput" class="col-sm-2 control-label">Telefono fijo</label>
-                                        <div class="col-sm-8">
-                                            <input disabled="" type="text" class="form-control1" id="disabledinput" value="<?php print $obj->telefono; ?>">
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="disabledinput" class="col-sm-2 control-label">Telfono movil</label>
-                                        <div class="col-sm-8">
-                                            <input disabled="" type="text" class="form-control1" id="disabledinput" value="<?php print $obj->telefono_cel; ?>">
-                                        </div>
-                                    </div>
-
-                                    <div class="panel-footer">
-
-                                        <div class="row">
-                                            <div class="col-sm-8 col-sm-offset-2">
-                                                                                                
-                                            </div>
-                                        </div>
-
-                                    </div>
-
-
                                 </form>
-                                <button class="btn-default btn" onclick="regresarTutorAlumnos()">Cancelar</button>
+                                
+                                <div class="panel-footer">
+
+                                    <div class="row">
+                                        <div class="col-sm-8 col-sm-offset-2">
+                                            <button class="btn-success btn" onclick="" id="add">Guardar</button>
+                                            <button class="btn-default btn" onclick="regresarCalifica()">Cancelar</button>
+                                            
+                                        </div>
+                                    </div>
+
+                                </div>
+                                
                             </div>
                         </div>
 

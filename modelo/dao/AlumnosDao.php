@@ -97,6 +97,7 @@ class AlumnosDao {
         $obj->semestre = $row['semestre'];
         $obj->correo = $row['correo'];
         $obj->sexo = $row['sexo'];
+        $obj->materias_adeudadas = $row['materias_adeudadas'];
         $obj->nombreAll = $row['nombre']." ".$row['ap_p']." ".$row['ap_m'];
         
         return $obj;

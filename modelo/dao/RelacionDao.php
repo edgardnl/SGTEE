@@ -43,6 +43,7 @@ class RelacionDao {
             $lista[$x]->id_relacion = $row['id_relacion'];
             $lista[$x]->id_alumno = $row['id_alumno'];            
             $lista[$x]->NomAll = $row['nombre'] . " " . $row['ap_p'] . " " . $row['ap_m'];
+            $lista[$x]->materias = $row['materias_adeudadas'];
             $lista[$x]->aprobacion = $row['aprobacion'];
             $lista[$x]->observacion = $row['observacion'];            
             $x++;

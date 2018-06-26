@@ -11,4 +11,5 @@ class RelacionObjeto{
     var $appa;
     var $apma;
     var $NomAll;
+    var $materias;
 }
