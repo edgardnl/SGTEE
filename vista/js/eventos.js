@@ -101,3 +101,17 @@ function enviarCanaliza(id){
     alert(id);
     location.href = "TutoCanalizacionDetalle.php?id=" + id;
 }
+
+function enviarEdicionAct(id){
+   alert(id) ;
+   location.href = "TutoEditarActividad.php?id=" + id;
+}
+
+function enviarScoreAlu(id){
+    alert(id) ;
+   location.href = "TutoAlumnosCalificacionesIndividual.php?id=" + id;   
+}
+
+function regresarAlumnosAvance(){
+    location.href = "TutoCalificacionesAlumnos.php";   
+}

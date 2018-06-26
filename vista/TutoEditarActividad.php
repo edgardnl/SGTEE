@@ -1,9 +1,9 @@
-<!--
-Author: W3layouts
-Author URL: http://w3layouts.com
-License: Creative Commons Attribution 3.0 Unported
-License URL: http://creativecommons.org/licenses/by/3.0/
--->
+<?php
+require_once "../ruta.php";
+require_once $_SERVER['DOCUMENT_ROOT'] . ruta::ruta . "/controlador/MostrarTablaControl.php";
+$tabla = new MostrarTablaControl();
+$usu = $tabla->mostraActividadPorId($_GET['id']); 
+?>
 <!DOCTYPE HTML>
 <html>
     <head>
@@ -68,9 +68,10 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                     scrollbar: true
                 });
                 
-                //$("#selector1").val(<?//php print '2';?>);
+                $("#selector1").val(<?php print $usu->motivo; ?>);//problema
+                //$("#problema").val(<?php print $usu->detecto_problematica; ?>);
                 
-                $("#add").click(function(){
+                $("#editar").click(function(){
                     if ($("#datepicker").val() == "" || $("#timepicker").val() == "" || $("#lugar").val() == "" || $("#avance").val() == "" ) {
     			alert("Algun campo esta vacio");
     			return false;
@@ -80,7 +81,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                         return false;
                     }
                     //Validaciones canalizacion inicio
-                    if ($("#selector1").val() == "3") {
+                    /*if ($("#selector1").val() == "3") {
                         if ($("#area").val() == "" || $("#encargado").val() == "" || $("#observacion").val() == "") {
                             alert("Algun campo esta vacio en Canalizacion");
                             return false;
@@ -100,7 +101,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                                 alert("El campo Observacion solo permite letras");
                                 return false;
                         }
-                    }
+                    }*/
                     //Validaciones canalizacion fin
                     
                     if (!isNaN($("#lugar").val())) {
@@ -113,29 +114,55 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                             return false;
                     }
                     
-                    var datos = "action=agregarActividad&" + $("#FormActividades").serialize();
-                    alert(datos);
-                    $.post("../controlador/AgregarControl.php", datos, function(data) {
-                        console.log(data);
-                        if (data == 1) {
-                            alert("Registro Exitoso");
-                            window.location.href = "TutoSeguimientoAlumnos.php";
-                        }else if(data == 2){
-                            alert("Error al realizar el registro");
-                            window.location.href = "TutoSeguimientoAlumnos.php";
-                        }
-                                                        
-                    });  
+                    var r = confirm("Estas seguro de eliminar este registro");
+                    if (r == true) {
+                        var datos = "action=editarActividad&" + $("#FormActividades").serialize();
+                        alert(datos);
+                        $.post("../controlador/EditarDatosControl.php", datos, function(data) {
+                            console.log(data);
+                            if (data == 1) {
+                                alert("Actualizacion Exitosa");
+                                window.location.href = "TutoSeguimientoAlumnos.php";
+                            }else if(data == 2){
+                                alert("Error al realizar la acciion");
+                                window.location.href = "TutoSeguimientoAlumnos.php";
+                            }
+                                                            
+                        });  
+                    } else if(r == false) {
+                        return false;
+                    }                    
                     
                 });
+
+                $("#eliminar").click(function(){
+                    var r = confirm("Estas seguro de eliminar este registro");
+                    if (r == true) {
+                        var datos = "action=eliminarActividad&" + $("#FormActividades").serialize();
+                        alert(datos);
+                        $.post("../controlador/EliminarDatos.php", datos, function(data) {
+                            console.log(data);
+                            if (data == 1) {
+                                alert("Actualizacion Exitosa");
+                                window.location.href = "TutoSeguimientoAlumnos.php";
+                            }else if(data == 2){
+                                alert("Error al realizar la acciion");
+                                window.location.href = "TutoSeguimientoAlumnos.php";
+                            }
+                                                            
+                        });  
+                    } else if(r == false) {
+                        return false;
+                    }
+                });
                 
-                $("#selector1").change(function(){
+                /*$("#selector1").change(function(){
                     if ($("#selector1").val()== "3") {
                         $("#cana").show();
                     }else{
                         $("#cana").hide();
                     }                        
-                });
+                });*/
                 
             });
             
@@ -219,7 +246,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                 <!-- //header-ends -->
                 <div id="page-wrapper">
                     <div class="graphs">
-                        <h3 class="blank1">Agregar Actividades</h3>
+                        <h3 class="blank1">Editar Actividades</h3>
                         <div class="tab-content">
                             <div class="tab-pane active" id="horizontal-form">
 
@@ -229,8 +256,8 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                                         <!--inicio de los imput del formulario -->
                                         <label for="focusedinput" class="col-sm-2 control-label">Fecha</label>
                                         <div class="col-sm-8">
-                                            <input type="hidden" class="form-control1" id="" placeholder="" name="seg" value="<?php print $_GET['id']; ?>">
-                                            <input type="text" class="form-control1" id="datepicker" placeholder="" name="fecha">
+                                            <input type="hidden" class="form-control1" id="" placeholder="" name="acti" value="<?php print $usu->id_actividades; ?>">
+                                            <input type="text" class="form-control1" id="datepicker" placeholder="" name="fecha" value="<?php print $usu->fecha; ?>">
                                         </div>
 
                                         <div class="col-sm-2 jlkdfj1">
@@ -241,7 +268,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                                         <!--inicio de los imput del formulario -->
                                         <label for="focusedinput" class="col-sm-2 control-label">Hora</label>
                                         <div class="col-sm-8">
-                                            <input type="text" class="form-control1" id="timepicker" placeholder="" name="hora">
+                                            <input type="text" class="form-control1" id="timepicker" placeholder="" name="hora" value="<?php print $usu->hora; ?>">
                                         </div>
 
                                         <div class="col-sm-2 jlkdfj1">
@@ -252,7 +279,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                                         <!--dos-->
                                         <label for="focusedinput" class="col-sm-2 control-label">Lugar</label>
                                         <div class="col-sm-8">
-                                            <input type="text" class="form-control1" id="lugar" placeholder="" name="lugar">
+                                            <input type="text" class="form-control1" id="lugar" placeholder="" name="lugar" value="<?php print $usu->lugar; ?>">
                                         </div>
 
                                         <div class="col-sm-2 jlkdfj1">
@@ -271,7 +298,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                                         <!--dos-->
                                         <label for="focusedinput" class="col-sm-2 control-label">Materias con Avance</label>
                                         <div class="col-sm-8">
-                                            <input type="text" class="form-control1" id="avance" placeholder="" name="avance">
+                                            <input type="text" class="form-control1" id="avance" placeholder="" name="avance" value="<?php print $usu->avance; ?>">
                                         </div>
 
                                         <div class="col-sm-2 jlkdfj1">
@@ -281,6 +308,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                                     <div class="form-group">
                                         <label for="selector1" class="col-sm-2 control-label">Motivo</label>
                                         <div class="col-sm-8"><select name="selector1" id="selector1" class="form-control1">
+
                                                 <option value="0">Selecciona una opcion</option>
                                                 <option value="1">Problemas Academicos</option>
                                                 <option value="2">Problemas Economicos</option>
@@ -333,8 +361,8 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 
                                     <div class="row">
                                         <div class="col-sm-8 col-sm-offset-2">
-                                            <button class="btn-success btn" onclick="" id="add">Actualizar</button>
-                                            <button class="btn-danger btn" onclick="" id="actualizar">Eliminar</button>
+                                            <button class="btn-success btn" onclick="" id="editar">Actualizar</button>
+                                            <button class="btn-danger btn" onclick="" id="eliminar">Eliminar</button>
                                             <button class="btn-default btn" onclick="regresarSegAlum()">Cancelar</button>
                                             
                                         </div>

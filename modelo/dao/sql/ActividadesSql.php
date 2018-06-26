@@ -41,7 +41,18 @@ class ActividadesSql {
     }
     
     function traeDatosActividadPorId(){
-        $query = "SELECT * FROM sgte.actividades where actividades.id_actividades = ?;";
+        $query = "SELECT * FROM actividades where actividades.id_actividades = ?;";
+        return $query;
+    }    
+
+    function editaActividad($obj){
+        $query = "UPDATE actividades SET fecha = '".$obj->fecha."', hora = '".$obj->hora."', lugar = '".$obj->lugar."', detecto_problematica = '".$obj->detecto_problematica."', avance = '".$obj->avance."', id_motivo = ".$obj->motivo." 
+            WHERE id_actividades = ".$obj->id_actividades.";";
+        return $query;
+    }
+
+    function eliminaActividad(){
+        $query = "DELETE FROM actividades WHERE actividades.id_actividades = ?;";
         return $query;
     }
 

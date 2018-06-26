@@ -4,6 +4,9 @@ require_once "../ruta.php";
 require_once $_SERVER['DOCUMENT_ROOT'] . ruta::ruta . "/modelo/bo/TutoresBo.php";
 require_once $_SERVER['DOCUMENT_ROOT'] . ruta::ruta . "/modelo/objetos/TutoresObjeto.php";
 
+require_once $_SERVER['DOCUMENT_ROOT'] . ruta::ruta . "/modelo/bo/ActividadesBo.php";
+require_once $_SERVER['DOCUMENT_ROOT'] . ruta::ruta . "/modelo/objetos/ActividadesObjeto.php";
+
 $bo = new ModuloTutores();
 #$action = "editarTutor";
 switch ($_REQUEST['action']) {#$_REQUEST['action']
@@ -28,5 +31,20 @@ switch ($_REQUEST['action']) {#$_REQUEST['action']
         $obj->correo = "edgar@gmail.com";*/
         $res = $bo->editaDatosTutor($obj);
         print $res;
+        break;
+
+    case 'editarActividad':
+        $objAc = new ActividadesObjeto();
+        $objAc->id_actividades = $_POST['acti'];         
+        $objAc->fecha = $_POST['fecha'];
+        $objAc->hora = $_POST['hora'];
+        $objAc->lugar = $_POST['lugar'];
+        $objAc->detecto_problematica = $_POST['problema'];
+        $objAc->avance = $_POST['avance'];        
+        $objAc->motivo = $_POST['selector1'];
+        $modulo = new ModuloActividades();
+        $resAc = $modulo->editarActividad($objAc);
+        print $resAc;
+
         break;
 }

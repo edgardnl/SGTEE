@@ -29,6 +29,15 @@ print $objT->horaio."\n";
     </style>	
 </head>
 <body>
-	<?php $especial->generaPass(); ?>
+	<?php $usu = $tabla->mostraActividadPorId(3); 
+		print $usu->id_actividades;
+	    print $usu->id_seguimiento;
+	    print $usu->fecha;
+	    print $usu->hora;
+	    print $usu->lugar;
+	    print $usu->detecto_problematica;
+	    print $usu->avance;	    
+	    print $usu->motivo;
+	?>
 </body>
 </html>

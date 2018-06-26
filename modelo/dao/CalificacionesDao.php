@@ -27,7 +27,7 @@ class CalificacionesDao{
             $lista[] = new CalificacionesObjeto();
             $lista[$x]->id_calificiones = $row['id_calificiones'];
             $lista[$x]->asignatura = $row['asignatura'];
-            $lista[$x]->id_parcial = $row['id_parcial'];
+            $lista[$x]->parcial = $row['parcial'];
             $lista[$x]->nomProfesor = $row['nombre']." ".$row['ap_p']." ".$row['ap_m'];
             $lista[$x]->calificaciones = $row['calificacion'];                        
             $x++;

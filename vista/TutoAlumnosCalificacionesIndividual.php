@@ -159,7 +159,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                            			
 				<div class="graphs">
 					
-                                    <h1 class="blank1">Alumnos Avances</h1>
+                                    <h1 class="blank1">Calificaciones</h1>
                                         
                                     <!--<div class="form-group">
                                             <label for="focusedinput" class="col-sm-2 control-label">Buscar</label>
@@ -173,20 +173,22 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                                         
                                         
                                         <h6 class="blank" style="color: #F8F8F8">...</h6>
-                                        <h5 class="blank">Lista de Alumnos:</h5>
+                                        <h5 class="blank">Lista de Calificaiones:</h5>
                                         
 					 <div class="xs tabls">
                                             <div class="bs-example4" data-example-id="simple-responsive-table">
 						<div class="table-responsive">
 
                                                     <?php
-                                                    $tabla->tablaRelacionAlumnosNombrePorTutor($_SESSION["id"]);
+                                                    $tabla->tablaCalificacionesPorIdAlumno($_SESSION["id"]);
                                                     ?>
                                                     
                                                 </div>					   																						
                                             </div>
                                         </div>
                                         <!--<a class="flotante" href="AgregarTutores.php"><i class="fa fa-user"></i></a>-->
+                                        <h6 class="blank" style="color: #F8F8F8">...</h6>
+                        				<button class="btn-default btn" onclick="regresarAlumnosAvance()">Regresar</button>
                                 </div>
                         </div>
 		

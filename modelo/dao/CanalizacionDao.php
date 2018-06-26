@@ -42,4 +42,27 @@ class CanalizacionDao {
         }
         
     }
+
+    function existeCanalizacion($obj){
+        $datosArray = array($obj->id_actividades);
+        $pP = procesaParametros::PrepareStatement(CanalizacionSql::existeCanalizacion(),$datosArray);
+       
+        $query = $this->con->query($pP);
+        $row = $query->fetch_array();
+        
+        $objC = new CanalizacionObjeto();
+        $objC->nActividades = $row['nActividades'];        
+        return $objC;   
+    }
+
+    function eliminarCanalizacion($obj){
+        $datosArray = array($obj->id_actividades);
+        $pP = procesaParametros::PrepareStatement(CanalizacionSql::eliminaCanalizacion(),$datosArray); 
+
+        try {
+            $this->con->query($pP);            
+        } catch (Exception $exc) {
+            print $exc->getMessage();
+        }
+    }
 }

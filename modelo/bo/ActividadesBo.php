@@ -58,4 +58,46 @@ class ModuloActividades {
 
     }
 
+    function traeActividadesPorId($obj){
+        $usu = $this->dao->traeActividadesPorIdActividad($obj);
+        return $usu;
+    }
+
+    function editarActividad($obj){
+        $usu = 0;
+        try {
+            $this->dao->editaActividad($obj);
+            $usu = 1;
+        } catch (Exception $e) {
+            $usu = 2;//$ex->getMessage();   
+        }
+
+        return $usu;
+    }
+
+    function eliminarActividad($obj){
+        $usu = 0;
+        $val = $this->daoCa->existeCanalizacion($obj);
+        
+        if ($val->nActividades > 0 ) {
+            try {
+                $this->daoCa->eliminarCanalizacion($obj);
+                $this->dao->eliminaActividad($obj);
+                $usu = 1;    
+            } catch (Exception $e) {
+                $usu = 2;//$ex->getMessage();          
+            }
+            
+        }else{
+            try {                
+                $this->dao->eliminaActividad($obj);
+                $usu = 1;    
+            } catch (Exception $e) {
+                $usu = 2;//$ex->getMessage();          
+            }
+        }
+
+        return $usu;
+    }
+
 }

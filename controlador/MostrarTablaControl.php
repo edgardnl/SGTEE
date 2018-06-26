@@ -23,6 +23,9 @@ require_once $_SERVER['DOCUMENT_ROOT'] . ruta::ruta . "/modelo/objetos/Seguimien
 require_once $_SERVER['DOCUMENT_ROOT'] . ruta::ruta . "/modelo/bo/CanalizacionBo.php";
 require_once $_SERVER['DOCUMENT_ROOT'] . ruta::ruta . "/modelo/objetos/CanalizacionObjeto.php";
 
+require_once $_SERVER['DOCUMENT_ROOT'] . ruta::ruta . "/modelo/bo/CalificacionesBo.php";
+require_once $_SERVER['DOCUMENT_ROOT'] . ruta::ruta . "/modelo/objetos/CalificacionesObjeto.php";
+
 class MostrarTablaControl {
 
     function tablaTutores() {
@@ -152,6 +155,29 @@ class MostrarTablaControl {
         $tabla = $alumnoBo->consultaTutoresNombres();
         print $tabla;
 
+    }
+
+    function mostraActividadPorId($id){
+        $obj = new ActividadesObjeto();
+        $obj->id_actividades = $id;
+        $mod = new ModuloActividades();
+        return $mod->traeActividadesPorId($obj);
+    }
+
+    function tablaRelacionAlumnosNombrePorTutor($id){
+        $relObj = new RelacionObjeto();
+        $relObj->id_tutor = $id;
+        $relaBo = new ModuloRelacion();
+        $tabla = $relaBo->consultaAlumnosNombrePorIdTutor($relObj);
+        print $tabla;
+    }
+
+    function tablaCalificacionesPorIdAlumno($id){
+        $calObj = new CalificacionesObjeto();
+        $calObj->id_alumno = $id;
+        $calBo = new ModuloCalificaciones();
+        $table = $calBo->traeCalificacionesPorIdAlumno($calObj);
+        print $table;
     }
 
 }

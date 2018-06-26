@@ -97,4 +97,45 @@ class ActividadesDao {
         return $obja;
         
     }
+
+    function traeActividadesPorIdActividad($obj){
+        $datosArray = array($obj->id_actividades);
+        $pP = procesaParametros::PrepareStatement(ActividadesSql::traeDatosActividadPorId(),$datosArray);
+       
+        $query = $this->con->query($pP);
+        
+        $row = $query->fetch_array();
+        $lista = new ActividadesObjeto();
+        $lista->id_actividades = $row['id_actividades'];
+        $lista->ntutor = $row['id_seguimiento'];            
+        $lista->fecha = $row['fecha'];
+        $lista->hora = $row['hora'];            
+        $lista->lugar = $row['lugar'];
+        $lista->detecto_problematica = $row['detecto_problematica'];
+        $lista->avance = $row['avance'];
+        $lista->motivo = $row['id_motivo'];        
+        
+        return $lista;
+    }
+
+    function editaActividad($obj){
+        $pP = ActividadesSql::editaActividad($obj);                
+        
+        try {
+            $this->con->query($pP);            
+        } catch (Exception $exc) {
+            print $exc->getMessage();
+        }
+    }
+
+    function eliminaActividad($obj){
+        $datosArray = array($obj->id_actividades);
+        $pP = procesaParametros::PrepareStatement(ActividadesSql::eliminaActividad(),$datosArray); 
+
+        try {
+            $this->con->query($pP);            
+        } catch (Exception $exc) {
+            print $exc->getMessage();
+        }
+    }
 }

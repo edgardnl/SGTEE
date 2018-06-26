@@ -86,7 +86,7 @@ class RelacionVista{
             $row = "<tr>
                         <td scope='row'>".$r->id_relacion."</td>
                         <td>".$r->NomAll."</td>                        
-                        <td><button class='btn-success btn' onclick='enviarDetalleAlu(".$r->id_alumno.")'>Calificaciones</button></td>                      
+                        <td><button class='btn-success btn' onclick='enviarScoreAlu(".$r->id_alumno.")'>Calificaciones</button></td>                      
                     </tr>";
             $rows = $rows.$row;
         }
