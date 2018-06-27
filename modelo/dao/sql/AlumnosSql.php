@@ -70,5 +70,10 @@ class AlumnosSql {
         $query = "SELECT COUNT(alumno.matricula) as nMatricula FROM alumno WHERE alumno.matricula = ? ;";
         return $query;#    
     }
+    
+    function buscarAlumnoLogin(){
+        $query = "select * from alumno where alumno.matricula = ? and alumno.password = ?;";
+        return $query;#    
+    }
 }
 ?>

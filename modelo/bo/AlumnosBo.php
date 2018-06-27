@@ -84,6 +84,10 @@ class ModuloAlumnos {
         }
         return $usu;
     }
+    
+    function buscaAlumnoLogin($obj){
+        return $this->dao->buscaAlumnoLogin($obj);
+    }
 
 }
 

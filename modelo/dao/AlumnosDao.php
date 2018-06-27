@@ -137,6 +137,21 @@ class AlumnosDao {
 
         return $usu;
     }
+    
+    function buscaAlumnoLogin($obj){
+        $datosArray = array($obj->matricula,$obj->pass);
+        $pP = procesaParametros::PrepareStatement(AlumnosSql:: buscarAlumnoLogin(),$datosArray);        
+
+        $query = $this->con->query($pP);
+        $row = $query->fetch_array();
+        
+        $objA = new AlumnosObjeto();        
+        $objA->nRegistros = $query->num_rows;
+        $objA->matricula = $row['matricula'];
+        $objA->nombre = $row['nombre'];                                
+        
+        return $objA;   
+    }
 
 
 

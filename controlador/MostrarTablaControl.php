@@ -26,6 +26,9 @@ require_once $_SERVER['DOCUMENT_ROOT'] . ruta::ruta . "/modelo/objetos/Canalizac
 require_once $_SERVER['DOCUMENT_ROOT'] . ruta::ruta . "/modelo/bo/CalificacionesBo.php";
 require_once $_SERVER['DOCUMENT_ROOT'] . ruta::ruta . "/modelo/objetos/CalificacionesObjeto.php";
 
+require_once $_SERVER['DOCUMENT_ROOT'] . ruta::ruta . "/modelo/bo/PersonalBo.php";
+require_once $_SERVER['DOCUMENT_ROOT'] . ruta::ruta . "/modelo/objetos/PersonalObjeto.php";
+
 class MostrarTablaControl {
 
     function tablaTutores() {
@@ -181,11 +184,54 @@ class MostrarTablaControl {
     }
 
     function newLogin($id,$pass){
+        session_start();
         $obj = new TutoresObjeto();
         $obj->matricula = $id;
         $obj->pass = $pass;
-        $bo = new ModuloTutores();
-        return $bo->buscaTutorLogin($obj);        
+        $boT = new ModuloTutores();
+        $objT = $boT->buscaTutorLogin($obj);
+        $boA = new ModuloAlumnos();
+        $objA = $boA->buscaAlumnoLogin($obj);
+        $boP = new ModuloPersonal();
+        $objCA = $boP->buscarCoordinadorAcLogin($obj);
+        $objCE = $boP->buscarCoordinadorEsLogin($obj);
+        $objCAd = $boP->buscarAdminLogin($obj);
+
+        if ($id == 'Usuario' and $pass = 'password') {
+            print "<div class='col-md-12' style='margin-top: 10px; margin-botton:10px;'>
+                        <div class='alert alert-danger' role='alert' style='text-align: center'>
+                            <strong>Error!</strong> Usuario o contraseña incorrecto.
+			</div>
+                    </div>";
+        }elseif($objT->nRegistros == 1) {
+            $_SESSION["id"] = $objT->matricula;
+            $_SESSION["nom"] = $objT->nombre;
+            header("Location:TutoInicio.php");
+        }elseif ($objA->nRegistros == 1) {
+            $_SESSION["id"] = $objA->matricula;
+            $_SESSION["nom"] = $objA->nombre;
+            header("Location:AlumInicio.php");
+        }elseif ($objCA->nRegistros == 1) {
+            $_SESSION["id"] = $objA->matricula;
+            $_SESSION["nom"] = $objA->nombre;
+            header("Location:CordInicio.php");
+        }elseif ($objCE->nRegistros == 1) {
+            $_SESSION["id"] = $objA->matricula;
+            $_SESSION["nom"] = $objA->nombre;
+            header("Location:CordInicio.php");
+        }elseif ($objCAd->nRegistros == 1) {
+            $_SESSION["id"] = $objA->matricula;
+            $_SESSION["nom"] = $objA->nombre;
+            header("Location:Inicio.php");
+        }else {
+            print "<div class='col-md-12' style='margin-top: 10px; margin-botton:10px;'>
+                        <div class='alert alert-danger' role='alert' style='text-align: center'>
+                            <strong>Error!</strong> Usuario o contraseña incorrecto.
+			</div>
+                    </div>";
+        }
+        
+        //return $bo->buscaTutorLogin($obj);        
     }
 
 }

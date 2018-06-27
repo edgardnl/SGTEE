@@ -4,6 +4,8 @@ class AlumnosObjeto{
     
     var $id;
     var $matricula;
+    var $password;
+    var $id_role;
     var $nombre;
     var $ap_p;
     var $ap_m;
@@ -19,4 +21,5 @@ class AlumnosObjeto{
     //Extra
     var $nombreAll;
     var $nMatricula;
+    var $nRegistros;
 }

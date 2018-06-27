@@ -4,7 +4,7 @@ require_once $_SERVER['DOCUMENT_ROOT'] . ruta::ruta . "/controlador/MostrarTabla
 $tabla = new MostrarTablaControl();
 
 if (isset($_POST['btn'])) {
-    $tabla->direccionLogin($_POST['user'], $_POST['passw']);
+    $tabla->newLogin($_POST['user'], $_POST['passw']);
 }
 ?>
 <!DOCTYPE html>
