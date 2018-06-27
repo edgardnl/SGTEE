@@ -3,7 +3,9 @@
 class TutoresObjeto{
     
     var $id;
-    var $clave;
+    var $matricula;
+    var $pass;
+    var $id_role;
     var $nombre;
     var $ap_p;
     var $ap_m;
@@ -14,5 +16,6 @@ class TutoresObjeto{
     var $telefono;
     var $nombre_tutor;
     var $nclave;
+    var $nRegistros;
 }
 

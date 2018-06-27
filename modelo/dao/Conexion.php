@@ -2,7 +2,7 @@
 class conexion{
 	private static $host = "localhost";
 	private static $user = "root";
-	private static $pwd = "Orion_4528";
+	private static $pwd = "";
 	private static $db = "sgte";
 
 	public static function conectar(){

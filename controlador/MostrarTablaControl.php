@@ -180,4 +180,12 @@ class MostrarTablaControl {
         print $table;
     }
 
+    function newLogin($id,$pass){
+        $obj = new TutoresObjeto();
+        $obj->matricula = $id;
+        $obj->pass = $pass;
+        $bo = new ModuloTutores();
+        return $bo->buscaTutorLogin($obj);        
+    }
+
 }

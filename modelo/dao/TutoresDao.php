@@ -132,4 +132,19 @@ class TutoresDao {
         return $obj;
     }
 
+    function buscarTutorLogin($obj){
+        $datosArray = array($obj->matricula,$obj->pass);
+        $pP = procesaParametros::PrepareStatement(TutoresSql::buscarTutorLogin(),$datosArray);        
+
+        $query = $this->con->query($pP);
+        $row = $query->fetch_array();
+        
+        $obj = new TutoresObjeto();        
+        $obj->nRegistros = $query->num_rows;
+        $obj->matricula = $row['matricula'];
+        $obj->nombre = $row['nombre'];                                
+        
+        return $obj;   
+    }
+
 }

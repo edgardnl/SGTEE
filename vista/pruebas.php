@@ -29,15 +29,18 @@ print $objT->horaio."\n";
     </style>	
 </head>
 <body>
-	<?php $usu = $tabla->mostraActividadPorId(3); 
-		print $usu->id_actividades;
-	    print $usu->id_seguimiento;
-	    print $usu->fecha;
-	    print $usu->hora;
-	    print $usu->lugar;
-	    print $usu->detecto_problematica;
-	    print $usu->avance;	    
-	    print $usu->motivo;
+	<?php $obj = $tabla->newLogin(20182433,'sd'); 
+		print $obj->nRegistros;
+		print "   ";
+        print $obj->matricula;
+        print "   ";
+        print $obj->nombre;
+
+        if ($obj->nRegistros == 1) {
+        	print "Bienvenido Tutor";
+        }else{
+        	print "Usuario incorrecto";
+        }
 	?>
 </body>
 </html>

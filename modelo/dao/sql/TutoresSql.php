@@ -37,4 +37,9 @@ class TutoresSql {
         return $query;#    
     }
 
+    function buscarTutorLogin(){
+        $query = "SELECT * FROM tutor WHERE tutor.matricula = ? AND tutor.password = ? ;";
+        return $query;#       
+    }
+
 }
