@@ -8,12 +8,14 @@ class TutoresObjeto{
     var $id_role;
     var $nombre;
     var $ap_p;
-    var $ap_m;
+    var $ap_m;    
+    var $horaio;    
+    var $telefono;
+    var $correo;
+    var $sexo;
+
     var $id_asignatura;
     var $asignatura;
-    var $horaio;
-    var $correo;
-    var $telefono;
     var $nombre_tutor;
     var $nclave;
     var $nRegistros;

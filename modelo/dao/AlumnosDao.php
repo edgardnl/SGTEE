@@ -38,8 +38,7 @@ class AlumnosDao {
         $lista = [];
         $x = 0;
         while ($row = $query->fetch_array()) {
-            $lista[] = new TutoresObjeto();
-            $lista[$x]->id = $row['id_alumno'];
+            $lista[] = new TutoresObjeto();            
             $lista[$x]->matricula = $row['matricula'];
             $lista[$x]->nombre = $row['nombre'];
             $lista[$x]->ap_p = $row['ap_p'];

@@ -18,7 +18,7 @@ class UsuariosDao {
     }
     
     function ingresaUsuarioTutor($obj){
-        $datosArray = array($obj->matricula,$obj->contrasena,$obj->id_role);
+        $datosArray = array($obj->alumnoID,$obj->tutorID,$obj->coordinadorID,$obj->administradorID);
         $pP = procesaParametros::PrepareStatement(UsuariosSql::ingresaUsuraioTutor(),$datosArray);                        
         
         try {
@@ -29,7 +29,7 @@ class UsuariosDao {
     }
     
     function eliminaUsurioTutor($obj){
-        $datosArray = array($obj->clave);
+        $datosArray = array($obj->matricula);
         $pP = procesaParametros::PrepareStatement(UsuariosSql::eliminaUsuarioTutor(),$datosArray);        
         try {
             $this->con->query($pP);

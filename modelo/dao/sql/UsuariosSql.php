@@ -4,12 +4,12 @@
 class UsuariosSql {
     
     function ingresaUsuraioTutor(){
-        $query = "insert into usuario(matricula,contrasena,id_role) values(?,?,?);";
+        $query = "insert into usuario(alumnoID,tutorID,coordinadorID,administradorID) values(?,?,?,?);";
         return $query;
     }
     
     function eliminaUsuarioTutor(){
-        $query = "delete from usuario where matricula = ?;";
+        $query = "DELETE FROM usuario WHERE usuario.tutorID = ?;";
         return $query;
     }
     

@@ -34,7 +34,7 @@ class TutoresDao {
     }
     
     function agregaTutor($obj){
-        $datosArray = array($obj->clave,$obj->nombre,$obj->ap_p,$obj->ap_m,$obj->asignatura,$obj->horaio,$obj->correo,$obj->telefono);
+        $datosArray = array($obj->matricula,$obj->pass,$obj->id_role,$obj->nombre,$obj->ap_p,$obj->ap_m,$obj->carrera,$obj->telefono,$obj->correo,$obj->sexo);
         $pP = procesaParametros::PrepareStatement(TutoresSql::agregaTutores(),$datosArray);                        
         
         try {
@@ -67,16 +67,15 @@ class TutoresDao {
         $query = $this->con->query($pP);
         $row = $query->fetch_array();
         
-        $obj = new TutoresObjeto();
-        $obj->id = $row['id_tutores'];
-        $obj->clave = $row['clave'];
+        $obj = new TutoresObjeto();        
+        $obj->matricula = $row['matricula'];
         $obj->nombre = $row['nombre'];
         $obj->ap_p = $row['ap_p'];
         $obj->ap_m = $row['ap_m'];
-        $obj->asignatura = $row['asignatura'];
-        $obj->horaio = $row['horario'];
+        $obj->carrera = $row['carrera'];                        
+        $obj->telefono = $row['telefono_cel'];
         $obj->correo = $row['correo'];
-        $obj->telefono = $row['telefono'];
+        $obj->sexo = $row['sexo'];
         
         return $obj;
     }
@@ -93,7 +92,7 @@ class TutoresDao {
     }
     
     function eliminaDatosTutor($obj){
-        $datosArray = array($obj->id);
+        $datosArray = array($obj->matricula);
         $pP = procesaParametros::PrepareStatement(TutoresSql::eliminaDatosTutor(),$datosArray);        
         try {
             $this->con->query($pP);
@@ -119,7 +118,7 @@ class TutoresDao {
     }
 
     function buscarTutorClave($obj){
-        $datosArray = array($obj->clave);
+        $datosArray = array($obj->matricula);
         $pP = procesaParametros::PrepareStatement(TutoresSql::buscarTutorClave(),$datosArray);        
 
         $query = $this->con->query($pP);

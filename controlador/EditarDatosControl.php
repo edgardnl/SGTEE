@@ -12,13 +12,13 @@ $bo = new ModuloTutores();
 switch ($_REQUEST['action']) {#$_REQUEST['action']
     case 'editarTutor':
         $obj = new TutoresObjeto();
-        $obj->id = $_POST['id'];#
+        $obj->matricula = $_POST['id'];#
         //$obj->clave = $_POST['clav'];
         $obj->nombre = $_POST['nom'];
         $obj->ap_p = $_POST['apa'];
         $obj->ap_m = $_POST['ama'];
-        $obj->asignatura = $_POST['asig'];
-        $obj->horaio = $_POST['hori'];
+        $obj->carrera = $_POST['carrera'];
+        $obj->sexo = $_POST['sexo'];
         $obj->correo = $_POST['correo'];
         $obj->telefono = $_POST['tel'];
         /*$obj->id = 4;#

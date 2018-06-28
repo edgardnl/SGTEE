@@ -15,19 +15,22 @@ $bo = new ModuloTutores();
 switch ($_REQUEST['action']) {#$_REQUEST['action']
     case 'agregarTutor':
         $obj = new TutoresObjeto();
-        $obj->clave = $_POST['clave'];
+        $obj->matricula = $_POST['clave'];
+        $obj->pass = $_POST['pass'];
+        $obj->id_role = 4;
         $obj->nombre = $_POST['nombre'];
         $obj->ap_p = $_POST['ap_p'];
         $obj->ap_m = $_POST['ap_m'];
-        $obj->asignatura = $_POST['asignat'];
-        $obj->horaio = $_POST['horario'];
+        $obj->carrera = $_POST['carrera'];
         $obj->correo = $_POST['correo'];
         $obj->telefono = $_POST['tel'];
+        $obj->sexo = $_POST['sexo'];
+
         $obj1 = new UsuariosObjeto();
-        $obj1->matricula = $_POST['clave'];
-        //$obj1->correo = $_POST['correo'];
-        $obj1->contrasena = $_POST['pass'];
-        $obj1->id_role = 2;
+        $obj1->alumnoID = 0;
+        $obj1->tutorID = $_POST['clave'];        
+        $obj1->coordinadorID = 0;
+        $obj1->administradorID = 0;
         
         $res = $bo->agregaTutor($obj,$obj1);
         //header("Location:Tutores.php");

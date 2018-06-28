@@ -48,7 +48,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
     	$("#agregar").click(function(){
     		//alert("Hola");
 
-    		if ($("#clave").val() == "" || $("#nombre").val() == "" || $("#ap_p").val() == "" || $("#ap_m").val() == "" || $("#asignat").val() == "" || $("#correo").val() == "" || $("#horario").val() == "" || $("#pass").val() == "" || $("#pass1").val() == "" || $("#tel").val() == "") {
+    		if ($("#clave").val() == "" || $("#nombre").val() == "" || $("#ap_p").val() == "" || $("#ap_m").val() == "" || $("#carrera").val() == "" || $("#correo").val() == "" || $("#sexo").val() == "" || $("#pass").val() == "" || $("#pass1").val() == "" || $("#tel").val() == "") {
     			alert("Algun campo esta vacio");
     			return false;
     		}
@@ -73,10 +73,16 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
     			return false;
     		}
 
-    		if (!isNaN($("#asignat").val())) {
-    			alert("El campo Asignaturas solo permite letras");
+    		if (!isNaN($("#carrera").val())) {
+    			alert("El campo Carrera solo permite letras");
     			return false;
     		}
+
+    		if (!isNaN($("#sexo").val())) {
+    			alert("El campo Carrera solo permite letras");
+    			return false;
+    		}
+
     		expr = /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
     		if (!expr.test($("#correo").val())){
       			alert("El correo no es valido");
@@ -244,34 +250,34 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 									<div class="col-sm-2 jlkdfj1">
 										<p class="help-block"></p>
 									</div>
-								</div>
+								</div>								
 								<div class="form-group">
 									<!--dos-->
-									<label for="focusedinput" class="col-sm-2 control-label">Asignaturas</label>
+									<label for="focusedinput" class="col-sm-2 control-label">Carrera</label>
 									<div class="col-sm-8">
-										<input type="text" class="form-control1" id="asignat" placeholder="" name="asignat">
+										<input type="text" class="form-control1" id="carrera" placeholder="" name="carrera">
 									</div>
 
 									<div class="col-sm-2 jlkdfj1">
 										<p class="help-block"></p>
 									</div>
-								</div>
-								<div class="form-group">
-									<!--dos-->
-									<label for="focusedinput" class="col-sm-2 control-label">Horario disponible</label>
-									<div class="col-sm-8">
-										<input type="text" class="form-control1" id="horario" placeholder="Ejemplo: 13:00 a 14:00" name="horario">
-									</div>
-
-									<div class="col-sm-2 jlkdfj1">
-										<p class="help-block"></p>
-									</div>
-								</div>
-                                                                <div class="form-group">
+								</div>								
+                                <div class="form-group">
 									<!--dos-->
 									<label for="focusedinput" class="col-sm-2 control-label">Correo</label>
 									<div class="col-sm-8">
 										<input type="text" class="form-control1" id="correo" placeholder="ejemplo@tescha.com" name="correo">
+									</div>
+
+									<div class="col-sm-2 jlkdfj1">
+										<p class="help-block"></p>
+									</div>
+								</div>
+								<div class="form-group">
+									<!--dos-->
+									<label for="focusedinput" class="col-sm-2 control-label">Sexo</label>
+									<div class="col-sm-8">
+										<input type="text" class="form-control1" id="sexo" placeholder="" name="sexo">
 									</div>
 
 									<div class="col-sm-2 jlkdfj1">

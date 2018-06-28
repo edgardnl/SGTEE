@@ -66,8 +66,8 @@ class ModuloTutores{
     function eliminaDatosTutor($obj){
         $usu = 0;
         try {
-           $tuto = $this->dao->treTutorPorId($obj);
-           $this->daoUsu->eliminaUsurioTutor($tuto);
+           //$tuto = $this->dao->treTutorPorId($obj);
+           $this->daoUsu->eliminaUsurioTutor($obj);
            $this->dao->eliminaDatosTutor($obj);
            $usu = 2;
         } catch (Exception $ex) {

@@ -55,7 +55,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                 $("#editar").click(function(){
                     //alert("Hola");
 
-                    if ($("#clav").val() == "" || $("#nom").val() == "" || $("#apa").val() == "" || $("#ama").val() == "" || $("#asig").val() == "" || $("#correo").val() == "" || $("#hori").val() == "" || $("#tel").val() == "") {
+                    if ($("#clav").val() == "" || $("#nom").val() == "" || $("#apa").val() == "" || $("#ama").val() == "" || $("#carrera").val() == "" || $("#correo").val() == "" || $("#sexo").val() == "" || $("#tel").val() == "") {
                         alert("Algun campo esta vacio");
                         return false;
                     }
@@ -80,10 +80,16 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                         return false;
                     }
 
-                    if (!isNaN($("#asig").val())) {
-                        alert("El campo Asignaturas solo permite letras");
+                    if (!isNaN($("#carrera").val())) {
+                        alert("El campo Carrera solo permite letras");
                         return false;
                     }
+
+                    if (!isNaN($("#sexo").val())) {
+                        alert("El campo Sexo solo permite letras");
+                        return false;
+                    }
+
                     expr = /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
                     if (!expr.test($("#correo").val())){
                         alert("El correo no es valido");
@@ -225,10 +231,10 @@ new UISearch(document.getElementById('sb-search'));
                                 <form class="form-horizontal" name="formEdit" id="formEdit">                                    
                                     <div class="form-group">
                                         <!--inicio de los imput del formulario -->
-                                        <input type="hidden" class="form-control1" id="focusedinput" placeholder="" value="<?php print $objT->id; ?>" name="id">
-                                        <label for="focusedinput" class="col-sm-2 control-label">Clave</label>
+                                        <input type="hidden" class="form-control1" id="focusedinput" placeholder="" value="<?php print $objT->matricula; ?>" name="id">
+                                        <label for="focusedinput" class="col-sm-2 control-label">Matricula</label>
                                         <div class="col-sm-8">
-                                            <input disabled="" type="text" class="form-control1" id="clav" placeholder="" value="<?php print $objT->clave; ?>" name="clav">
+                                            <input disabled="" type="text" class="form-control1" id="clav" placeholder="" value="<?php print $objT->matricula; ?>" name="clav">
                                         </div>
 
                                         <div class="col-sm-2 jlkdfj1">
@@ -267,12 +273,12 @@ new UISearch(document.getElementById('sb-search'));
                                         <div class="col-sm-2 jlkdfj1">
                                             <p class="help-block"></p>
                                         </div>
-                                    </div>
+                                    </div>                                    
                                     <div class="form-group">
                                         <!--dos-->
-                                        <label for="focusedinput" class="col-sm-2 control-label">Asignaturas</label>
+                                        <label for="focusedinput" class="col-sm-2 control-label">Sexo</label>
                                         <div class="col-sm-8">
-                                            <input type="text" class="form-control1" id="asig" value="<?php print $objT->asignatura; ?>" name="asig">
+                                            <input type="text" class="form-control1" id="sexo" placeholder="" value="<?php print $objT->sexo; ?>" name="sexo">
                                         </div>
 
                                         <div class="col-sm-2 jlkdfj1">
@@ -281,9 +287,9 @@ new UISearch(document.getElementById('sb-search'));
                                     </div>
                                     <div class="form-group">
                                         <!--dos-->
-                                        <label for="focusedinput" class="col-sm-2 control-label">Horario</label>
+                                        <label for="focusedinput" class="col-sm-2 control-label">Carrera</label>
                                         <div class="col-sm-8">
-                                            <input type="text" class="form-control1" id="hori" placeholder="Horario disponible" value="<?php print $objT->horaio; ?>" name="hori">
+                                            <input type="text" class="form-control1" id="carrera" placeholder="" value="<?php print $objT->carrera; ?>" name="carrera">
                                         </div>
 
                                         <div class="col-sm-2 jlkdfj1">
@@ -294,7 +300,7 @@ new UISearch(document.getElementById('sb-search'));
                                         <!--dos-->
                                         <label for="focusedinput" class="col-sm-2 control-label">Correo</label>
                                         <div class="col-sm-8">
-                                            <input type="text" class="form-control1" id="correo" placeholder="Horario disponible" value="<?php print $objT->correo; ?>" name="correo">
+                                            <input type="text" class="form-control1" id="correo" placeholder="" value="<?php print $objT->correo; ?>" name="correo">
                                         </div>
 
                                         <div class="col-sm-2 jlkdfj1">
