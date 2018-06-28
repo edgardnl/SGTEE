@@ -14,8 +14,11 @@ $bo = new ModuloAlumnos();
 $action = 'agregarAlumnos';
 switch ($action) {#$_REQUEST['action']
     case 'agregarAlumnos':
+        $especial = new EspecialControl();
         $obj = new AlumnosObjeto();
         $obj->matricula = $_POST['matricula'];
+        $obj->password = $especial->generaPass();
+        $obj->id_role = 5;
         $obj->nombre = $_POST['nombre'];
         $obj->ap_p = $_POST['ap_p'];
         $obj->ap_m = $_POST['ap_m'];
@@ -28,15 +31,13 @@ switch ($action) {#$_REQUEST['action']
         $obj->sexo = $_POST['sexo'];
         $obj->materias_adeudadas = $_POST['materias_adeudadas'];
         $obj->estatus = 1;
-        
-        $especial = new EspecialControl();
+                
         $obj1 = new UsuariosObjetoAlumnos();
-        $obj1->matricula_usuario= $_POST['matricula'];
-        //$obj1->correo = $_POST['correo'];
-        $obj1->contrasena = $especial->generaPass();
-        $obj1->id_role = 3;
-        
-        //$obj->correo = $_POST['correo'];
+        $obj1->alumnoID = $_POST['matricula'];        
+        $obj1->tutorID = 0;
+        $obj1->coordinadorID = 0;
+        $obj1->administradorID = 0;
+                
         $res = $bo->agregaAlumnos($obj,$obj1);
         print $res;
         break;

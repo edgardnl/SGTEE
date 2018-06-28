@@ -75,9 +75,9 @@ class ModuloAlumnos {
     function eliminaDatosAlumnos($obj){
         $usu = 0;
         try {
-           $tuto = $this->dao->traeAlumnosPorId($obj);
+           //$tuto = $this->dao->traeAlumnosPorId($obj);
            $this->dao->eliminaDatosAlumnos($obj);
-           $this->daoUsu->eliminaUsurioAlumno($tuto);
+           $this->daoUsu->eliminaUsurioAlumno($obj);
            $usu = 2;
         } catch (Exception $ex) {
             $usu = 3;//$ex->getMessage();

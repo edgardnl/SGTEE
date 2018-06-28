@@ -9,7 +9,7 @@ $bo = new ModuloAlumnos();
 switch ($_REQUEST['action']) {#$_REQUEST['action']
     case 'eliminarAlumno':
         $obj = new AlumnosObjeto();
-        $obj->id = $_POST['id_alumno'];#                
+        $obj->matricula = $_POST['id_alumno'];#                
         $res = $bo->eliminaDatosAlumnos($obj);
         print $res;
         break;

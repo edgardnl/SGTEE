@@ -250,7 +250,7 @@ new UISearch(document.getElementById('sb-search'));
                                 <form class="form-horizontal" name="formEditAlumnos" id="formEditAlumnos">
                                     <div class="form-group">
                                         <!--inicio de los imput del formulario -->
-                                        <input type="hidden" class="form-control1" id="id_alumno" placeholder="" value="<?php print $obj->id; ?>" name="id_alumno">
+                                        <input type="hidden" class="form-control1" id="id_alumno" placeholder="" value="<?php print $obj->matricula; ?>" name="id_alumno">
                                         <label for="focusedinput" class="col-sm-2 control-label">Matricula</label>
                                         <div class="col-sm-8">
                                             <input disabled="" type="text" class="form-control1" id="matricula" value="<?php print $obj->matricula; ?>" name ="matricula">

@@ -20,6 +20,8 @@ class AlumnosSql {
     function agregaAlumnossql() {
         $query = "INSERT INTO alumno(
         matricula,
+        password,
+        id_role,
         nombre,
         ap_p,
         ap_m,
@@ -31,7 +33,7 @@ class AlumnosSql {
         correo,
         sexo,
         materias_adeudadas,
-        estatus)values(?,?,?,?,?,?,?,?,?,?,?,?,?);";
+        estatus)values(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?);";
         return $query;
     }
 
@@ -42,7 +44,7 @@ class AlumnosSql {
     }
     
     function traeAlumnosPorIdAlumnos(){
-        $query = "SELECT * FROM alumno WHERE id_alumno = ? ;";
+        $query = "SELECT * FROM alumno WHERE matricula = ? ;";
         return $query;
     }
     
@@ -57,12 +59,12 @@ class AlumnosSql {
         , semestre= '".$obj->semestre."'
         , correo= '".$obj->correo."'
         , sexo= '".$obj->sexo."'
-         where id_alumno = ".$obj->id.";";
+         where matricula = ".$obj->matricula.";";
         return $query;
     }
     
     function eliminaDatosAlumnos(){
-        $query = "delete from alumno where id_alumno = ?;";
+        $query = "delete from alumno where matricula = ?;";
         return $query;# 
     }
 

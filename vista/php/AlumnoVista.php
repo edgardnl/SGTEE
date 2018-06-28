@@ -52,9 +52,8 @@ class AlumnoVista {
         </script>  
         <table class='table' id='example'>
                     <thead>
-                        <tr>
-                            <th>#</th>
-                            <th>Clave</th>
+                        <tr>                            
+                            <th>Matricula</th>
                             <th>Nombre</th>
                             <th>Apellido Paterno</th>
                             <th>Apellido Materno</th>
@@ -64,13 +63,12 @@ class AlumnoVista {
                 <tbody>";
         $rows ="";
         foreach ($data as $r){
-            $row = "<tr>
-                        <td scope='row'>".$r->id."</td>
-                        <td>".$r->clave."</td>
+            $row = "<tr>                        
+                        <td scope='row'>".$r->clave."</td>
                         <td>".$r->nombre."</td>
                         <td>".$r->ap_p."</td>
                         <td>".$r->ap_m."</td>
-                        <td><button class='btn-success btn' onclick='enviarEditarAlumnos(".$r->id.")'>Editar</button></td>
+                        <td><button class='btn-success btn' onclick='enviarEditarAlumnos(".$r->clave.")'>Editar</button></td>
                     </tr>";
             $rows = $rows.$row;
         }

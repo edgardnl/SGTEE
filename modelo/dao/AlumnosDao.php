@@ -55,8 +55,7 @@ class AlumnosDao {
         $lista = [];
         $x = 0;
         while ($row = $query->fetch_array()) {
-            $lista[] = new AlumnosObjeto();
-            $lista[$x]->id = $row['id_alumno'];
+            $lista[] = new AlumnosObjeto();            
             $lista[$x]->clave = $row['matricula'];
             $lista[$x]->nombre = $row['nombre'];
             $lista[$x]->ap_p = $row['ap_p'];
@@ -66,7 +65,7 @@ class AlumnosDao {
         return $lista;
     }
      function agregaAlumnos($obj){
-        $datosArray = array($obj->matricula,$obj->nombre,$obj->ap_p,$obj->ap_m,$obj->grupo,$obj->carrera,$obj->telefono,$obj->telefono_cel,$obj->semestre,$obj->correo,$obj->sexo,$obj->materias_adeudadas,$obj->estatus);
+        $datosArray = array($obj->matricula,$obj->password,$obj->id_role,$obj->nombre,$obj->ap_p,$obj->ap_m,$obj->grupo,$obj->carrera,$obj->telefono,$obj->telefono_cel,$obj->semestre,$obj->correo,$obj->sexo,$obj->materias_adeudadas,$obj->estatus);
         $pP = procesaParametros::PrepareStatement(AlumnosSql::agregaAlumnossql(),$datosArray);                
         
         try {
@@ -84,8 +83,7 @@ class AlumnosDao {
         $query = $this->con->query($pP);
         $row = $query->fetch_array();
         
-        $obj = new AlumnosObjeto();
-        $obj->id = $row['id_alumno'];
+        $obj = new AlumnosObjeto();        
         $obj->matricula = $row['matricula'];
         $obj->nombre = $row['nombre'];
         $obj->ap_p = $row['ap_p'];
@@ -116,7 +114,7 @@ class AlumnosDao {
     }
     
     function eliminaDatosAlumnos($obj){
-        $datosArray = array($obj->id);
+        $datosArray = array($obj->matricula);
         $pP = procesaParametros::PrepareStatement(AlumnosSql::eliminaDatosAlumnos(),$datosArray);
         
         try {
