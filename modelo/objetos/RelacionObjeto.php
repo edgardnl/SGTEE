@@ -2,10 +2,12 @@
 class RelacionObjeto{
     
     var $id_relacion;
-    var $id_alumno;
-    var $id_tutor;
+    var $matricula_alumno;
+    var $matricula_tutor;
     var $aprobacion;
     var $observacion;
+    var $factor_riesgo;
+    var $bajas;
     //Extras
     var $nombre;
     var $appa;

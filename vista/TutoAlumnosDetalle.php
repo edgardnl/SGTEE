@@ -4,7 +4,7 @@ require_once $_SERVER['DOCUMENT_ROOT'] . ruta::ruta . "/controlador/MostrarTabla
 $tabla = new MostrarTablaControl();
 $id = $_GET['id'];
 $obj = $tabla->mostrarAlumnoDetalles($id);
-$objU = $tabla->mostrarUsuarioAlumnoPorClave($obj->matricula);
+//$objU = $tabla->mostrarUsuarioAlumnoPorClave($obj->matricula);
 ?>
 <!--
 Author: W3layouts
@@ -135,7 +135,7 @@ new UISearch(document.getElementById('sb-search'));
                                     <div class="form-group">
                                         <label for="disabledinput" class="col-sm-2 control-label">Contraseña</label>
                                         <div class="col-sm-8">
-                                            <input disabled="" type="text" class="form-control1" id="disabledinput" value="<?php print $objU->contrasena; ?>">
+                                            <input disabled="" type="text" class="form-control1" id="disabledinput" value="<?php print $obj->password; ?>">
                                         </div>
                                     </div>
                                     <div class="form-group">

@@ -27,7 +27,7 @@ class SeguimientoTutorDao{
         while ($row = $query->fetch_array()) {
             $lista[] = new SeguimientoTutorObjeto();
             $lista[$x]->id_seguimiento = $row['id_seguimiento'];
-            $lista[$x]->id_alumno = $row['id_alumno'];
+            $lista[$x]->matricula = $row['matricula_alumno'];
             $lista[$x]->nomAlumno = $row['nombre']." ".$row['ap_p']." ".$row['ap_m'];         
             $x++;
         }

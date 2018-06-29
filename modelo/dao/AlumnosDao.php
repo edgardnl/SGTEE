@@ -76,7 +76,7 @@ class AlumnosDao {
     }
 
     function traeAlumnosPorId($id){
-        $datosArray = array($id->id);
+        $datosArray = array($id->matricula);
         $pP = procesaParametros::PrepareStatement(AlumnosSql::traeAlumnosPorIdAlumnos(),$datosArray);
        
         $query = $this->con->query($pP);
@@ -85,6 +85,7 @@ class AlumnosDao {
         $obj = new AlumnosObjeto();        
         $obj->matricula = $row['matricula'];
         $obj->nombre = $row['nombre'];
+        $obj->password = $row['password'];
         $obj->ap_p = $row['ap_p'];
         $obj->ap_m = $row['ap_m'];
         $obj->grupo = $row['grupo'];

@@ -15,7 +15,7 @@ class MostrarTablaControlAlumnos {
 	
 	function mostrarDatosalumId($id){
         $obj = new AlumnosObjeto();
-        $obj->id = $id;
+        $obj->matricula = $id;
         $bo = new ModuloAlumnos();
         return $bo->traeAlumnosPorId($obj);
     }

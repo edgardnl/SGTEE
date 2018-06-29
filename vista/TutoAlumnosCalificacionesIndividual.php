@@ -203,7 +203,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                         </div>                                        
                         <h6 class="blank" style="color: #F8F8F8">...</h6>
                         <button class="btn-default btn" onclick="regresarAlumnosAvance()">Regresar</button>
-                        <a class="flotante" onclick="agregarCalificaciones(<?php print $obj->id;?>)"><i class="fa fa-edit"></i></a>
+                        <a class="flotante" onclick="agregarCalificaciones(<?php print $obj->matricula;?>)"><i class="fa fa-edit"></i></a>
                     </div>
                 </div>
 

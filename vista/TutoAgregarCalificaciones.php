@@ -1,3 +1,9 @@
+<?php
+require_once "../ruta.php";
+require_once $_SERVER['DOCUMENT_ROOT'] . ruta::ruta . "/controlador/MostrarTablaControl.php";
+
+$tabla = new MostrarTablaControl();
+?>
 <!--
 Author: W3layouts
 Author URL: http://w3layouts.com
@@ -53,38 +59,36 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                 //$("#selector1").val(<?//php print '2';?>);
                 
                 $("#add").click(function(){
-                    if ($("#datepicker").val() == "" || $("#timepicker").val() == "" || $("#lugar").val() == "" || $("#avance").val() == "" ) {
-    			alert("Algun campo esta vacio");
-    			return false;
+                    
+                    if ($("#calificacion").val() == "") {
+    			         alert("Algun campo esta vacio");
+    			         return false;
                     }
-                    if ($("#selector1").val() == "0" || $("#problema").val() == "0") {
+
+                    if ($("#parcial").val() == "0" || $("#asignatura").val() == "0" || $("#profesor").val() == "0") {
                         alert("Selecciona una opcion");
                         return false;
                     }                    
                     
-                    if (!isNaN($("#lugar").val())) {
-    			alert("El campo Lugar solo permite letras");
-    			return false;
-                    }                    
-
-                    if (!isNaN($("#avance").val())) {
-                            alert("El campo Apellido Materno solo permite letras");
-                            return false;
+                    var expr = /^[0-9]+([.][0-9]+)?$/;
+                    if (!expr.test($("#calificacion").val())){
+                        alert("El campo Calificaciones solo permiete numeros");
+                        return false;
                     }
                     
-                    var datos = "action=agregarActividad&" + $("#FormActividades").serialize();
+                    var datos = "action=agregarCalificaciones&" + $("#FormCalificaciones").serialize();
                     alert(datos);
                     $.post("../controlador/AgregarControl.php", datos, function(data) {
                         console.log(data);
                         if (data == 1) {
                             alert("Registro Exitoso");
-                            window.location.href = "TutoSeguimientoAlumnos.php";
+                            window.history.go(-1);
                         }else if(data == 2){
                             alert("Error al realizar el registro");
-                            window.location.href = "TutoSeguimientoAlumnos.php";
+                            window.history.go(-1);
                         }
                                                         
-                    });  
+                    }); 
                     
                 });
                                 
@@ -177,35 +181,13 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 
 
                                 <form class="form-horizontal" name="FormCalificaciones" id="FormCalificaciones">
-                                                                                                      
-                                    <div class="form-group">
-                                        <label for="problema" class="col-sm-2 control-label">Profesor</label>
-                                        <div class="col-sm-8"><select name="profesor" id="profesor" class="form-control1">
-                                                <option value="0">Selecciona una opcion</option>
-                                                <option value="Si">Si</option>
-                                                <option value="No">No</option>                                                
-                                            </select></div>
-                                    </div>                                    
-                                    <div class="form-group">
-                                        <label for="selector1" class="col-sm-2 control-label">Asignatura</label>
-                                        <div class="col-sm-8"><select name="asignatura" id="asignatura" class="form-control1">
-                                                <option value="0">Selecciona una opcion</option>
-                                                <option value="1">Problemas Academicos</option>
-                                                <option value="2">Problemas Economicos</option>
-                                                <option value="3">Canalizacion</option>
-                                                <option value="4">Informacion General</option>
-                                                <option value="5">Asesoria Academica</option>
-                                                <option value="6">Problemas Interpersonales</option>
-                                            </select></div>
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="problema" class="col-sm-2 control-label">Parcial</label>
-                                        <div class="col-sm-8"><select name="parcial" id="parcial" class="form-control1">
-                                                <option value="0">Selecciona una opcion</option>
-                                                <option value="Si">Si</option>
-                                                <option value="No">No</option>                                                
-                                            </select></div>
-                                    </div>  
+                                                                                                                                          
+                                    <?php 
+                                    $tabla->selectParcial();
+                                    $tabla->selectAsignatura();
+                                    $tabla->selectProfesores();
+                                    ?>
+
                                     <div class="form-group">                                        
                                         <label for="focusedinput" class="col-sm-2 control-label">Calificacion</label>
                                         <div class="col-sm-8">

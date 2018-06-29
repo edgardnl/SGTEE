@@ -52,7 +52,7 @@ class CatalogosDao {
         $x = 0;
         while ($row = $query->fetch_array()) {
             $lista[] = new ProfesoresObjeto();
-            $lista[$x]->id_profesor = $row['id_asignatura'];
+            $lista[$x]->id_profesor = $row['id_profesor'];
             $lista[$x]->nombreAll = $row['nombre']." ".$row['ap_p']." ".$row['ap_m'];            
             $x++;
         }

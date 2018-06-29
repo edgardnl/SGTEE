@@ -10,6 +10,9 @@ require_once $_SERVER['DOCUMENT_ROOT'] . ruta::ruta . "/modelo/objetos/Actividad
 
 require_once $_SERVER['DOCUMENT_ROOT'] . ruta::ruta . "/modelo/objetos/CanalizacionObjeto.php";
 
+require_once $_SERVER['DOCUMENT_ROOT'] . ruta::ruta . "/modelo/bo/CalificacionesBo.php";
+require_once $_SERVER['DOCUMENT_ROOT'] . ruta::ruta . "/modelo/objetos/CalificacionesObjeto.php";
+
 $bo = new ModuloTutores();
 //$action = "agregarActividad";
 switch ($_REQUEST['action']) {#$_REQUEST['action']
@@ -76,6 +79,18 @@ switch ($_REQUEST['action']) {#$_REQUEST['action']
 
         
         
+        break;
+
+    case 'agregarCalificaciones':
+        $objCal = new CalificacionesObjeto();
+        $objCal->id_asignatura = $_POST['asignatura'];
+        $objCal->id_parcial = $_POST['parcial'];
+        $objCal->id_profesor = $_POST['profesor'];        
+        $objCal->matricula_alumno = $_POST['idalu'];
+        $objCal->calificaciones = $_POST['calificacion'];
+        $modCal = new ModuloCalificaciones();
+        $resC = $modCal->agregaCalificaciones($objCal);
+        print $resC;
         break;
 }
 

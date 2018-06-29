@@ -41,7 +41,7 @@ class RelacionDao {
         while ($row = $query->fetch_array()) {
             $lista[] = new RelacionObjeto();
             $lista[$x]->id_relacion = $row['id_relacion'];
-            $lista[$x]->id_alumno = $row['id_alumno'];            
+            $lista[$x]->matricula_alumno = $row['matricula_alumno'];            
             $lista[$x]->NomAll = $row['nombre'] . " " . $row['ap_p'] . " " . $row['ap_m'];
             $lista[$x]->materias = $row['materias_adeudadas'];
             $lista[$x]->aprobacion = $row['aprobacion'];

@@ -18,4 +18,16 @@ class ModuloCalificaciones{
         $datos = $this->vista->tablaCalificacionesPorId($cal);
         return $datos;
     }
+
+    function agregaCalificaciones($obj){
+        $usu = 0;
+        try {
+            $this->dao->guardaCalificaciones($obj);
+            $usu = 1;
+        } catch (Exception $e) {
+            $usu = 2;
+        }
+
+        return $usu;
+    }
 }

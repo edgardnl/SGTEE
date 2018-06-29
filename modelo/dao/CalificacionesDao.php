@@ -17,7 +17,7 @@ class CalificacionesDao{
     }
 
     function traeCalificacionesPorIdAlumno($obj){
-    	$datosArray = array($obj->id_alumno);
+    	$datosArray = array($obj->matricula_alumno);
         $pP = procesaParametros::PrepareStatement(CalificacionesSql::treaCalificacionesPorIdAlumno(),$datosArray);
        
         $query = $this->con->query($pP);
@@ -33,5 +33,18 @@ class CalificacionesDao{
             $x++;
         }
         return $lista;
+    }
+
+    function guardaCalificaciones($obj){
+
+        $datosArray = array($obj->id_asignatura,$obj->id_parcial,$obj->id_profesor,$obj->matricula_alumno,$obj->calificaciones);
+        $pP = procesaParametros::PrepareStatement(CalificacionesSql::guardaCalificaciones(),$datosArray); 
+
+        try {
+            $this->con->query($pP);            
+        } catch (Exception $exc) {
+            print $exc->getMessage();
+        }
+
     }
 }

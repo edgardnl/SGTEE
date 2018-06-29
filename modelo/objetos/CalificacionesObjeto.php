@@ -6,7 +6,7 @@ class CalificacionesObjeto{
 	var $id_asignatura;
 	var $id_parcial;
 	var $id_profesor;
-	var $id_alumno;
+	var $matricula_alumno;
 	var $calificaciones;
 	#Extras
 	var $asignatura;

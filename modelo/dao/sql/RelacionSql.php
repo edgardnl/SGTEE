@@ -10,10 +10,10 @@ class RelacionSql {
     }
 
     function consultaAlumnosPorIdTutor() {
-        $query = "select id_relacion, relacion_alumno_tutor.id_alumno,alumno.nombre,alumno.ap_p,alumno.ap_m,aprobacion ,alumno.materias_adeudadas,observacion 
-            from relacion_alumno_tutor,alumno
-            where relacion_alumno_tutor.id_alumno = alumno.id_alumno
-            and relacion_alumno_tutor.id_tutor = ? ;";
+        $query = "SELECT relacion_alumno_tutor.id_relacion, relacion_alumno_tutor.matricula_alumno, alumno.nombre, alumno.ap_p,alumno.ap_m, relacion_alumno_tutor.aprobacion, alumno.materias_adeudadas, relacion_alumno_tutor.observacion
+            FROM relacion_alumno_tutor, alumno
+            WHERE relacion_alumno_tutor.matricula_alumno = alumno.matricula
+            AND relacion_alumno_tutor.matricula_tutor = ?;";
         return $query;
     }
 

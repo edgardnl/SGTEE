@@ -29,6 +29,9 @@ require_once $_SERVER['DOCUMENT_ROOT'] . ruta::ruta . "/modelo/objetos/Calificac
 require_once $_SERVER['DOCUMENT_ROOT'] . ruta::ruta . "/modelo/bo/PersonalBo.php";
 require_once $_SERVER['DOCUMENT_ROOT'] . ruta::ruta . "/modelo/objetos/PersonalObjeto.php";
 
+require_once $_SERVER['DOCUMENT_ROOT'] . ruta::ruta . "/modelo/bo/CatalogosBo.php";
+//require_once $_SERVER['DOCUMENT_ROOT'] . ruta::ruta . "/modelo/objetos/CatalogosObjeto.php";
+
 class MostrarTablaControl {
 
     function tablaTutores() {
@@ -110,7 +113,7 @@ class MostrarTablaControl {
 
     function mostrarAlumnoDetalles($id){
         $aluObj = new AlumnosObjeto();
-        $aluObj->id = $id;
+        $aluObj->matricula = $id;
         $aluBo = new ModuloAlumnos();
         return $aluBo->traeAlumnosPorId($aluObj);
     }
@@ -177,7 +180,7 @@ class MostrarTablaControl {
 
     function tablaCalificacionesPorIdAlumno($id){
         $calObj = new CalificacionesObjeto();
-        $calObj->id_alumno = $id;
+        $calObj->matricula_alumno = $id;
         $calBo = new ModuloCalificaciones();
         $table = $calBo->traeCalificacionesPorIdAlumno($calObj);
         print $table;
@@ -232,6 +235,24 @@ class MostrarTablaControl {
         }
         
         //return $bo->buscaTutorLogin($obj);        
+    }
+
+    function selectParcial(){
+        $catalogoBO = new ModuloCatalogos();
+        $select = $catalogoBO->traeSelectParcial();
+        print $select;
+    }
+
+    function selectAsignatura(){
+        $catalogoBO = new ModuloCatalogos();
+        $select = $catalogoBO->traeSelectAsignatura();
+        print $select;
+    }
+
+    function selectProfesores(){
+        $catalogoBO = new ModuloCatalogos();
+        $select = $catalogoBO->traeSelectProfesores();
+        print $select;
     }
 
 }
