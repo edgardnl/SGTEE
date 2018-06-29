@@ -3,7 +3,7 @@
 class ActividadesSql {
 
     function traeActividadesporAlumno() {
-        $query = "SELECT actividades.id_actividades, tutor.nombre as tutor, alumno.nombre as alumno, actividades.fecha, actividades.lugar, actividades.detecto_problematica, actividades.avance, motivo.descripcion as motivo
+        $query = "SELECT actividades.id_actividades, tutor.nombre as tutor, alumno.nombre as alumno, actividades.fecha, actividades.hora, actividades.lugar, actividades.detecto_problematica, actividades.avance, motivo.descripcion as motivo
             FROM actividades,seguimiento_tutor,relacion_alumno_tutor,tutor,alumno,motivo
             WHERE actividades.id_seguimiento = seguimiento_tutor.id_seguimiento
             AND actividades.id_motivo = motivo.id_motivo
