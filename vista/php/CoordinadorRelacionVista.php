@@ -14,8 +14,7 @@ class CoordinadorRelacionVista{
                             <th>Nombre Del Alumno</th>
                             <th>Clave tutor</th>
                             <th>Nombre Del Tutor </th>
-                            <th>Status</th>
-                            <th>Eliminar</th>
+                            <th>Aprobado</th>                            
                             
                         </tr>
                     </thead>
@@ -26,12 +25,10 @@ class CoordinadorRelacionVista{
             $row = "<tr>
                         <td scope='row'>".$r->id."</td>
                         <td>".$r->clave."</td>
-                        <td>".$r->nombre.",".$r->ap_p.",".$r->ap_m."</td>
+                        <td>".$r->nombre." ".$r->ap_p." ".$r->ap_m."</td>
                         <td>".$r->clavet."</td>
-                        <td>".$r->nombret.",".$r->ap_pt.",".$r->ap_mt."</</td>
-                        <td>".$r->estatus."</td>
-                         <td><button class='btn-success btn' onclick='eliminarsinmvc(".$r->id.")'>Eliminar Relacion</button></td>
-                        
+                        <td>".$r->nombret." ".$r->ap_pt." ".$r->ap_mt."</</td>
+                        <td>".$r->estatus."</td>                                                 
                     </tr>";
             $rows = $rows.$row;
         
@@ -39,7 +36,8 @@ class CoordinadorRelacionVista{
     }
         $fin = "</tbody>
                 </table>";
-        
+        //<th>Eliminar</th>
+        //<td><button class='btn-success btn' onclick='eliminarsinmvc(".$r->id.")'>Eliminar Relacion</button></td>
         
         return $dat.$rows.$fin;
 

@@ -25,13 +25,13 @@ class CoordinadorDao{
         $lista = [];
         $x = 0;
         while ($row = $query->fetch_array()) {
-            $lista[] = new AlumnosObjetoCoordinador1();
-            $lista[$x]->id = $row['id_alumno'];
+            $lista[] = new AlumnosObjetoCoordinador1();            
             $lista[$x]->clave = $row['matricula'];
             $lista[$x]->nombre = $row['nombre'];
             $lista[$x]->ap_p = $row['ap_p'];
             $lista[$x]->ap_m = $row['ap_m'];
-            $lista[$x]->estatus = $row['estatus'];          
+            $lista[$x]->estatus = $row['estatus'];   
+            //$lista[$x]->id_relacion = $row['id_relacion'];
             $x++;
         }
         return $lista;
@@ -45,8 +45,8 @@ class CoordinadorDao{
         
         $obj = new AlumnosObjetoCoordinador1();
         $obj->id_relacion=$row['id_relacion'];
-        $obj->id_alumno=$row['id_alumno'];
-        $obj->id_tutor = $row['id_tutor'];
+        $obj->id_alumno=$row['matricula_alumno'];
+        $obj->id_tutor = $row['matricula_tutor'];
         $obj->aprobacion= $row['aprobacion'];
         $obj->observacion = $row['observacion'];
         $obj->estatuss = $row['estatus'];
@@ -80,17 +80,16 @@ class CoordinadorDao{
     }
     */
     function editaDatosCoordinador($obj){
-        //$datosArray = array($obj->id,$obj->clave,$obj->nombre,$obj->ap_p,$obj->ap_m,$obj->asignatura,$obj->horaio);
-        $pP = CoordinadorSql::editaDatosCoordinador($obj);                
+        $datosArray = array($obj->id_tutor,$obj->aprobacion,$obj->observacion,$obj->id_relacion);
+        $pP = procesaParametros::PrepareStatement(CoordinadorSql::editaDatosCoordinador(),$datosArray);                
         
         try {
             $this->con->query($pP);
-            $res = "1";
+            
         } catch (Exception $exc) {
-            $res = $exc->getTraceAsString();
+            $exc->getMessage();
         }
-
-        return $pP;
+        
     }
     
     function eliminaDatosCoordinador($obj){

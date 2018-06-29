@@ -114,7 +114,7 @@ $usu = $tabla->mostraActividadPorId($_GET['id']);
                             return false;
                     }
                     
-                    var r = confirm("Estas seguro de eliminar este registro");
+                    var r = confirm("Estas seguro de Actualizar este registro");
                     if (r == true) {
                         var datos = "action=editarActividad&" + $("#FormActividades").serialize();
                         alert(datos);

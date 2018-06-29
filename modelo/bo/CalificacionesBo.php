@@ -30,4 +30,32 @@ class ModuloCalificaciones{
 
         return $usu;
     }
+    
+    function consultaCalificacionesPorId($obj){
+        return $this->dao->traeCalificacionesPorId($obj);
+    }
+    
+    function editaCalificacionesPorId($obj){
+        $usu = 0;
+        try {
+            $this->dao->editaCalificaciones($obj);
+            $usu = 1;
+        } catch (Exception $e) {
+            $usu = 2;
+        }
+
+        return $usu;
+    }
+    
+    function eliminaCalificacionesPorId($obj){
+        $usu = 0;
+        try {
+            $this->dao->eliminaCalificaciones($obj);
+            $usu = 1;
+        } catch (Exception $e) {
+            $usu = 2;
+        }
+
+        return $usu;
+    }
 }

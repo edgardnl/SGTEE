@@ -41,16 +41,13 @@ class CoordinadorRelacionDao {
     }
 
     function agregaCoordinador1($obj){
-        $datosArray = array($obj->id_alumno,$obj->id_tutor,$obj->aprobacion,$obj->observacion,$obj->estatuss);
+        $datosArray = array($obj->matricula_alumno,$obj->matricula_tutor,$obj->aprobacion,$obj->observacion);
         $pP = procesaParametros::PrepareStatement(CoordinadorRelacionSql::InsertarRelacionCoordinador(),$datosArray);                   
         try {
-            $this->con->query($pP);
-            $res = "1";
+            $this->con->query($pP);            
         } catch (Exception $exc) {
-            $res = $exc->getTraceAsString();
-        }
-
-        return $res;
+            $exc->getMessage();
+        }        
         
     }
 

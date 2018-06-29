@@ -1,9 +1,9 @@
 <?php
 
-class TutoresVista{
-    
-    function generaTablaTutores($data){
-        $dat ="<script type='text/javascript' charset='utf-8'> 
+class TutoresVista {
+
+    function generaTablaTutores($data) {
+        $dat = "<script type='text/javascript' charset='utf-8'> 
             $(document).ready(function() {
                 $('#example').dataTable();
             } );
@@ -19,50 +19,46 @@ class TutoresVista{
                         </tr>
                     </thead>
                 <tbody>";
-        $rows ="";
-        foreach ($data as $r){
+        $rows = "";
+        foreach ($data as $r) {
             $row = "<tr>                        
-                        <td scope='row'>".$r->matricula."</td>
-                        <td>".$r->nombre."</td>
-                        <td>".$r->ap_p."</td>
-                        <td>".$r->ap_m."</td>
-                        <td><button class='btn-success btn' onclick='enviarEditarTutor(".$r->matricula.")'>Editar</button></td>
+                        <td scope='row'>" . $r->matricula . "</td>
+                        <td>" . $r->nombre . "</td>
+                        <td>" . $r->ap_p . "</td>
+                        <td>" . $r->ap_m . "</td>
+                        <td><button class='btn-success btn' onclick='enviarEditarTutor(" . $r->matricula . ")'>Editar</button></td>
                     </tr>";
-            $rows = $rows.$row;
+            $rows = $rows . $row;
         }
         $fin = "</tbody>
                 </table>";
-        
-        
-        return $dat.$rows.$fin;
+
+
+        return $dat . $rows . $fin;
     }
 
-    function generaSelectTutores($data){
-        $cad="<div class='form-group'>
+    function generaSelectTutores($data) {
+        $cad = "<div class='form-group'>
                 <!--dos-->
                 <label for='focusedinput' class='col-sm-2 control-label'>Tutores</label>
                 <div class='col-sm-8'>
 
-                    <select name='id_tutor' id='selector1' class='form-control1' pattern='.{1,}' required title='minimo 3 caracteres' maxlength='15'>";
+                    <select name='tutor' id='tutor' class='form-control1' >
+                    <option value='0'>Selecciona una opcion</option>";
         $opts = "";
         foreach ($data as $key) {
-            $opt = "<option value='".$key->id."'>".$key->nombre_tutor."</option>";
-            $opts = $opts.$opt;
+            $opt = "<option value='" . $key->matricula . "'>" . $key->nombre_tutor . "</option>";
+            $opts = $opts . $opt;
         }
-                            
-        $fin ="</select></div>
+
+        $fin = "</select></div>
         <div class='col-sm-2 jlkdfj'>
                                         <p class='help-block'></p>
                                     </div>
 
-                                </div>";            
+                                </div>";
 
-    return $cad.$opts.$fin;
-
-      
+        return $cad . $opts . $fin;
     }
+
 }
-
-
-        
-    

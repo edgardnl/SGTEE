@@ -1,35 +1,38 @@
 <?php
-require_once $_SERVER['DOCUMENT_ROOT'].ruta::ruta."/modelo/dao/CoordinadorRelacionDao.php";
-require_once $_SERVER['DOCUMENT_ROOT'].ruta::ruta."/vista/php/CoordinadorRelacionVista.php";
-require_once $_SERVER['DOCUMENT_ROOT'].ruta::ruta."/modelo/dao/UsuariosDaoAlumnos.php";
 
-class ModuloRelacion_Alumno_Tutor{
+require_once $_SERVER['DOCUMENT_ROOT'] . ruta::ruta . "/modelo/dao/CoordinadorRelacionDao.php";
+require_once $_SERVER['DOCUMENT_ROOT'] . ruta::ruta . "/vista/php/CoordinadorRelacionVista.php";
+require_once $_SERVER['DOCUMENT_ROOT'] . ruta::ruta . "/modelo/dao/UsuariosDaoAlumnos.php";
+require_once $_SERVER['DOCUMENT_ROOT'] . ruta::ruta . "/modelo/dao/AlumnosDao.php";
 
-	private $vista;
-	private $dao;
-	private $daoUsu;
-	
-	function __construct(){
-		$this->dao = new CoordinadorRelacionDao();
-		$this->vista = new CoordinadorRelacionVista();
-		
-	}
+class ModuloRelacion_Alumno_Tutor {
 
-	function ConsultarCoordinadorRelacion(){
-    	$alumnos =$this->dao->TraerCoordinadorRelacion();
-    	$traervista =$this->vista->generaTablaCoordinadorRelacion($alumnos);
-    	return $traervista;
+    private $vista;
+    private $dao;
+    private $daoAlu;
 
-    } 
-    
-    function agregaCoordinador1($obj){
+    function __construct() {
+        $this->dao = new CoordinadorRelacionDao();
+        $this->vista = new CoordinadorRelacionVista();
+        $this->daoAlu = new AlumnosDao();
+    }
+
+    function ConsultarCoordinadorRelacion() {
+        $alumnos = $this->dao->TraerCoordinadorRelacion();
+        $traervista = $this->vista->generaTablaCoordinadorRelacion($alumnos);
+        return $traervista;
+    }
+
+    function agregaCoordinador1($obj) {
+        $usu = 0;
         try {
             $this->dao->agregaCoordinador1($obj);
-        }catch (Exception $ex) {
-            $usu = $ex->getMessage();
+            $this->daoAlu->actualizaStatusAlumno($obj);
+            $usu = 1;
+        } catch (Exception $ex) {
+            $usu = 2;//$ex->getMessage();
         }
-        //return $usu;
+        return $usu;
     }
 
 }
-

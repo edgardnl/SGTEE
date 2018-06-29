@@ -7,6 +7,9 @@ require_once $_SERVER['DOCUMENT_ROOT'] . ruta::ruta . "/modelo/objetos/TutoresOb
 require_once $_SERVER['DOCUMENT_ROOT'] . ruta::ruta . "/modelo/bo/ActividadesBo.php";
 require_once $_SERVER['DOCUMENT_ROOT'] . ruta::ruta . "/modelo/objetos/ActividadesObjeto.php";
 
+require_once $_SERVER['DOCUMENT_ROOT'] . ruta::ruta . "/modelo/bo/CalificacionesBo.php";
+require_once $_SERVER['DOCUMENT_ROOT'] . ruta::ruta . "/modelo/objetos/CalificacionesObjeto.php";
+
 $bo = new ModuloTutores();
 //$action = "editarTutor";
 switch ($_REQUEST['action']) {#$_REQUEST['action']
@@ -25,6 +28,14 @@ switch ($_REQUEST['action']) {#$_REQUEST['action']
         $resAc = $modulo->eliminarActividad($objAc);
         print $resAc;
         
+        break;
+    
+    case 'eliminarCalificacion':
+        $objCalE = new CalificacionesObjeto();
+        $objCalE->id_calificiones = $_POST['idcal'];
+        $modCalE = new ModuloCalificaciones();
+        $resCAlE = $modCalE->eliminaCalificacionesPorId($objCalE);
+        print $resCAlE;
         break;
         
             

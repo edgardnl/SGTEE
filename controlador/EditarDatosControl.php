@@ -7,6 +7,9 @@ require_once $_SERVER['DOCUMENT_ROOT'] . ruta::ruta . "/modelo/objetos/TutoresOb
 require_once $_SERVER['DOCUMENT_ROOT'] . ruta::ruta . "/modelo/bo/ActividadesBo.php";
 require_once $_SERVER['DOCUMENT_ROOT'] . ruta::ruta . "/modelo/objetos/ActividadesObjeto.php";
 
+require_once $_SERVER['DOCUMENT_ROOT'] . ruta::ruta . "/modelo/bo/CalificacionesBo.php";
+require_once $_SERVER['DOCUMENT_ROOT'] . ruta::ruta . "/modelo/objetos/CalificacionesObjeto.php";
+
 $bo = new ModuloTutores();
 #$action = "editarTutor";
 switch ($_REQUEST['action']) {#$_REQUEST['action']
@@ -46,5 +49,18 @@ switch ($_REQUEST['action']) {#$_REQUEST['action']
         $resAc = $modulo->editarActividad($objAc);
         print $resAc;
 
+        break;
+    case 'actualizaCalificaciones':
+        $objCali = new CalificacionesObjeto();
+        $objCali->id_calificiones = $_POST['idcal'];
+        $objCali->id_parcial = $_POST['parcial'];
+        $objCali->id_asignatura = $_POST['asignatura'];
+        $objCali->id_profesor = $_POST['profesor'];
+        $objCali->calificaciones = $_POST['calificacion'];
+        
+        $modCali = new ModuloCalificaciones();
+        $resCali = $modCali->editaCalificacionesPorId($objCali);
+        print $resCali;
+        
         break;
 }

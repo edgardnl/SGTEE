@@ -124,3 +124,7 @@ function agregarCalificaciones(id){
 function regresarCalifica(){
     window.history.go(-1);
 }
+
+function enviarEdicionCal(id){
+    location.href = "TutoEditaCalificaciones.php?id="+id;
+}

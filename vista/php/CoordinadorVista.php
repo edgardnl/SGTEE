@@ -11,8 +11,7 @@ class Coordinador1Vista {
         </script>  
         <table class='table' id='example'>
                     <thead>
-                        <tr>
-                            <th>#</th>
+                        <tr>                            
                             <th>Claves</th>
                             <th>Nombre </th>
                             <th>Apellido Paterno</th>
@@ -25,27 +24,25 @@ class Coordinador1Vista {
         $rows ="";
         foreach ($data as $r){
             if($r->estatus==0){
-            $row = "<tr>
-                        <td scope='row'>".$r->id."</td>
-                        <td>".$r->clave."</td>
+            $row = "<tr>                        
+                        <td scope='row'>".$r->clave."</td>
                         <td>".$r->nombre."</td>
                         <td>".$r->ap_p."</td>
                         <td>".$r->ap_m."</td>
-                        <td>".$r->estatus."</td>
-                        <td><button class='btn-success btn' onclick='EnviarEditarCoordinadorR(".$r->id.")'>Editar Tutor</button></td>
+                        <td>Con Tutor</td>
+                        <td><button class='btn-warning btn' onclick='EnviarEditarCoordinadorR(".$r->clave.")'>Editar Tutor</button></td>
                        
                     </tr>";
             $rows = $rows.$row;
             }
             else{
-                 $row = "<tr>
-                        <td scope='row'>".$r->id."</td>
-                        <td>".$r->clave."</td>
+                 $row = "<tr>                       
+                        <td scope='row'>".$r->clave."</td>
                         <td>".$r->nombre."</td>
                         <td>".$r->ap_p."</td>
                         <td>".$r->ap_m."</td>
-                        <td>".$r->estatus."</td>
-                        <td><button class='btn-success btn' onclick='enviaridCoordinador(".$r->id.")'>Asignar Tutor</button></td>
+                        <td>Sin Tutor</td>
+                        <td><button class='btn-success btn' onclick='enviaridCoordinador(".$r->clave.")'>Asignar Tutor</button></td>
                     </tr>";
             $rows = $rows.$row;
 

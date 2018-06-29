@@ -47,4 +47,43 @@ class CalificacionesDao{
         }
 
     }
+    
+    function traeCalificacionesPorId($obj){ 
+        $datosArray = array($obj->id_calificiones);
+        $pP = procesaParametros::PrepareStatement(CalificacionesSql::traeCalificacionesPorId(),$datosArray);
+       
+        $query = $this->con->query($pP);
+        
+        $row = $query->fetch_array();
+        $lista = new CalificacionesObjeto();
+        $lista->id_calificiones = $row['id_calificiones'];
+        $lista->id_asignatura = $row['id_asignatura'];
+        $lista->id_parcial = $row['id_parcial'];
+        $lista->id_profesor = $row['id_profesor'];
+        $lista->calificaciones = $row['calificacion'];                        
+                    
+        return $lista;
+    }
+    
+    function editaCalificaciones($obj){
+        $datosArray = array($obj->id_parcial,$obj->id_asignatura,$obj->id_profesor,$obj->calificaciones,$obj->id_calificiones);
+        $pP = procesaParametros::PrepareStatement(CalificacionesSql::editaCalificacionesPorId(),$datosArray); 
+
+        try {
+            $this->con->query($pP);            
+        } catch (Exception $exc) {
+            print $exc->getMessage();
+        }
+    }
+    
+    function eliminaCalificaciones($obj){
+        $datosArray = array($obj->id_calificiones);
+        $pP = procesaParametros::PrepareStatement(CalificacionesSql::eliminaCalificacionesPorId(),$datosArray); 
+
+        try {
+            $this->con->query($pP);            
+        } catch (Exception $exc) {
+            print $exc->getMessage();
+        }
+    }
 }

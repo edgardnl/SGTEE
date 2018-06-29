@@ -150,6 +150,17 @@ class AlumnosDao {
         
         return $objA;   
     }
+    
+    function actualizaStatusAlumno($obj){
+        $datosArray = array($obj->statusAlum, $obj->matricula_alumno);
+        $pP = procesaParametros::PrepareStatement(AlumnosSql::actualizaStatusAlum(),$datosArray);
+        
+        try {
+            $this->con->query($pP);
+        } catch (Exception $exc) {
+            print $exc->getMessage();
+        }   
+    }
 
 
 

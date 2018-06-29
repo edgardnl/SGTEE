@@ -10,7 +10,8 @@ class CalificacionesVista{
                             <th>Profesor</th>
                             <th>Asignatura</th>                            
                             <th>Parcial</th>
-                            <th>Calificacion</th>                                                   
+                            <th>Calificacion</th>
+                            <th></th>
                         </tr>
                     </thead>
                 <tbody>";
@@ -21,7 +22,8 @@ class CalificacionesVista{
                         <td>".$r->nomProfesor."</td>
                         <td>".$r->asignatura."</td>
                         <td>".$r->parcial."</td>
-                        <td>".$r->calificaciones."</td>                        
+                        <td>".$r->calificaciones."</td> 
+                        <td><button class='btn-warning btn' onclick='enviarEdicionCal(".$r->id_calificiones.")'>Editar</button></td>
                     </tr>";
             $rows = $rows.$row;
         }

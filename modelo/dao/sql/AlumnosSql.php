@@ -77,5 +77,10 @@ class AlumnosSql {
         $query = "select * from alumno where alumno.matricula = ? and alumno.password = ?;";
         return $query;#    
     }
+    
+    function actualizaStatusAlum(){
+        $query = "update alumno set alumno.estatus = ? where alumno.matricula = ?;";
+        return $query;#    
+    }
 }
 ?>

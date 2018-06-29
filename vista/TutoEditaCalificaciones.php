@@ -1,33 +1,25 @@
 <?php
 require_once "../ruta.php";
-require_once $_SERVER['DOCUMENT_ROOT'] . ruta::ruta . "/controlador/MostrarTablaControlCoordinador1.php";
-require_once $_SERVER['DOCUMENT_ROOT'] . ruta::ruta . "/modelo/objetos/AlumnosObjetoCoordinador1.php";
-//select 
 require_once $_SERVER['DOCUMENT_ROOT'] . ruta::ruta . "/controlador/MostrarTablaControl.php";
-require_once $_SERVER['DOCUMENT_ROOT'] . ruta::ruta . "/modelo/objetos/TutoresObjeto.php";
-
-$tabla = new MostrarTablaControl(); //select
-
-$tabla1 = new MostrarTablaControlCoordinador1();
 $id = $_GET['id'];
-$obj = $tabla1->MostrarDatosCoordinadorId($id);
+$tabla = new MostrarTablaControl();
+$objCa = $tabla->objetoCalificacionesPorId($id)
 ?>
-
+<!--
+Author: W3layouts
+Author URL: http://w3layouts.com
+License: Creative Commons Attribution 3.0 Unported
+License URL: http://creativecommons.org/licenses/by/3.0/
+-->
 <!DOCTYPE HTML>
 <html>
     <head>
-        <title>SGTE - Agregar Coordinador</title>
+        <title>SGTE - Agregar Calificaciones</title>
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
         <meta name="keywords" content="Easy Admin Panel Responsive web template, Bootstrap Web Templates, Flat Web Templates, Android Compatible web template, 
               Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyEricsson, Motorola web design" />
-
-
-
         <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
-
-        <script type="text/Javascript" src="../js/validacion_datosalumno.js"></script>
-
         <!-- Bootstrap Core CSS -->
         <link href="css/bootstrap.min.css" rel='stylesheet' type='text/css' />
         <!-- Custom CSS -->
@@ -41,7 +33,6 @@ $obj = $tabla1->MostrarDatosCoordinadorId($id);
         <!-- chart -->
         <script src="js/Chart.js"></script>
         <!-- //chart -->
-        <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
         <!--animate-->
         <link href="css/animate.css" rel="stylesheet" type="text/css" media="all">
         <script src="js/wow.min.js"></script>
@@ -55,56 +46,96 @@ $obj = $tabla1->MostrarDatosCoordinadorId($id);
         <!-- Meters graphs -->
         <script src="js/jquery-1.10.2.min.js"></script>
         <!-- Placed js at the end of the document so the pages load faster -->
+        <!--Datapicker-->
+        <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+        <link rel="stylesheet" href="/resources/demos/style.css">
+        <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+        <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+        <script>
 
-        <script src="js/eventosCoordinador1.js"></script>
-
-        <script type="text/javascript">
             $(document).ready(function () {
                 console.log("ready!");
 
-                $("#tutor").val(<?php print $obj->id_tutor; ?>);
-                //$("#aprobacion").val(<?//php print $obj->aprobacion; ?>);                
 
-                $("#editar").click(function () {
-                    //alert("Hola");
+                $("#parcial").val(<?php print $objCa->id_parcial; ?>);
+                $("#asignatura").val(<?php print $objCa->id_asignatura; ?>);
+                $("#profesor").val(<?php print $objCa->id_profesor; ?>);
 
-                    if ($("#observacion").val() == "") {
+                $("#upd").click(function () {
+
+                    if ($("#calificacion").val() == "") {
                         alert("Algun campo esta vacio");
                         return false;
                     }
 
-                    if ($("#aprobacion").val() == "0" || $("#tutor").val() == "0") {
-                        alert("Debes seleccionar alguna opcion");
+                    if ($("#parcial").val() == "0" || $("#asignatura").val() == "0" || $("#profesor").val() == "0") {
+                        alert("Selecciona una opcion");
                         return false;
                     }
 
-                    if (!isNaN($("#observacion").val())) {
-                        alert("El campo Nombre solo permite letras");//FormCoordinador
+                    var expr = /^[0-9]+([.][0-9]+)?$/;
+                    if (!expr.test($("#calificacion").val())) {
+                        alert("El campo Calificaciones solo permiete numeros");
                         return false;
                     }
 
-                    var r = confirm("Estas seguro de Actualizar esta relacion");
+                    var r = confirm("Estas seguro de actualizar este registro");
                     if (r == true) {
-                        var datos = "action=editarCoordinador&" + $("#formEditCoordinador").serialize();
+                        var datos = "action=actualizaCalificaciones&" + $("#FormCalificaciones").serialize();
                         alert(datos);
-                        $.post("../controlador/EditarDatosControlCoordinador.php", datos, function (data) {
+                        $.post("../controlador/EditarDatosControl.php", datos, function (data) {
                             console.log(data);
                             if (data == 1) {
-                                alert("El Tutor se edito correctamente");
-                                window.location.href = "Coordinadora1.php";
+                                alert("Atualizacion Exitosoa");
+                                window.history.go(-1);
                             } else if (data == 2) {
-                                alert("Ocurrio un error en la accion");
-                                window.location.href = "Coordinadora1.php";
+                                alert("Error al realizar la actualizacion");
+                                window.history.go(-1);
                             }
+
                         });
+
                     } else if (r == false) {
                         return false;
                     }
 
+
+
+                });
+                
+                $("#eliminar").click(function(){
+                    var r = confirm("Estas seguro de Eliminar este registro");
+                    if (r == true) {
+                        var datos = "action=eliminarCalificacion&" + $("#FormCalificaciones").serialize();
+                        alert(datos);
+                        $.post("../controlador/EliminarDatos.php", datos, function(data) {
+                            console.log(data);
+                            if (data == 1) {
+                                alert("Elimicacion Exitosa");
+                                window.history.go(-1);
+                            }else if(data == 2){
+                                alert("Error al realizar la acciion");
+                                window.history.go(-1);
+                            }
+                                                            
+                        });  
+                    } else if(r == false) {
+                        return false;
+                    }
                 });
 
+
             });
+
+
         </script>
+
+        <!--timepicker-->
+        <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/timepicker/1.3.5/jquery.timepicker.min.css">
+        <script src="//cdnjs.cloudflare.com/ajax/libs/timepicker/1.3.5/jquery.timepicker.min.js"></script>
+
+
+        <script src="js/eventos.js"></script>
 
     </head> 
 
@@ -114,7 +145,7 @@ $obj = $tabla1->MostrarDatosCoordinadorId($id);
             <!-- left side start-->
 
             <?php
-            require_once "../vista/CordMenu.php"
+            require_once "../vista/TutoMenu.php"
             ?>
             <!-- left side end-->
 
@@ -140,7 +171,7 @@ $obj = $tabla1->MostrarDatosCoordinadorId($id);
                                         <script src="js/classie.js"></script>
                                         <script src="js/uisearch.js"></script>
                                         <script>
-        new UISearch(document.getElementById('sb-search'));
+            new UISearch(document.getElementById('sb-search'));
                                         </script>
                                         <!-- //search-scripts -->
                                     </li>	
@@ -176,58 +207,45 @@ $obj = $tabla1->MostrarDatosCoordinadorId($id);
                 <!-- //header-ends -->
                 <div id="page-wrapper">
                     <div class="graphs">
-                        <h3 class="blank1">Editar Asignacion de Tutor</h3>
+                        <h3 class="blank1">Agregar Calificaciones</h3>
                         <div class="tab-content">
                             <div class="tab-pane active" id="horizontal-form">
 
 
-                                <form class="form-horizontal" name="formEditCoordinador" id="formEditCoordinador">
-                                    <div class="form-group">
-                                        <!--inicio de los imput del formulario -->
+                                <form class="form-horizontal" name="FormCalificaciones" id="FormCalificaciones">
 
+                                    <?php
+                                    $tabla->selectParcial();
+                                    $tabla->selectAsignatura();
+                                    $tabla->selectProfesores();
+                                    ?>
+
+                                    <div class="form-group">                                        
+                                        <label for="focusedinput" class="col-sm-2 control-label">Calificacion</label>
                                         <div class="col-sm-8">
-                                            <input type="hidden" class="form-control1" id="focusedinput" name="id_relacion" value="<?php print $obj->id_relacion; ?>">
+                                            <input type="hidden" class="form-control1" id="" placeholder="" name="idcal" value="<?php print $objCa->id_calificiones; ?>">
+                                            <input type="text" class="form-control1" id="calificacion" placeholder="" name="calificacion" value="<?php print $objCa->calificaciones; ?>" >
                                         </div>
 
                                         <div class="col-sm-2 jlkdfj1">
                                             <p class="help-block"></p>
                                         </div>
-                                    </div>
-
-                                    <?php $tabla->selectNombreTutores(); ?>
-
-                                    <div class="form-group">
-                                        <label for="problema" class="col-sm-2 control-label">Aprobacion</label>
-                                        <div class="col-sm-8"><select name="aprobacion" id="aprobacion" class="form-control1">
-                                                <option value="0">Selecciona una opcion</option>
-                                                <option value="Si">Si</option>
-                                                <option value="No">No</option>                                                
-                                            </select></div>
-                                    </div>
-                                    <div class="form-group">
-                                        <!--dos-->
-                                        <label for="focusedinput" class="col-sm-2 control-label">Observacion</label>
-                                        <div class="col-sm-8">
-                                            <input type="text" class="form-control1" id="focusedinput" name="observacion"  value="<?php print $obj->observacion; ?>">
-                                        </div>
-
-                                        <div class="col-sm-2 jlkdfj1">
-                                            <p class="help-block"></p>
-                                        </div>
-                                    </div>                                    
+                                    </div>     
 
                                 </form>
+
                                 <div class="panel-footer">
 
                                     <div class="row">
                                         <div class="col-sm-8 col-sm-offset-2">
-                                            <button type="submit" class="btn-success btn" onclick="" id="editar">Actualizar</button>
-                                            <button class="btn-default btn" onclick="regresarTutoresInicio()">Cancelar</button>                                                
+                                            <button class="btn-success btn" onclick="" id="upd">Actualizar</button>
+                                            <button class="btn-danger btn" onclick="" id="eliminar">Eliminar</button>
+                                            <button class="btn-default btn" onclick="regresarCalifica()">Cancelar</button>
+
                                         </div>
                                     </div>
 
                                 </div>
-
 
                             </div>
                         </div>

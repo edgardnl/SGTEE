@@ -254,5 +254,12 @@ class MostrarTablaControl {
         $select = $catalogoBO->traeSelectProfesores();
         print $select;
     }
+    
+    function objetoCalificacionesPorId($id){
+        $objCal = new CalificacionesObjeto();
+        $objCal->id_calificiones = $id;
+        $modCal = new ModuloCalificaciones();
+        return $modCal->consultaCalificacionesPorId($objCal);
+    }
 
 }
