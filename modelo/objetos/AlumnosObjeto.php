@@ -22,4 +22,10 @@ class AlumnosObjeto{
     var $nombreAll;
     var $nMatricula;
     var $nRegistros;
+    //Estras relacion tutor
+    var $observacion;
+    var $nomTutor;
+    var $telefono_celtutor;
+    var $correoTutor;
+
 }

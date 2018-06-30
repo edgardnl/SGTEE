@@ -14,9 +14,9 @@
 				<!--sidebar nav start-->
 					<ul class="nav nav-pills nav-stacked custom-nav">
                                             <li><a href="AlumInicio.php"><i class="lnr lnr-power-switch"></i><span>Inicio</span></a></li>
-                                                <li><a href=""><i class="lnr lnr-user"></i><span>Datos</span></a></li>
-                                                <li><a href=""><i class="lnr lnr-book"></i> <span>Actividades</span></a></li>
-                                                <li><a href=""><i class="lnr lnr-star"></i> <span>Calificaciones</span></a></li>                                                 						
+                                                <li><a href="AlumDatosDetalle.php"><i class="lnr lnr-user"></i><span>Datos</span></a></li>
+                                                <li><a href="AlumActividades.php"><i class="lnr lnr-book"></i> <span>Actividades</span></a></li>
+                                                <li><a href="AlumCalificaciones.php"><i class="lnr lnr-star"></i> <span>Calificaciones</span></a></li>                                                 						
 					</ul>
 				<!--sidebar nav end-->
 			</div>

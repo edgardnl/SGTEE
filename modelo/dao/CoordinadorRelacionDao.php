@@ -51,6 +51,18 @@ class CoordinadorRelacionDao {
         
     }
 
+    function consultaUltimaRelacion(){
+        $pP = CoordinadorRelacionSql::consultaUltimaRelacion();
+        $query = $this->con->query($pP);        
+        $row = $query->fetch_array();
+        
+        $lista = new CoordinadorRelacionObjeto();
+        $lista->id_relacion = $row['id_relacion'];
+        
+        return $lista;
+
+    }
+
 }
 
 ?>

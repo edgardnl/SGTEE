@@ -100,4 +100,10 @@ class ModuloActividades {
         return $usu;
     }
 
+    function traeResumenActividadesPorIdAlumno($obj){
+        $act = $this->dao->traeActividadesPorAlumno($obj);
+        $tabla = $this->vista->tablaActividadesResumen($act);
+        return $tabla;        
+    }
+
 }

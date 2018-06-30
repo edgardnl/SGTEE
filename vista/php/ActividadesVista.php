@@ -94,4 +94,33 @@ class ActividadesVista {
         
         return $dat.$rows.$fin;
     }
+
+    function tablaActividadesResumen($data){
+        $dat ="
+        <table class='table' id='example'>
+                    <thead>
+                        <tr>
+                            <th>#</th>                            
+                            <th>Fecha</th>
+                            <th>Hora</th>
+                            <th>Lugar</th>                            
+                        </tr>
+                    </thead>
+                <tbody>";
+        $rows ="";
+        foreach ($data as $r){
+            $row = "<tr>
+                        <td scope='row'>".$r->id_actividades."</td>                        
+                        <td>".$r->fecha."</td>
+                        <td>".$r->hora."</td>
+                        <td>".$r->lugar."</td>                        
+                    </tr>";
+            $rows = $rows.$row;
+        }
+        $fin = "</tbody>
+                </table>";
+        
+        
+        return $dat.$rows.$fin;
+    }
 }

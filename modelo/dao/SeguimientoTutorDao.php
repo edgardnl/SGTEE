@@ -55,4 +55,15 @@ class SeguimientoTutorDao{
         $lista->telefono_cel = $row['telefono_cel'];
         return $lista;   
     }
+
+    function agregaSeguimiento($obj){
+        $datosArray = array($obj->id_relacion);
+        $pP = procesaParametros::PrepareStatement(SeguimientoTutorSql::agregaSeguimiento(),$datosArray); 
+
+        try {
+            $this->con->query($pP);            
+        } catch (Exception $exc) {
+            print $exc->getMessage();
+        }
+    }
 }

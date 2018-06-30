@@ -24,5 +24,10 @@ class CoordinadorRelacionSql{
      $query = "INSERT INTO relacion_alumno_tutor(matricula_alumno,matricula_tutor,aprobacion,observacion) values(?,?,?,?);";
         return $query;
     }
+
+    function consultaUltimaRelacion(){
+      $query = "SELECT MAX(relacion_alumno_tutor.id_relacion) as id_relacion FROM relacion_alumno_tutor;";
+      return $query;
+    }
 }
 ?>

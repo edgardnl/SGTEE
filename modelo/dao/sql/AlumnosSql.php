@@ -82,5 +82,14 @@ class AlumnosSql {
         $query = "update alumno set alumno.estatus = ? where alumno.matricula = ?;";
         return $query;#    
     }
+
+    function consultaAlumnosDetalle(){
+        $query = "SELECT alumno.matricula, alumno.nombre, alumno.ap_p, alumno.ap_m, alumno.carrera, alumno.materias_adeudadas,relacion_alumno_tutor.observacion, tutor.nombre as nomtuto, tutor.ap_p as aptuto, tutor.ap_m as amtuto, tutor.telefono_cel, tutor.correo
+            FROM alumno, relacion_alumno_tutor, tutor
+            WHERE alumno.matricula = relacion_alumno_tutor.matricula_alumno
+            AND relacion_alumno_tutor.matricula_tutor = tutor.matricula
+            AND alumno.matricula = ?;";
+        return $query;#       
+    }
 }
 ?>

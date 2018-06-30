@@ -262,4 +262,29 @@ class MostrarTablaControl {
         return $modCal->consultaCalificacionesPorId($objCal);
     }
 
+    function objetoAlumnosDetalleTutor($id){
+        $aluObj = new AlumnosObjeto();
+        $aluObj->matricula = $id;
+        $aluBo = new ModuloAlumnos();
+        return $aluBo->traeAlumonoDetalleTutoria($aluObj);        
+    }
+
+    function tablaActividadesResumen($id){
+        $actiObj = new ActividadesObjeto();
+        $actiObj->id_alumno = $id;
+        $acti = new ModuloActividades();
+        $tabla = $acti->traeResumenActividadesPorIdAlumno($actiObj);
+        print $tabla;
+    }
+
+    function tablaCalificacionesAlumnoPorIdAlumno($id){
+        $calObj = new CalificacionesObjeto();
+        $calObj->matricula_alumno = $id;
+        $calBo = new ModuloCalificaciones();
+        $table = $calBo->traeCalificacionesAlumnosPorIdAlumno($calObj);
+        print $table;
+    }
+
+
+
 }

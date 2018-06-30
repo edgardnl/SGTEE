@@ -21,4 +21,9 @@ class SeguimientoTutorSql{
 			AND seguimiento_tutor.id_seguimiento = ?;";
         return $query;	
     }
+
+    function agregaSeguimiento(){
+    	$query = "INSERT INTO seguimiento_tutor(id_relacion, programa, estado) VALUES (?,'Tutoria Individual','Activo');";
+    	return $query;
+    }
 }

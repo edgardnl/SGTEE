@@ -89,5 +89,9 @@ class ModuloAlumnos {
         return $this->dao->buscaAlumnoLogin($obj);
     }
 
+    function traeAlumonoDetalleTutoria($obj){
+        return $this->dao->traeDatosAlumnosDetallePorIdAlumno($obj);
+    }
+
 }
 

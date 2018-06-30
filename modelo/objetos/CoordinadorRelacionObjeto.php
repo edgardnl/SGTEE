@@ -21,6 +21,7 @@ class CoordinadorRelacionObjeto{
     var $aprobacion;
     var $observacion;
     var $estatuss;
+    var $id_relacion;
     
 
 }

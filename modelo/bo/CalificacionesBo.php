@@ -58,4 +58,10 @@ class ModuloCalificaciones{
 
         return $usu;
     }
+
+    function traeCalificacionesAlumnosPorIdAlumno($obj){
+        $cal = $this->dao->traeCalificacionesPorIdAlumno($obj);
+        $datos = $this->vista->tablaCalificacionesAluPorId($cal);
+        return $datos;
+    }
 }

@@ -18,7 +18,7 @@ class CoordinadorSql {
     }
 
     function traeCoordinadorPorId() {
-        $query = "SELECT * FROM sgtee.relacion_alumno_tutor,sgtee.alumno
+        $query = "SELECT * FROM relacion_alumno_tutor,alumno
             where relacion_alumno_tutor.matricula_alumno = alumno.matricula
             and alumno.matricula = ?;";
         return $query;

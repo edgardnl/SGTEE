@@ -2,8 +2,12 @@
 
 require_once $_SERVER['DOCUMENT_ROOT'] . ruta::ruta . "/modelo/dao/CoordinadorRelacionDao.php";
 require_once $_SERVER['DOCUMENT_ROOT'] . ruta::ruta . "/vista/php/CoordinadorRelacionVista.php";
+
 require_once $_SERVER['DOCUMENT_ROOT'] . ruta::ruta . "/modelo/dao/UsuariosDaoAlumnos.php";
+
 require_once $_SERVER['DOCUMENT_ROOT'] . ruta::ruta . "/modelo/dao/AlumnosDao.php";
+
+require_once $_SERVER['DOCUMENT_ROOT'] . ruta::ruta . "/modelo/dao/SeguimientoTutorDao.php";
 
 class ModuloRelacion_Alumno_Tutor {
 
@@ -15,6 +19,7 @@ class ModuloRelacion_Alumno_Tutor {
         $this->dao = new CoordinadorRelacionDao();
         $this->vista = new CoordinadorRelacionVista();
         $this->daoAlu = new AlumnosDao();
+        $this->daoSeg = new SeguimientoTutorDao();
     }
 
     function ConsultarCoordinadorRelacion() {
@@ -28,6 +33,8 @@ class ModuloRelacion_Alumno_Tutor {
         try {
             $this->dao->agregaCoordinador1($obj);
             $this->daoAlu->actualizaStatusAlumno($obj);
+            $re = $this->dao->consultaUltimaRelacion();
+            $this->daoSeg->agregaSeguimiento($re);
             $usu = 1;
         } catch (Exception $ex) {
             $usu = 2;//$ex->getMessage();

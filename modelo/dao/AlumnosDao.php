@@ -162,6 +162,26 @@ class AlumnosDao {
         }   
     }
 
+    function traeDatosAlumnosDetallePorIdAlumno($objA){
+        $datosArray = array($objA->matricula);
+        $pP = procesaParametros::PrepareStatement(AlumnosSql::consultaAlumnosDetalle(),$datosArray);
+       
+        $query = $this->con->query($pP);
+        $row = $query->fetch_array();
+        
+        $obj = new AlumnosObjeto();        
+        $obj->matricula = $row['matricula'];
+        $obj->nombreAll = $row['nombre']." ".$row['ap_p']." ".$row['ap_m'];                    
+        $obj->carrera = $row['carrera'];        
+        $obj->materias_adeudadas = $row['materias_adeudadas'];        
+        $obj->observacion = $row['observacion'];
+        $obj->nomTutor = $row['nomtuto']." ".$row['aptuto']." ".$row['amtuto'];
+        $obj->telefono_celtutor = $row['telefono_cel'];
+        $obj->correoTutor = $row['correo'];
+        
+        return $obj;
+    }
+
 
 
 
