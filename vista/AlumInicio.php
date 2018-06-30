@@ -1,3 +1,11 @@
+<?php
+session_start();
+if (isset($_SESSION['nom'])) {
+	
+}else{
+	header("location:index.php");
+}
+?>
 <!--
 Author: W3layouts
 Author URL: http://w3layouts.com
@@ -7,7 +15,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 <!DOCTYPE HTML>
 <html>
 <head>
-<title>Easy Admin Panel an Admin Panel Category Flat Bootstrap Responsive Website Template | Tables :: w3layouts</title>
+<title>SGTE - Alumnos</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="keywords" content="Easy Admin Panel Responsive web template, Bootstrap Web Templates, Flat Web Templates, Android Compatible web template, 
@@ -90,7 +98,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 								<a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
 									<div class="profile_img">											
 										 <div class="user-name">
-											<p>Michael<span>Alumno</span></p>
+											<p><?php print $_SESSION["nom"]; ?><span>Alumno</span></p>
 										 </div>
 										 <i class="lnr lnr-chevron-down"></i>
 										 <i class="lnr lnr-chevron-up"></i>
@@ -98,7 +106,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 									</div>	
 								</a>
 								<ul class="dropdown-menu drp-mnu">									
-                                                                    <li> <a href="index.php"><i class="fa fa-sign-out"></i>Salir</a> </li>
+                                                                    <li> <a href="../controlador/SessionControl.php"><i class="fa fa-sign-out"></i>Salir</a> </li>
 								</ul>
 							</li>
 							<div class="clearfix"> </div>

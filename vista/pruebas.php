@@ -29,18 +29,15 @@ print $objT->horaio."\n";
     </style>	
 </head>
 <body>
-	<?php $obj = $tabla->newLogin(20182433,'sd'); 
-		print $obj->nRegistros;
-		print "   ";
-        print $obj->matricula;
-        print "   ";
-        print $obj->nombre;
+	<?php 
+    $text = "hola";
+    print "Palabra = ".$text;
+    $obj = $especial->encriptar($text);
+    print "Encriptado = ".$obj;
+    $obj1 = $especial->desencriptar($obj);
+    print "Desencriptar = ".$obj1;
 
-        if ($obj->nRegistros == 1) {
-        	print "Bienvenido Tutor";
-        }else{
-        	print "Usuario incorrecto";
-        }
+    print session_status();
 	?>
 </body>
 </html>

@@ -145,4 +145,15 @@ class TutoresDao {
         return $obj;   
     }
 
+    function cambiaPassTu($obj){
+        $datosArray = array($obj->pass, $obj->matricula);
+        $pP = procesaParametros::PrepareStatement(TutoresSql::editaPass(),$datosArray);
+        
+        try {
+            $this->con->query($pP);
+        } catch (Exception $exc) {
+            print $exc->getMessage();
+        }   
+    }
+
 }

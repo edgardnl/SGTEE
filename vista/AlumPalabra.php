@@ -1,9 +1,9 @@
 <?php
 session_start();
 if (isset($_SESSION['nom'])) {
-	
+    
 }else{
-	header("location:index.php");
+    header("location:index.php");
 }
 ?>
 <!--
@@ -15,7 +15,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 <!DOCTYPE HTML>
 <html>
 <head>
-<title>SGTE</title>
+<title>SGTE - Agregar Tutores</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="keywords" content="Easy Admin Panel Responsive web template, Bootstrap Web Templates, Flat Web Templates, Android Compatible web template, 
@@ -47,6 +47,45 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
  <!-- Meters graphs -->
 <script src="js/jquery-1.10.2.min.js"></script>
 <!-- Placed js at the end of the document so the pages load faster -->
+<script src="js/eventos.js"></script>
+
+<script type="text/javascript">
+	$(document).ready(function() {
+    	console.log( "ready!" );
+
+    	$("#agregar").click(function(){
+    		//alert("Hola");
+
+    		if ($("#pass").val() == "" || $("#pass1").val() == "") {
+    			alert("Algun campo esta vacio");
+    			return false;
+    		}    		
+
+    		if ($("#pass").val() != $("#pass1").val()) {
+    			alert("Las contraseñas no son iguales");
+    			return false;
+    		}
+
+    		var datos = "action=cambiaPassAlu&" + $("#FormPass").serialize();
+		    alert(datos);
+		    $.post("../controlador/EditarDatosControl.php", datos, function(data) {
+		        console.log(data);
+		        //alert(data);
+		        if (data == 1) {
+		        	alert("Cambio Realizado");
+		        	window.location.href = "AlumInicio.php";
+		        }else if (data == 2) {
+		        	alert("Erro al realizar el cambio");
+		        	window.location.href = "AlumInicio.php";
+		        }
+		        
+		        //$("#FormTutores").html(data);
+		    });
+    		    	
+    	});
+    	
+	});
+</script>
 
 </head> 
    
@@ -57,7 +96,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 
 		<?php
 
-		require_once "../vista/menu.php"
+		require_once "../vista/AlumMenu.php"
 
 		?>
     <!-- left side end-->
@@ -98,16 +137,12 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 								<a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
 									<div class="profile_img">											
 										 <div class="user-name">
-											<p><?php print $_SESSION["nom"]; ?><span>Administrator</span></p>
-										 </div>
-										 <i class="lnr lnr-chevron-down"></i>
-										 <i class="lnr lnr-chevron-up"></i>
+											<p><?php print $_SESSION["nom"]; ?><span>Alumno</span></p>
+										 </div>										 
 										<div class="clearfix"></div>	
 									</div>	
 								</a>
-								<ul class="dropdown-menu drp-mnu">									
-                                                                    <li> <a href="../controlador/SessionControl.php"><i class="fa fa-sign-out"></i>Salir</a> </li>
-								</ul>
+								
 							</li>
 							<div class="clearfix"> </div>
 						</ul>
@@ -119,59 +154,65 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			</div>
 	<!-- //header-ends -->
 			<div id="page-wrapper">
-                            <div class="graphs">
-                                <h1 class="blank1" style="text-align: center;">SISTEMA DE GESTION DE TUTORIAS ESPECIALES </h1><br>
-                                <h3 class="blank1" style="text-align: center;">Panel de Administrador </h3><br>
-					<div class="col_3">
-						<div class="col-md-3 widget widget1">
-							<div class="r3_counter_box">
-								<i class="fa fa-user"></i>
-								<div class="stats">
-								  <h5>45 <span>%</span></h5>
-								  <div class="grow">
-									<p>Tutores</p>
-								  </div>
+				<div class="graphs">
+					<h3 class="blank1">Cambiar Contraseña</h3>
+						<div class="tab-content">
+						<div class="tab-pane active" id="horizontal-form">
+
+
+                            <form class="form-horizontal" name="FormPass" id="FormPass">
+								
+                                    <div class="form-group">
+									<!--dos-->
+									<label for="focusedinput" class="col-sm-2 control-label">Nueva Contraseña</label>
+									<div class="col-sm-8">
+                                                                            <input type="password" class="form-control1" id="pass" placeholder="" name="pass">
+									</div>
+
+									<div class="col-sm-2 jlkdfj1">
+										<p class="help-block"></p>
+									</div>
 								</div>
-							</div>
+                                                                <div class="form-group">
+									<!--dos-->
+									<label for="focusedinput" class="col-sm-2 control-label">Confirma contraseña</label>
+									<div class="col-sm-8">
+                                                                            <input type="password" class="form-control1" id="pass1" placeholder="" name="pass1">
+                                                                            <input type="hidden" class="form-control1" id="usu" placeholder="" name="usu" value="<?php print $_SESSION["id"]; ?>">
+									</div>
+
+									<div class="col-sm-2 jlkdfj1">
+										<p class="help-block"></p>
+									</div>
+								</div>																
+
+				
+							</form>
+							<div class="panel-footer">
+
+	                                <div class="row">
+	                                    <div class="col-sm-8 col-sm-offset-2">
+	                                        <!--<button class="btn-success btn" onclick="agregarTutores()">Guardar</button>-->
+	                                        <button class="btn-success btn" id="agregar">Guardar</button>                                        	                                        
+	                                        <button class="btn-default btn" onclick="regresarVentana()">Cancelar</button>
+	                                    </div>
+	                                </div>
+	                                
+	                            </div>
+                                                    
 						</div>
-						<div class="col-md-3 widget widget1">
-							<div class="r3_counter_box">
-								<i class="fa fa-users"></i>
-								<div class="stats">
-								  <h5>50 <span>%</span></h5>
-								  <div class="grow grow1">
-									<p>Usuarios</p>
-								  </div>
-								</div>
-							</div>
-						</div>
-						<div class="col-md-3 widget widget1">
-							<div class="r3_counter_box">
-								<i class="fa fa-user"></i>
-								<div class="stats">
-								  <h5>70 <span>%</span></h5>
-								  <div class="grow grow3">
-									<p>Alumnos</p>
-								  </div>
-								</div>
-							</div>
-						 </div>
-						 <div class="col-md-3 widget">
-							<div class="r3_counter_box">
-								<i class="fa fa-book"></i>
-								<div class="stats">
-								  <h5>70 <span>%</span></h5>
-								  <div class="grow grow2">
-									<p>Actividades</p>
-								  </div>
-								</div>
-							</div>
-						</div>
-						<div class="clearfix"> </div>
 					</div>
+					
+					
+  
+						
+				</div>
+	
 			</div>
 		</div>
-		
+		<!--toggle button start-->
+			<a class="toggle-btn  menu-collapsed"><i class="fa fa-bars"></i></a>
+			<!--toggle button end-->
 		<!--footer section start-->
 			<footer>
 			   <p>&copy 2015 Easy Admin Panel. All Rights Reserved | Design by <a href="https://w3layouts.com/" target="_blank">w3layouts.</a></p>

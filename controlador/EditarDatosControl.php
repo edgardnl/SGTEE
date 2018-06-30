@@ -10,6 +10,10 @@ require_once $_SERVER['DOCUMENT_ROOT'] . ruta::ruta . "/modelo/objetos/Actividad
 require_once $_SERVER['DOCUMENT_ROOT'] . ruta::ruta . "/modelo/bo/CalificacionesBo.php";
 require_once $_SERVER['DOCUMENT_ROOT'] . ruta::ruta . "/modelo/objetos/CalificacionesObjeto.php";
 
+require_once $_SERVER['DOCUMENT_ROOT'] . ruta::ruta . "/modelo/bo/AlumnosBo.php";
+require_once $_SERVER['DOCUMENT_ROOT'] . ruta::ruta . "/modelo/objetos/AlumnosObjeto.php";
+require_once $_SERVER['DOCUMENT_ROOT'] . ruta::ruta . "/controlador/EspecialControl.php";
+
 $bo = new ModuloTutores();
 #$action = "editarTutor";
 switch ($_REQUEST['action']) {#$_REQUEST['action']
@@ -62,5 +66,23 @@ switch ($_REQUEST['action']) {#$_REQUEST['action']
         $resCali = $modCali->editaCalificacionesPorId($objCali);
         print $resCali;
         
+        break;
+    case 'cambiaPassAlu':
+        $especial = new EspecialControl();
+        $objA = new AlumnosObjeto();
+        $objA->matricula = $_POST['usu'];
+        $objA->password = $especial->encriptar($_POST['pass']);
+        $modAlu = new ModuloAlumnos();
+        $resAlu = $modAlu->cambiaPass($objA);
+        print $resAlu;
+        break;
+    case 'cambiaPassTutor':
+        $especial = new EspecialControl();
+        $objtc = new TutoresObjeto();
+        $objtc->matricula = $_POST['usu'];#        
+        $objtc->pass = $especial->encriptar($_POST['pass']);
+        $botc = new ModuloTutores();
+        $rest = $botc->cambiaPass($objtc);
+        print $rest;
         break;
 }

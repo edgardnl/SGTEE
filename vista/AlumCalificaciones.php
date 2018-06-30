@@ -1,5 +1,10 @@
 <?php
 session_start();
+if (isset($_SESSION['nom'])) {
+    
+}else{
+    header("location:index.php");
+}
 require_once "../ruta.php";
 require_once $_SERVER['DOCUMENT_ROOT'] . ruta::ruta . "/controlador/MostrarTablaControl.php";
 
@@ -136,15 +141,10 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                                             <div class="profile_img">											
                                                 <div class="user-name">
                                                     <p><?php print $_SESSION["nom"]; ?><span>Alumno</span></p>
-                                                </div>
-                                                <i class="lnr lnr-chevron-down"></i>
-                                                <i class="lnr lnr-chevron-up"></i>
+                                                </div>                                                
                                                 <div class="clearfix"></div>	
                                             </div>	
-                                        </a>
-                                        <ul class="dropdown-menu drp-mnu">									
-                                            <li> <a href="sign-up.html"><i class="fa fa-sign-out"></i>Salir</a> </li>
-                                        </ul>
+                                        </a>                                        
                                     </li>
                                     <div class="clearfix"> </div>
                                 </ul>

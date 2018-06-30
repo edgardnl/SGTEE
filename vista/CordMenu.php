@@ -14,7 +14,7 @@
 				<!--sidebar nav start-->
 					<ul class="nav nav-pills nav-stacked custom-nav">
                                             <li><a href="CordInicio.php"><i class="lnr lnr-power-switch"></i><span>Inicio</span></a></li>
-                                                <li><a href="Coordinadora1.php"><i class="lnr lnr-user"></i><span>Profesores</span></a></li>
+                                                <li><a href="Coordinadora1.php"><i class="lnr lnr-user"></i><span>Tutores</span></a></li>
                                                 <li><a href="Coordinadora1_relacion.php"><i class="lnr lnr-book"></i> <span>Relaciones</span></a></li>                                                
 					</ul>
 				<!--sidebar nav end-->

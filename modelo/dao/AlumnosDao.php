@@ -6,6 +6,7 @@ require_once $_SERVER['DOCUMENT_ROOT'] . ruta::ruta . "/modelo/dao/procesaParame
 require_once $_SERVER['DOCUMENT_ROOT'] . ruta::ruta . "/modelo/objetos/UsuariosObjetoAlumnos.php";
 require_once $_SERVER['DOCUMENT_ROOT'] . ruta::ruta . "/modelo/objetos/AlumnosObjeto.php";
 require_once $_SERVER['DOCUMENT_ROOT'] . ruta::ruta . "/modelo/dao/sql/AlumnosSql.php";
+require_once $_SERVER['DOCUMENT_ROOT'] . ruta::ruta . "/controlador/EspecialControl.php";
 
 class AlumnosDao {
 
@@ -82,10 +83,12 @@ class AlumnosDao {
         $query = $this->con->query($pP);
         $row = $query->fetch_array();
         
+        $especial = new EspecialControl();
         $obj = new AlumnosObjeto();        
         $obj->matricula = $row['matricula'];
         $obj->nombre = $row['nombre'];
-        $obj->password = $row['password'];
+        $pas = utf8_decode($row['password']);
+        $obj->password = $especial->desencriptar($pas);
         $obj->ap_p = $row['ap_p'];
         $obj->ap_m = $row['ap_m'];
         $obj->grupo = $row['grupo'];
@@ -182,9 +185,16 @@ class AlumnosDao {
         return $obj;
     }
 
-
-
-
+    function cambiaPassAl($obj){
+        $datosArray = array($obj->password, $obj->matricula);
+        $pP = procesaParametros::PrepareStatement(AlumnosSql::editaPass(),$datosArray);
+        
+        try {
+            $this->con->query($pP);
+        } catch (Exception $exc) {
+            print $exc->getMessage();
+        }   
+    }
 
 }
 

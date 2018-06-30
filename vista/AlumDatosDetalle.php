@@ -1,5 +1,10 @@
 <?php
 session_start();
+if (isset($_SESSION['nom'])) {
+    
+}else{
+    header("location:index.php");
+}
 require_once "../ruta.php";
 require_once $_SERVER['DOCUMENT_ROOT'] . ruta::ruta . "/controlador/MostrarTablaControl.php";
 $tabla = new MostrarTablaControl();
@@ -145,7 +150,8 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                                             </div>	
                                         </a>
                                         <ul class="dropdown-menu drp-mnu">									
-                                            <li> <a href="sign-up.html"><i class="fa fa-sign-out"></i>Salir</a> </li>
+                                            <li> <a href="AlumPalabra.php"><i class="fa fa-edit"></i>Contraseña</a> </li>
+
                                         </ul>
                                     </li>
                                     <div class="clearfix"> </div>

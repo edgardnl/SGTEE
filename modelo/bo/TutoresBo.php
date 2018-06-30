@@ -87,6 +87,18 @@ class ModuloTutores{
         return $this->dao->buscarTutorLogin($obj);
     }
 
+    function cambiaPass($obj){
+        $usu = 0;                    
+        try {
+            $this->dao->cambiaPassTu($obj);
+            $usu = 1;
+        } catch (Exception $ex) {
+            $usu = 2;//$ex->getMessage();
+        }
+                                        
+        return $usu;                
+    }
+
 
 }
 

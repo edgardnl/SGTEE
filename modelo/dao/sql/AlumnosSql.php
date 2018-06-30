@@ -91,5 +91,10 @@ class AlumnosSql {
             AND alumno.matricula = ?;";
         return $query;#       
     }
+
+    function editaPass(){
+        $query = "UPDATE alumno SET alumno.password = ? WHERE alumno.matricula = ?;";
+        return $query;#       
+    }
 }
 ?>

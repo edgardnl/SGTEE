@@ -13,13 +13,16 @@ require_once $_SERVER['DOCUMENT_ROOT'] . ruta::ruta . "/modelo/objetos/Canalizac
 require_once $_SERVER['DOCUMENT_ROOT'] . ruta::ruta . "/modelo/bo/CalificacionesBo.php";
 require_once $_SERVER['DOCUMENT_ROOT'] . ruta::ruta . "/modelo/objetos/CalificacionesObjeto.php";
 
+require_once $_SERVER['DOCUMENT_ROOT'] . ruta::ruta . "/controlador/EspecialControl.php";
+
 $bo = new ModuloTutores();
 //$action = "agregarActividad";
 switch ($_REQUEST['action']) {#$_REQUEST['action']
     case 'agregarTutor':
+        $especial = new EspecialControl();
         $obj = new TutoresObjeto();
         $obj->matricula = $_POST['clave'];
-        $obj->pass = $_POST['pass'];
+        $obj->pass = $especial->encriptar($_POST['pass']); 
         $obj->id_role = 4;
         $obj->nombre = $_POST['nombre'];
         $obj->ap_p = $_POST['ap_p'];

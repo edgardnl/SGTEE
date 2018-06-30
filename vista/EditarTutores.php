@@ -1,4 +1,11 @@
 <?php
+session_start();
+if (isset($_SESSION['nom'])) {
+    
+}else{
+    header("location:index.php");
+}
+
 require_once "../ruta.php";
 require_once $_SERVER['DOCUMENT_ROOT'] . ruta::ruta . "/controlador/MostrarTablaControl.php";
 $tabla = new MostrarTablaControl();
@@ -14,7 +21,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 <!DOCTYPE HTML>
 <html>
     <head>
-        <title>SGTE - Editar Tutores</title>
+        <title>SGTE</title>
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
         <meta name="keywords" content="Easy Admin Panel Responsive web template, Bootstrap Web Templates, Flat Web Templates, Android Compatible web template, 
@@ -201,16 +208,11 @@ new UISearch(document.getElementById('sb-search'));
                                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
                                             <div class="profile_img">											
                                                 <div class="user-name">
-                                                    <p>Michael<span>Administrator</span></p>
-                                                </div>
-                                                <i class="lnr lnr-chevron-down"></i>
-                                                <i class="lnr lnr-chevron-up"></i>
+                                                    <p><?php print $_SESSION["nom"]; ?><span>Administrator</span></p>
+                                                </div>                                                
                                                 <div class="clearfix"></div>	
                                             </div>	
-                                        </a>
-                                        <ul class="dropdown-menu drp-mnu">									
-                                            <li> <a href="sign-up.html"><i class="fa fa-sign-out"></i>Salir</a> </li>
-                                        </ul>
+                                        </a>                                        
                                     </li>
                                     <div class="clearfix"> </div>
                                 </ul>
@@ -326,7 +328,7 @@ new UISearch(document.getElementById('sb-search'));
                                         <div class="col-sm-8 col-sm-offset-2">
                                             <button class="btn-success btn" onclick="" id="editar">Actualizar</button>
                                             <button class="btn-danger btn" onclick="" id="eliminar" >Eliminar</button>
-                                            <button class="btn-warning btn" onclick="">Contraseña</button>
+                                            <button class="btn-warning btn" onclick="cambiaPassTuto(<?php print $id; ?>)">Contraseña</button>
                                             <button class="btn-default btn" onclick="regresarTutoresInicio()">Cancelar</button>                                                
                                         </div>
                                     </div>

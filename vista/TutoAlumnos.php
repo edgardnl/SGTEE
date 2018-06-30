@@ -1,5 +1,11 @@
 <?php
 session_start();
+if (isset($_SESSION['nom'])) {
+	
+}else{
+	header("location:index.php");
+}
+
 require_once "../ruta.php";
 require_once $_SERVER['DOCUMENT_ROOT'] . ruta::ruta . "/controlador/MostrarTablaControl.php";
 
@@ -135,16 +141,11 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 								<a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
 									<div class="profile_img">											
 										 <div class="user-name">
-											<p>Michael<span>Tutor</span></p>
-										 </div>
-										 <i class="lnr lnr-chevron-down"></i>
-										 <i class="lnr lnr-chevron-up"></i>
+											<p><?php print $_SESSION["nom"]; ?><span>Tutor</span></p>
+										 </div>										 
 										<div class="clearfix"></div>	
 									</div>	
-								</a>
-								<ul class="dropdown-menu drp-mnu">									
-									<li> <a href="sign-up.html"><i class="fa fa-sign-out"></i>Salir</a> </li>
-								</ul>
+								</a>								
 							</li>
 							<div class="clearfix"> </div>
 						</ul>

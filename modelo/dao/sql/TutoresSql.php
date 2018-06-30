@@ -42,4 +42,9 @@ class TutoresSql {
         return $query;#       
     }
 
+    function editaPass(){
+        $query = "UPDATE tutor SET tutor.password = ? WHERE tutor.matricula = ?;";
+        return $query;#          
+    }
+
 }

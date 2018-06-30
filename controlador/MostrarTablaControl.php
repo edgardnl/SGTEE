@@ -32,6 +32,8 @@ require_once $_SERVER['DOCUMENT_ROOT'] . ruta::ruta . "/modelo/objetos/PersonalO
 require_once $_SERVER['DOCUMENT_ROOT'] . ruta::ruta . "/modelo/bo/CatalogosBo.php";
 //require_once $_SERVER['DOCUMENT_ROOT'] . ruta::ruta . "/modelo/objetos/CatalogosObjeto.php";
 
+require_once $_SERVER['DOCUMENT_ROOT'] . ruta::ruta . "/controlador/EspecialControl.php";
+
 class MostrarTablaControl {
 
     function tablaTutores() {
@@ -188,13 +190,17 @@ class MostrarTablaControl {
 
     function newLogin($id,$pass){
         session_start();
+        $especial = new EspecialControl();
         $obj = new TutoresObjeto();
         $obj->matricula = $id;
         $obj->pass = $pass;
+        $objP = new AlumnosObjeto();
+        $objP->matricula = $id;
+        $objP->pass = $especial->encriptar($pass);
         $boT = new ModuloTutores();
-        $objT = $boT->buscaTutorLogin($obj);
+        $objT = $boT->buscaTutorLogin($objP);
         $boA = new ModuloAlumnos();
-        $objA = $boA->buscaAlumnoLogin($obj);
+        $objA = $boA->buscaAlumnoLogin($objP);
         $boP = new ModuloPersonal();
         $objCA = $boP->buscarCoordinadorAcLogin($obj);
         $objCE = $boP->buscarCoordinadorEsLogin($obj);
@@ -215,16 +221,16 @@ class MostrarTablaControl {
             $_SESSION["nom"] = $objA->nombre;
             header("Location:AlumInicio.php");
         }elseif ($objCA->nRegistros == 1) {
-            $_SESSION["id"] = $objA->matricula;
-            $_SESSION["nom"] = $objA->nombre;
+            $_SESSION["id"] = $objCA->matricula;
+            $_SESSION["nom"] = $objCA->nombre;
             header("Location:CordInicio.php");
         }elseif ($objCE->nRegistros == 1) {
-            $_SESSION["id"] = $objA->matricula;
-            $_SESSION["nom"] = $objA->nombre;
+            $_SESSION["id"] = $objCE->matricula;
+            $_SESSION["nom"] = $objCE->nombre;
             header("Location:CordInicio.php");
         }elseif ($objCAd->nRegistros == 1) {
-            $_SESSION["id"] = $objA->matricula;
-            $_SESSION["nom"] = $objA->nombre;
+            $_SESSION["id"] = $objCAd->matricula;
+            $_SESSION["nom"] = $objCAd->nombre;
             header("Location:Inicio.php");
         }else {
             print "<div class='col-md-12' style='margin-top: 10px; margin-botton:10px;'>

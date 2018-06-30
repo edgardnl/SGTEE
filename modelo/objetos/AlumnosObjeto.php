@@ -27,5 +27,6 @@ class AlumnosObjeto{
     var $nomTutor;
     var $telefono_celtutor;
     var $correoTutor;
+    var $pass;
 
 }

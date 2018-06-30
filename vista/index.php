@@ -10,7 +10,7 @@ if (isset($_POST['btn'])) {
 <!DOCTYPE html>
 <html>
     <head>
-        <title>SGTE | Sign In :: w3layouts</title>
+        <title>SGTE</title>
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
         <meta name="keywords" content="Easy Admin Panel Responsive web template, Bootstrap Web Templates, Flat Web Templates, Android Compatible web template, 

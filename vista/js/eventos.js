@@ -128,3 +128,11 @@ function regresarCalifica(){
 function enviarEdicionCal(id){
     location.href = "TutoEditaCalificaciones.php?id="+id;
 }
+
+function regresarVentana(){
+    window.history.go(-1);
+}
+
+function cambiaPassTuto(id){
+    location.href = "Palabra.php?id="+id;   
+}

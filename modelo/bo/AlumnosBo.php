@@ -93,5 +93,17 @@ class ModuloAlumnos {
         return $this->dao->traeDatosAlumnosDetallePorIdAlumno($obj);
     }
 
+    function cambiaPass($obj){
+        $usu = 0;                    
+        try {
+            $this->dao->cambiaPassAl($obj);
+            $usu = 1;
+        } catch (Exception $ex) {
+            $usu = 2;//$ex->getMessage();
+        }
+                                        
+        return $usu;                
+    }
+
 }
 

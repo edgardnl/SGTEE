@@ -1,4 +1,11 @@
 <?php
+session_start();
+if (isset($_SESSION['nom'])) {
+    
+}else{
+    header("location:index.php");
+}
+
 require_once "../ruta.php";
 require_once $_SERVER['DOCUMENT_ROOT'] . ruta::ruta . "/controlador/MostrarTablaControlCoordinador1.php";
 require_once $_SERVER['DOCUMENT_ROOT'] . ruta::ruta . "/modelo/objetos/AlumnosObjetoCoordinador1.php";
@@ -16,7 +23,7 @@ $obj = $tabla1->MostrarDatosCoordinadorId($id);
 <!DOCTYPE HTML>
 <html>
     <head>
-        <title>SGTE - Agregar Coordinador</title>
+        <title>SGTE - Coordinador</title>
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
         <meta name="keywords" content="Easy Admin Panel Responsive web template, Bootstrap Web Templates, Flat Web Templates, Android Compatible web template, 
@@ -154,16 +161,11 @@ $obj = $tabla1->MostrarDatosCoordinadorId($id);
                                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
                                             <div class="profile_img">											
                                                 <div class="user-name">
-                                                    <p>Michael<span>Administrator</span></p>
-                                                </div>
-                                                <i class="lnr lnr-chevron-down"></i>
-                                                <i class="lnr lnr-chevron-up"></i>
+                                                    <p><?php print $_SESSION["nom"]; ?><span>Coordinador</span></p>
+                                                </div>                                                
                                                 <div class="clearfix"></div>	
                                             </div>	
-                                        </a>
-                                        <ul class="dropdown-menu drp-mnu">									
-                                            <li> <a href="sign-up.html"><i class="fa fa-sign-out"></i>Salir</a> </li>
-                                        </ul>
+                                        </a>                                        
                                     </li>
                                     <div class="clearfix"> </div>
                                 </ul>
