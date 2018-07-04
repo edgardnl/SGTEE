@@ -44,6 +44,15 @@ if (isset($_POST['btn'])) {
         <script src="js/jquery-1.10.2.min.js"></script>
          <!--<script src="jquery/jquery.min.js"></script>-->
         <!-- Placed js at the end of the document so the pages load faster -->        
+        <style type="text/css">            
+            div.escuela{
+                background-image: url(images/foot.png);
+                background-position: center center;
+                background-repeat: no-repeat;                
+                background-size: cover;
+                background-color: red; //
+            }
+        </style>
 
     </head> 
 
@@ -54,7 +63,7 @@ if (isset($_POST['btn'])) {
                 <div class="graphs">
                     <div class="sign-in-form" style="margin-top: 10px">
                         <div class="sign-in-form-top">
-                            <p><span>Sistema de Gestion de Tutorias Especiales</span> <a href="index.html"></a></p>
+                            <p><span>Sistema de Gestión de Tutorías Especiales</span> <a href="index.html"></a></p>
                         </div>
                         <div class="signin">
                             <!--<div class="signin-rit">
@@ -100,7 +109,8 @@ if (isset($_POST['btn'])) {
             </div>
             <!--footer section start-->
             <footer>
-                <p>&copy 2015 Easy Admin Panel. All Rights Reserved | Design by <a href="https://w3layouts.com/" target="_blank">w3layouts.</a></p>
+                <div class="logo"><img src="../vista/images/foot.png"></div>
+                <p>&copy 2015 Easy Admin Panel. All Rights Reserved | Design by <a href="https://w3layouts.com/" target="_blank">w3layouts.</a></p>                            
             </footer>
             <!--footer section end-->
         </section>

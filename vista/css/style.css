@@ -524,6 +524,9 @@ footer  p a{
 footer  p a:hover{
 	text-decoration:underline;
 }
+.logo img{
+	width: 55%;
+}
 .nofitications-dropdown li .dropdown-menu:before,.drp-mnu:before {
     position: absolute;
     top:-8.5px;
