@@ -1,5 +1,5 @@
 function enviarEditarTutor(id) {
-    alert(id);
+    //alert(id);
     location.href = "EditarTutores.php?id=" + id;
 }
 
@@ -10,7 +10,7 @@ function regresarTutoresInicio() {
 
 function agregarTutores() {
     var datos = "action=agregarTutor&" + $("#FormTutores").serialize();
-    alert(datos);
+    //alert(datos);
     $.post("../controlador/AgregarControl.php", datos, function (resp) {
         console.log(resp);
         location.href = "Tutores.php";
@@ -53,7 +53,7 @@ function buscarTutor(){
 }
 
 function enviarMostrarActiv(id){
-    alert(id);
+    //alert(id);
     location.href = "MostrarActividadesAlumnos.php?id=" + id;
 }
 
@@ -62,7 +62,7 @@ function regresarActividadesAlumnos(){
 }
 
 function enviarDetalleAlu(id){
-    alert(id);
+    //alert(id);
     location.href = "TutoAlumnosDetalle.php?id=" + id;
 }
 
@@ -75,13 +75,13 @@ function regresarSegAlum(){
 }
 
 function enviarSeguimiento(id){
-    alert(id);
+    //alert(id);
     location.href = "TutoSeguimientoTutorial.php?id=" + id;   
 }
 
 function agregaActividad(){
     var datos = "action=agregarActividad&" + $("#FormActividades").serialize();
-    alert(datos);
+    //alert(datos);
     $.post("../controlador/AgregarControl.php", datos, function(resp) {
         console.log(resp);
         location.href = "";
@@ -93,22 +93,22 @@ function regresarTutoSeg(){
 }
 
 function addActividad(id){
-    alert(id);
+    //alert(id);
     location.href = "TutoAgregarActividad.php?id=" + id;   
 }
 
 function enviarCanaliza(id){
-    alert(id);
+    //alert(id);
     location.href = "TutoCanalizacionDetalle.php?id=" + id;
 }
 
 function enviarEdicionAct(id){
-   alert(id) ;
+   //alert(id) ;
    location.href = "TutoEditarActividad.php?id=" + id;
 }
 
 function enviarScoreAlu(id){
-    alert(id) ;
+    //alert(id) ;
    location.href = "TutoAlumnosCalificacionesIndividual.php?id=" + id;   
 }
 
@@ -117,7 +117,7 @@ function regresarAlumnosAvance(){
 }
 
 function agregarCalificaciones(id){
-    alert(id);
+    //alert(id);
     location.href = "TutoAgregarCalificaciones.php?id="+id;
 }
 

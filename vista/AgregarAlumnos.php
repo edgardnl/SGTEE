@@ -134,7 +134,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
     		}    		    		
 
     		var datos = "action=agregarAlumnos&" + $("#FormAlumnos").serialize();
-		    alert(datos);
+		    //alert(datos);
 		    $.post("../controlador/AgregarControlAlumnos.php", datos, function (data) {
 		    //$.post("../controlador/AgregarControl.php", datos, function (resp) {
 		        console.log(data);

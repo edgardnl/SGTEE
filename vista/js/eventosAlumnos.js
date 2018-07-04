@@ -1,7 +1,7 @@
 
 
 function enviarEditarAlumnos(id) {
-    alert(id);
+    //alert(id);
     location.href = "EditarAlumnos.php?id=" + id;
 }
 
@@ -49,7 +49,7 @@ function eliminarAlumnos(){
     var r = confirm("Estas seguro de actualizar este registro");
     if (r == true) {
         var datos = "action=eliminarAlumno&" + $("#formEditAlumnos").serialize();
-        alert(datos);
+        //alert(datos);
         $.post("../controlador/EliminarDatosAlumno.php", datos, function (data) {
             alert(data);
             location.href = "Alumnos.php";
@@ -61,7 +61,7 @@ function eliminarAlumnos(){
 }
 
 function enviaridCoordinador(id){
-    alert(id);
+    //alert(id);
     location.href = "AgregarCoordindor.php?id=" + id;
 }
 
@@ -81,7 +81,7 @@ function agregarCoordinador() {
     });
 }
 function EnviarEditarCoordinadorR(id) {
-    alert(id);
+    //alert(id);
     location.href = "CordEditarCoordinador.php?id=" + id;
 }
 
@@ -118,7 +118,7 @@ function EliminarCoordinador(){
     }
 }
 function eliminarsinmvc(id) {
-    alert(id);
+    //alert(id);
     location.href = "eliminarCR.php?id=" + id;
 }
 
