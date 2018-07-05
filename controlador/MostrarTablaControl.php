@@ -202,9 +202,9 @@ class MostrarTablaControl {
         $boA = new ModuloAlumnos();
         $objA = $boA->buscaAlumnoLogin($objP);
         $boP = new ModuloPersonal();
-        $objCA = $boP->buscarCoordinadorAcLogin($obj);
-        $objCE = $boP->buscarCoordinadorEsLogin($obj);
-        $objCAd = $boP->buscarAdminLogin($obj);
+        $objCA = $boP->buscarCoordinadorAcLogin($objP);
+        $objCE = $boP->buscarCoordinadorEsLogin($objP);
+        $objCAd = $boP->buscarAdminLogin($objP);
 
         if ($id == 'Usuario' and $pass = 'password') {
             print "<div class='col-md-12' style='margin-top: 10px; margin-botton:10px;'>

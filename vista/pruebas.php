@@ -34,7 +34,7 @@ print $objT->horaio."\n";
     print "Palabra = ".$text;
     $obj = $especial->encriptar($text);
     print "Encriptado = ".$obj;
-    $obj1 = $especial->desencriptar($obj);
+    $obj1 = $especial->desencriptar("PTwTb32GX8iHaaxjpdfkDA+naGmHFy/vcKiXfyMvTTwig");
     print "Desencriptar = ".$obj1;
 
     print session_status();
