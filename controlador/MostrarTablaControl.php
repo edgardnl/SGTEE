@@ -198,13 +198,13 @@ class MostrarTablaControl {
         $objP->matricula = $id;
         $objP->pass = $especial->encriptar($pass);
         $boT = new ModuloTutores();
-        $objT = $boT->buscaTutorLogin($objP);
+        $objT = $boT->buscaTutorLogin($obj);
         $boA = new ModuloAlumnos();
-        $objA = $boA->buscaAlumnoLogin($objP);
+        $objA = $boA->buscaAlumnoLogin($obj);
         $boP = new ModuloPersonal();
-        $objCA = $boP->buscarCoordinadorAcLogin($objP);
-        $objCE = $boP->buscarCoordinadorEsLogin($objP);
-        $objCAd = $boP->buscarAdminLogin($objP);
+        $objCA = $boP->buscarCoordinadorAcLogin($obj);
+        $objCE = $boP->buscarCoordinadorEsLogin($obj);
+        $objCAd = $boP->buscarAdminLogin($obj);
 
         if ($id == 'Usuario' and $pass = 'password') {
             print "<div class='col-md-12' style='margin-top: 10px; margin-botton:10px;'>

@@ -71,7 +71,7 @@ switch ($_REQUEST['action']) {#$_REQUEST['action']
         $especial = new EspecialControl();
         $objA = new AlumnosObjeto();
         $objA->matricula = $_POST['usu'];
-        $objA->password = $especial->encriptar($_POST['pass']);
+        $objA->password = $_POST['pass'];//$especial->encriptar($_POST['pass']);
         $modAlu = new ModuloAlumnos();
         $resAlu = $modAlu->cambiaPass($objA);
         print $resAlu;
@@ -80,7 +80,7 @@ switch ($_REQUEST['action']) {#$_REQUEST['action']
         $especial = new EspecialControl();
         $objtc = new TutoresObjeto();
         $objtc->matricula = $_POST['usu'];#        
-        $objtc->pass = $especial->encriptar($_POST['pass']);
+        $objtc->pass = $_POST['pass'];//$especial->encriptar($_POST['pass']);
         $botc = new ModuloTutores();
         $rest = $botc->cambiaPass($objtc);
         print $rest;

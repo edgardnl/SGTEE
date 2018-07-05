@@ -87,8 +87,8 @@ class AlumnosDao {
         $obj = new AlumnosObjeto();        
         $obj->matricula = $row['matricula'];
         $obj->nombre = $row['nombre'];
-        $pas = utf8_decode($row['password']);
-        $obj->password = $especial->desencriptar($pas);
+        //$pas = utf8_decode($row['password']);
+        $obj->password = $row['password'];//$especial->desencriptar($pas);
         $obj->ap_p = $row['ap_p'];
         $obj->ap_m = $row['ap_m'];
         $obj->grupo = $row['grupo'];

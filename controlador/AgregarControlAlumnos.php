@@ -17,7 +17,7 @@ switch ($action) {#$_REQUEST['action']
         $especial = new EspecialControl();
         $obj = new AlumnosObjeto();
         $obj->matricula = $_POST['matricula'];
-        $obj->password = $especial->encriptar($especial->generaPass()); 
+        $obj->password = $especial->generaPass();//$especial->encriptar($especial->generaPass()); 
         $obj->id_role = 5;
         $obj->nombre = $_POST['nombre'];
         $obj->ap_p = $_POST['ap_p'];

@@ -22,7 +22,7 @@ switch ($_REQUEST['action']) {#$_REQUEST['action']
         $especial = new EspecialControl();
         $obj = new TutoresObjeto();
         $obj->matricula = $_POST['clave'];
-        $obj->pass = $especial->encriptar($_POST['pass']); 
+        $obj->pass = $_POST['pass'];//$especial->encriptar($_POST['pass']); 
         $obj->id_role = 4;
         $obj->nombre = $_POST['nombre'];
         $obj->ap_p = $_POST['ap_p'];
