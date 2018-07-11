@@ -188,9 +188,10 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                         </div>
 		
 		<!--footer section start-->
-		<footer>
-                    <p>&copy 2015 Easy Admin Panel. All Rights Reserved | Design by <a href="https://w3layouts.com/" target="_blank">w3layouts.</a></p>
-		</footer>
+		<footer>                
+                <p>TESCHA - Tecnologico de Estudios Superiores de Chalco</p>                            
+                <!--<p>&copy 2015 Easy Admin Panel. All Rights Reserved | Design by <a href="https://w3layouts.com/" target="_blank">w3layouts.</a></p> -->                           
+            </footer>
         <!--footer section end-->
 	</section>
 	

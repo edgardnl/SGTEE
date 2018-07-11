@@ -109,8 +109,8 @@ if (isset($_POST['btn'])) {
             </div>
             <!--footer section start-->
             <footer>
-                <div class="logo"><img src="../vista/images/foot.png"></div>
-                <p>&copy 2015 Easy Admin Panel. All Rights Reserved | Design by <a href="https://w3layouts.com/" target="_blank">w3layouts.</a></p>                            
+                <div class="logo"><img src="../vista/images/foot.png"></div>                
+                <!--<p>&copy 2015 Easy Admin Panel. All Rights Reserved | Design by <a href="https://w3layouts.com/" target="_blank">w3layouts.</a></p> -->                           
             </footer>
             <!--footer section end-->
         </section>

@@ -386,8 +386,9 @@ $usu = $tabla->mostraActividadPorId($_GET['id']);
             <a class="toggle-btn  menu-collapsed"><i class="fa fa-bars"></i></a>
             <!--toggle button end-->
             <!--footer section start-->
-            <footer>
-                <p>&copy 2015 Easy Admin Panel. All Rights Reserved | Design by <a href="https://w3layouts.com/" target="_blank">w3layouts.</a></p>
+            <footer>                
+                <p>TESCHA - Tecnologico de Estudios Superiores de Chalco</p>                            
+                <!--<p>&copy 2015 Easy Admin Panel. All Rights Reserved | Design by <a href="https://w3layouts.com/" target="_blank">w3layouts.</a></p> -->                           
             </footer>
             <!--footer section end-->
         </section>
